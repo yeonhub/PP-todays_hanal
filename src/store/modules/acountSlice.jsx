@@ -1,0 +1,65 @@
+import { createSlice } from '@reduxjs/toolkit'
+
+const initialState = {
+    onLogin: false,
+    currentAcount: {},
+    addAcount: {},
+    acount: [
+        { acountId: 1, loginId: 'lsy', loginPw: '1234', nickname: '상쌤', treeType: '도토리나무', treeLevel: 5 },
+        { acountId: 2, loginId: 'kog', loginPw: '1234', nickname: '옥찌', treeType: '사과나무', treeLevel: 1 },
+        { acountId: 3, loginId: 'lmk', loginPw: '1234', nickname: '명돌', treeType: '도토리나무', treeLevel: 3 },
+        { acountId: 4, loginId: 'khj', loginPw: '1234', nickname: '하입보이', treeType: '배나무', treeLevel: 2 },
+    ]
+}
+
+export const acountSlice = createSlice({
+    name: 'acount',
+    initialState,
+    reducers: {
+        login(state, action) {
+            const { loginId, loginPw } = action.payload;
+            const accountRight = state.acount.find(
+                (item) => item.loginId === loginId && item.loginPw === loginPw
+            );
+
+            if (accountRight) {
+                state.currentAcount = accountRight;
+                state.onLogin = true
+                alert('로그인');
+                localStorage.setItem('localOnLogin', true);
+                localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
+            } else if (!state.acount.some((item) => item.loginId === loginId)) {
+                alert('아이디가 존재하지 않음');
+            } else {
+                alert('비밀번호를 다시 확인해주세요');
+            }
+        },
+        logout(state, action) {
+            state.onLogin = false
+            localStorage.removeItem('localCurrentAcount');
+            localStorage.setItem('localOnLogin', false);
+
+        },
+        join(state, action) {
+            const { loginId, loginPw, nickname } = action.payload;
+            const newAccount = {
+                loginId,
+                loginPw,
+                nickname,
+                acountId: state.acount.length + 1,
+                treeType: '밤나무',
+                treeLevel: 0
+            }
+            state.acount.push(newAccount)
+
+            state.onLogin = true;
+            state.currentAcount = newAccount;
+            localStorage.setItem('localOnLogin', true);
+            localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
+        },
+    },
+});
+
+
+export const { login, logout, join } = acountSlice.actions
+export default acountSlice.reducer
