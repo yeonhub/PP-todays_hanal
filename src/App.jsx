@@ -1,41 +1,30 @@
 import React from 'react';
-import GlobalStyle from '../Global';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Layout from './components/Layout';
 import './assets/css/reset.css'
 import Info from './components/Info';
 import Join from './components/Join';
+import Nearby from './pages/Nearby';
+import Myhanal from './pages/Myhanal';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
+    <HashRouter>
       <Routes >
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/info" element={<Info />} />
           <Route path="/join" element={<Join />} />
-
-          {/* <Route path="/notice">
-            <Route index element={<Notice />} />
-            <Route path=":noticeID" element={<NoticeDetail />} />
-          </Route> */}
-
-          {/* <Route path="/customer">
-            <Route index element={<Customer />} />
-            <Route path="customeradd" element={<CustomerAdd />} />
-            <Route path="customeredit" element={<CustomerEdit />} />
-            <Route path=":customerID" element={<CustomerDetail />} />
-          </Route> */}
-
+          <Route path="/nearby" element={<Nearby />} />
+          <Route path="/myhanal" element={<Myhanal />} />
         </Route>
-
-
-
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
+    // </BrowserRouter>
   );
 };
 

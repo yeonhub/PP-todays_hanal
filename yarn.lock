@@ -3173,6 +3173,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.4, create-hmac@^1.1.7:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+cropperjs@^1.5.13:
+  version "1.5.13"
+  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.5.13.tgz#eb1682f01d17c70ed5244317091d745c9a249ef8"
+  integrity sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==
+
 cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -7341,6 +7346,13 @@ rc@1.2.8, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-cropper@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/react-cropper/-/react-cropper-2.3.3.tgz#aced0d045d9fd56168ba4d17287a40c287754dee"
+  integrity sha512-zghiEYkUb41kqtu+2jpX2Ntigf+Jj1dF9ew4lAobPzI2adaPE31z0p+5TcWngK6TvmWQUwK3lj4G+NDh1PDQ1w==
+  dependencies:
+    cropperjs "^1.5.13"
+
 react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
@@ -7348,6 +7360,11 @@ react-dom@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-icons@^4.10.1:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.10.1.tgz#3f3b5eec1f63c1796f6a26174a1091ca6437a500"
+  integrity sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==
 
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
@@ -7390,6 +7407,13 @@ react-router@6.14.1:
   integrity sha512-U4PfgvG55LdvbQjg5Y9QRWyVxIdO1LlpYT7x+tMAxd9/vmiPuJhIwdxZuIQLN/9e3O4KFDHYfR9gzGeYMasW8g==
   dependencies:
     "@remix-run/router" "1.7.1"
+
+react-slider@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/react-slider/-/react-slider-2.0.6.tgz#8c7ff0301211f7c3ff32aa0163b33bdab6258559"
+  integrity sha512-gJxG1HwmuMTJ+oWIRCmVWvgwotNCbByTwRkFZC6U4MBsHqJBmxwbYRJUmxy4Tke1ef8r9jfXjgkmY/uHOCEvbA==
+  dependencies:
+    prop-types "^15.8.1"
 
 react@^18.2.0:
   version "18.2.0"

@@ -1,31 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
-
-const HomeContainer = styled.div`
-.login {
-    width: 100%;
-    margin: auto;
-    p {
-        text-align: center;
-    }
-    form {
-        label {
-            display: block;
-            text-align: center;
-        }
-        input {
-            display: block;
-            margin: auto;
-        }
-    }
-}
-`
+import Todays from '../components/Todays';
 
 const Home = () => {
     return (
-        <HomeContainer>
-            
-        </HomeContainer>
+        <>
+            <Todays />
+        </>
     );
 };
 

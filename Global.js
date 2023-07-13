@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+ body {
+      background: rgb(20,20,20);
+      color: white;
+    }
   #wrap {
     overflow: hidden;
     position: relative;
