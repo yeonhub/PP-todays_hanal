@@ -29,7 +29,6 @@ const Nearby = () => {
     const nearGu = '남동구'
     const list = useSelector(state => state.board.board)
     const nearList = list.filter(item => item.loactionCity === nearCity && item.loactionGu === nearGu)
-    console.log(nearList);
     const { boardId, date, authorAcountId, loactionCity, loactionGu, likesAcountId, images } = nearList
 
 

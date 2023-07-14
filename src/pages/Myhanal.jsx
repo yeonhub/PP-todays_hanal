@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
+import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
 
 const MyhanalContainer = styled.div`
 .myhanal {
@@ -29,7 +30,6 @@ const MyhanalContainer = styled.div`
         margin: 3vh auto;
         height: 90vw;
         text-align: center;
-        display: flex;
         img {
             max-width: 100%;
             max-height: 100%;
@@ -53,29 +53,33 @@ const MyhanalContainer = styled.div`
             display: flex;
             justify-content: space-between;
             span{
-                font-size: 5vw;
+                font-size: 4vw;
             }
         }
         .weather {
             display: flex;
-            font-size: 4vw;
+            font-size: 5vw;
             justify-content: flex-end;
+            background: none;
+            background-image: url('images/weather/rain.gif');
+            background-repeat: no-repeat;
+            background-position: 0 70%;
         }
         .yesterday {
 
-            font-size: 5vw;
+            font-size: 4vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
             div {
-                line-height: 5vh;
+                line-height: 4vh;
                 width: 65%;
                 display: flex;
                 justify-content: space-between;
                 span {
                     text-align: center;
                     width: 25vw;
-                    height: 5vh;
+                    height: 4vh;
                     border-radius: 2vw;
                     background: gray;
                     color : black;
@@ -90,18 +94,24 @@ const MyhanalContainer = styled.div`
             }
         }
         .lieks {
+            display: flex;
+            justify-content: space-between;
+            svg {
+                font-size: 5vw;
+            }
             input {
-      width: 100%;
+      width: 80%;
       display: block;
+      box-sizing: border-box;
     }
         }
     }
     .uploadButton {
-        width: 90%;
+        width: 100%;
         height: 7vh;
         border: none;
         background: lightgray;
-        position: fixed;
+        margin-top: 5vw;
         bottom: 10%;
         border-radius: 2vw;
         font-size: 6vw;
@@ -144,13 +154,13 @@ const Myhanal = () => {
 
     // yesterday
     const [yesterday, setYesterday] = useState(true)
-    const onYesterday = (tem)=>{
+    const onYesterday = (tem) => {
         const todayTem = tem === 'hot' ? true : false
         setYesterday(todayTem)
     }
 
     // weather
-    const weather = `맑음`
+    // const weather = `맑음`
     const temperatures = `15도`
 
     // seekbar
@@ -178,9 +188,10 @@ const Myhanal = () => {
 
                 <div className="imageInfo">
                     <div className="p location"><span>{city} - {gu}</span> <span>{time}</span></div>
-                    <div className="p weather">{temperatures} / {weather}</div>
-                    <div className="p yesterday">어제보다 <div><span className={yesterday ? 'hot' : ''} onClick={()=>onYesterday('hot')}>더워요</span><span className={!yesterday ? 'cold' : ''} onClick={()=>onYesterday('cold')}>추워요</span></div></div>
+                    <div className="p weather">{temperatures}</div>
+                    <div className="p yesterday">어제보다 <div><span className={yesterday ? 'hot' : ''} onClick={() => onYesterday('hot')}>더워요</span><span className={!yesterday ? 'cold' : ''} onClick={() => onYesterday('cold')}>추워요</span></div></div>
                     <div className="p lieks">
+                        <AiOutlineDislike />
                         <input
                             type="range"
                             min={0}
@@ -189,6 +200,7 @@ const Myhanal = () => {
                             value={like}
                             onChange={handleChange}
                         />
+                        <AiOutlineLike />
                     </div>
                     <button className="uploadButton">업로드</button>
                 </div>

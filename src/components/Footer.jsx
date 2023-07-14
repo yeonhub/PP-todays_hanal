@@ -5,8 +5,10 @@ import styled from "styled-components";
 
 const FooterContainer = styled.div`
   .footer {
+    z-index: 100;
     border-top: 1px solid gray;
     width: 100%;
+    height: 7vh;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -28,11 +30,14 @@ const FooterContainer = styled.div`
           height: 100%;
           color: white;
           text-decoration: none;;
+          font-size: 3.5vw;
         }
       }
     }
   }
-`
+
+  `
+
 
 const Footer = () => {
   let localOnLogin = localStorage.getItem('localOnLogin')
@@ -43,18 +48,22 @@ const Footer = () => {
   }, [onLogin])
 
   return (
-    <FooterContainer>
-      <footer className='footer'>
-        <ul>
-          <li><Link to='/'>홈</Link></li>
-          <li><Link to='/myhanal'>내하날</Link></li>
-          <li><Link to='/nearby'>내주변</Link></li>
-          {
-            localOnLogin === 'true' ? <li><Link to='/info'>내정보</Link></li> : <li><Link to='/login'>로그인</Link></li>
-          }
-        </ul>
-      </footer>
-    </FooterContainer>
+    <>
+      <FooterContainer>
+        <footer className='footer'>
+          <ul>
+            <li><Link to='/'>홈</Link></li>
+            <li><Link to='/myhanal'>내하날</Link></li>
+            <li><Link to='/nearby'>내주변</Link></li>
+            {
+              localOnLogin === 'true' ? <li><Link to='/info'>내정보</Link></li> : <li><Link to='/login'>로그인</Link></li>
+            }
+          </ul>
+        </footer>
+      </FooterContainer>
+
+      <div className='footerblock' style={{ width: '100%', height: '7vh' ,zIndex : '100'}}></div>
+    </>
   );
 };
 
