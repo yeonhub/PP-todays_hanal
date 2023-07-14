@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     onLogin: false,
+    onJoin : false,
     currentAcount: {},
     addAcount: {},
     acount: [
@@ -25,7 +26,6 @@ export const acountSlice = createSlice({
             if (accountRight) {
                 state.currentAcount = accountRight;
                 state.onLogin = true
-                alert('로그인');
                 localStorage.setItem('localOnLogin', true);
                 localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
             } else if (!state.acount.some((item) => item.loginId === loginId)) {
@@ -36,26 +36,40 @@ export const acountSlice = createSlice({
         },
         logout(state, action) {
             state.onLogin = false
+            state.onJoin = false;
             localStorage.removeItem('localCurrentAcount');
             localStorage.setItem('localOnLogin', false);
-
+            localStorage.setItem('localOnJoin', false);
         },
         join(state, action) {
             const { loginId, loginPw, nickname } = action.payload;
-            const newAccount = {
-                loginId,
-                loginPw,
-                nickname,
-                acountId: state.acount.length + 1,
-                treeType: '밤나무',
-                treeLevel: 0
-            }
-            state.acount.push(newAccount)
 
-            state.onLogin = true;
-            state.currentAcount = newAccount;
-            localStorage.setItem('localOnLogin', true);
-            localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
+            const isExistingId = state.acount.some((item) => item.loginId === loginId);
+            const isExistingNickname = state.acount.some((item) => item.nickname === nickname);
+
+            if (isExistingId) {
+                alert('이미 존재하는 아이디입니다.');
+                return;
+            } else if (isExistingNickname) {
+                alert('이미 존재하는 닉네임입니다.');
+                return;
+            } else {
+                const newAccount = {
+                    loginId,
+                    loginPw,
+                    nickname,
+                    acountId: state.acount.length + 1,
+                    treeType: '밤나무',
+                    treeLevel: 1
+                }
+                state.acount.push(newAccount)
+                state.onLogin = true;
+                state.onJoin = true;
+                state.currentAcount = newAccount;
+                localStorage.setItem('localOnLogin', true);
+                localStorage.setItem('localOnJoin', true);
+                localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
+            }
         },
     },
 });

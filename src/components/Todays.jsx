@@ -46,6 +46,7 @@ const TodaysContainer = styled.div`
                     height: 33vw;
                 }
                 span {
+                    margin-left: 1vw;
                     font-size: 3vw;
                 }
                 &:before {
@@ -66,7 +67,7 @@ const TodaysContainer = styled.div`
         .todaysTitle {
             display: flex;
             margin: 1.5vw;
-            align-items: center;
+            /* align-items: center; */
             svg {
                 font-size: 6vw;
                 margin-right: 2vw;
@@ -152,7 +153,7 @@ const Todays = () => {
                     <div className="todaysTitle">
                         <MdOutlineToday/>
                         <h3>오늘 하날</h3>
-                        <span>{formattedDate3}</span>
+                        <span>- {formattedDate3}</span>
                     </div>
                     <ul>
                         {

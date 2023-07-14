@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
+import { SlLocationPin } from 'react-icons/sl'
+import { HiCalendarDays } from 'react-icons/hi2'
+
 
 const MyhanalContainer = styled.div`
 .myhanal {
@@ -50,10 +53,16 @@ const MyhanalContainer = styled.div`
             margin-bottom: 1vh;
         }
         .location {
+            color: lightgray;
             display: flex;
-            justify-content: space-between;
+            svg {
+                margin-right: 4vw;
+            }
             span{
                 font-size: 4vw;
+                &:last-child {
+                    margin-left: auto;
+                }
             }
         }
         .weather {
@@ -116,6 +125,7 @@ const MyhanalContainer = styled.div`
         border-radius: 2vw;
         font-size: 6vw;
         font-weight: 700;
+        margin-bottom: 5vh;
     }
 }
 
@@ -161,7 +171,7 @@ const Myhanal = () => {
 
     // weather
     // const weather = `맑음`
-    const temperatures = `15도`
+    const temperatures = `15`
 
     // seekbar
     const [like, setLikes] = useState(50);
@@ -187,9 +197,9 @@ const Myhanal = () => {
                 }
 
                 <div className="imageInfo">
-                    <div className="p location"><span>{city} - {gu}</span> <span>{time}</span></div>
-                    <div className="p weather">{temperatures}</div>
-                    <div className="p yesterday">어제보다 <div><span className={yesterday ? 'hot' : ''} onClick={() => onYesterday('hot')}>더워요</span><span className={!yesterday ? 'cold' : ''} onClick={() => onYesterday('cold')}>추워요</span></div></div>
+                    <div className="p location"><SlLocationPin/><span>{city} - {gu}</span> <span>{time}</span></div>
+                    <div className="p weather">{temperatures}°</div>
+                    <div className="p yesterday"><HiCalendarDays/>어제보다 <div><span className={yesterday ? 'hot' : ''} onClick={() => onYesterday('hot')}>더워요</span><span className={!yesterday ? 'cold' : ''} onClick={() => onYesterday('cold')}>추워요</span></div></div>
                     <div className="p lieks">
                         <AiOutlineDislike />
                         <input

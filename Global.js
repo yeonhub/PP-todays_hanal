@@ -4,6 +4,9 @@ const GlobalStyle = createGlobalStyle`
  body {
       background: rgb(20,20,20);
       color: white;
+      font-family: 'Bagel Fat One', cursive;
+font-family: 'Nanum Gothic', sans-serif;
+font-family: 'Orbit', sans-serif;
     }
   #wrap {
     overflow: hidden;

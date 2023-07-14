@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import { BiLocationPlus, BiUser, BiLogInCircle, BiHome, BiUpload } from 'react-icons/bi'
+import { BsChatSquareQuote } from 'react-icons/bs'
 
 const FooterContainer = styled.div`
   .footer {
@@ -30,7 +32,7 @@ const FooterContainer = styled.div`
           height: 100%;
           color: white;
           text-decoration: none;;
-          font-size: 3.5vw;
+          font-size: 6vw;
         }
       }
     }
@@ -52,17 +54,18 @@ const Footer = () => {
       <FooterContainer>
         <footer className='footer'>
           <ul>
-            <li><Link to='/'>홈</Link></li>
-            <li><Link to='/myhanal'>내하날</Link></li>
-            <li><Link to='/nearby'>내주변</Link></li>
+            <li><Link to='/'><BiHome /></Link></li>
+            <li><Link to='/myhanal'><BiUpload /></Link></li>
+            <li><Link to='/nearby'><BiLocationPlus /></Link></li>
+            <li><Link to='/nearby'><BsChatSquareQuote /></Link></li>
             {
-              localOnLogin === 'true' ? <li><Link to='/info'>내정보</Link></li> : <li><Link to='/login'>로그인</Link></li>
+              localOnLogin === 'true' ? <li><Link to='/info'><BiUser /></Link></li> : <li><Link to='/login'><BiLogInCircle /></Link></li>
             }
           </ul>
         </footer>
       </FooterContainer>
 
-      <div className='footerblock' style={{ width: '100%', height: '7vh' ,zIndex : '100'}}></div>
+      <div className='footerblock' style={{ width: '100%', height: '7vh', zIndex: '100' }}></div>
     </>
   );
 };
