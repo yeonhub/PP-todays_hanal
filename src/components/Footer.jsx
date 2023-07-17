@@ -7,7 +7,7 @@ import { BsChatSquareQuote } from 'react-icons/bs'
 
 const FooterContainer = styled.div`
   .footer {
-    z-index: 100;
+    z-index: 1000;
     border-top: 1px solid gray;
     width: 100%;
     height: 7vh;
@@ -55,9 +55,11 @@ const Footer = () => {
         <footer className='footer'>
           <ul>
             <li><Link to='/'><BiHome /></Link></li>
-            <li><Link to='/myhanal'><BiUpload /></Link></li>
+            {
+              localOnLogin === 'true' ? <li><Link to='/myhanal'><BiUpload /></Link></li> : <li><Link to='/login'><BiUpload /></Link></li>
+            }
             <li><Link to='/nearby'><BiLocationPlus /></Link></li>
-            <li><Link to='/nearby'><BsChatSquareQuote /></Link></li>
+            <li><Link to='/wonder'><BsChatSquareQuote /></Link></li>
             {
               localOnLogin === 'true' ? <li><Link to='/info'><BiUser /></Link></li> : <li><Link to='/login'><BiLogInCircle /></Link></li>
             }

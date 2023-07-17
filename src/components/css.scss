@@ -1,0 +1,197 @@
+const WonderPopupContainer=styled.div` .popup {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background: gray;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 46.5%;
+    border-radius: 2vw;
+    overflow: hidden;
+
+    .request {
+        width: 90%;
+        margin: 2vh auto;
+        padding: 4vw;
+        height: 14.5vh;
+        box-sizing: border-box;
+        background: rgb(80, 80, 80);
+        font-size: 4.5vw;
+        text-align: right;
+        border-radius: 1.5vw;
+
+        .who {
+            display: flex;
+            text-align: left;
+            align-items: center;
+            padding-bottom: 1vh;
+            font-size: 5.5vw;
+            border-bottom: 1px solid gray;
+
+            img {
+                width: 7vw;
+                height: 7vw;
+                margin-right: 2vw;
+            }
+        }
+
+        .who,
+        .where {
+            margin-bottom: 1vh;
+        }
+    }
+
+    .answer {
+        width: 90%;
+        margin: auto;
+
+        input {
+            display: none;
+        }
+
+        .upload {
+            overflow: hidden;
+            background: white;
+            width: 80vw;
+            margin: 3vh auto;
+            height: 80vw;
+
+            .uploadIcon {
+                width: 50%;
+                height: 50%;
+                transform: translate(50%, 50%);
+
+            }
+        }
+
+        .uploaded {
+            overflow: hidden;
+            width: 90%;
+            margin: 3vh auto;
+            height: 90vw;
+            text-align: center;
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .p {
+            display: block;
+            align-items: center;
+            padding: 4vw;
+            box-sizing: border-box;
+            height: 7vh;
+            background: rgb(80, 80, 80);
+            border-radius: 2vw;
+            margin-bottom: 1vh;
+        }
+
+        .location {
+            color: lightgray;
+            display: flex;
+
+            svg {
+                margin-right: 4vw;
+            }
+
+            span {
+                font-size: 4vw;
+
+                &:last-child {
+                    margin-left: auto;
+                }
+            }
+        }
+
+        .weather {
+            display: flex;
+            font-size: 5vw;
+            background-position: 0 70%;
+            justify-content: space-around;
+            font-size: 7vw;
+
+            /* transition: 0.3s; */
+            svg {
+                &.on {
+                    color: orangered;
+                    transform: scale(1.2);
+                }
+            }
+        }
+
+        .yesterday {
+
+            font-size: 4vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            div {
+                line-height: 4vh;
+                width: 65%;
+                display: flex;
+                justify-content: space-between;
+
+                span {
+                    text-align: center;
+                    width: 23vw;
+                    height: 4vh;
+                    border-radius: 2vw;
+                    background: gray;
+                    color: black;
+                    font-weight: 700;
+
+                    &.hot {
+                        background: tomato;
+                    }
+
+                    &.cold {
+                        background: skyblue;
+                    }
+                }
+            }
+        }
+
+        .lieks {
+            display: flex;
+            justify-content: space-between;
+
+            svg {
+                font-size: 5vw;
+            }
+
+            input {
+                width: 80%;
+                display: block;
+                box-sizing: border-box;
+            }
+        }
+
+    }
+
+    .btn {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 7vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: rgb(80, 80, 80);
+
+        button {
+            width: 40vw;
+            height: 5vh;
+            background: lightgray;
+            border: none;
+            border-radius: 2vw;
+            font-size: 3.5vw;
+            font-weight: 700;
+        }
+    }
+}
+
+`

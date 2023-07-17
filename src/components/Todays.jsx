@@ -81,15 +81,20 @@ const TodaysContainer = styled.div`
         }
         ul {
             display: flex;
-            justify-content: space-between;
+            /* justify-content: space-between; */
             flex-wrap : wrap;
             li {
                 position: relative;
                 overflow: hidden;
                 width: 33vw;
-                height: 33.5vw;
+                height: 33vw;
+                margin-right: 0.5vw;
+                margin-bottom: 0.5vw;
+                &:nth-child(3n){
+                    margin: 0;
+                }
                 img {
-            
+                    
                     width: 33vw;
                     height: 33vw;
                 }
@@ -127,10 +132,12 @@ const Todays = () => {
     const formattedDate2 = `${year}-${month}-${day}`;
     const formattedDate3 = `${month}월 ${day}일`
 
-    const formattedDate = '2023-07-10'
+    const formattedDate = '2023-07-17'
     const todaysList = board.filter(item => item.date === formattedDate)
 
     const todaysTopThreeList = todaysList.sort((a, b) => b.likesAcountId.length - a.likesAcountId.length).slice(0, 3)
+    const todaysSortList = todaysList.sort((a, b) => b.dateTime - a.dateTime);
+
 
     return (
         <TodaysContainer>
@@ -151,20 +158,17 @@ const Todays = () => {
                 </div>
                 <div className="todaysList">
                     <div className="todaysTitle">
-                        <MdOutlineToday/>
+                        <MdOutlineToday />
                         <h3>오늘 하날</h3>
                         <span>- {formattedDate3}</span>
                     </div>
                     <ul>
                         {
-                            todaysList.map(item => <TodaysList item={item} key={item.boardId} />)
+                            todaysSortList.map(item => <TodaysList item={item} key={item.boardId} />)
                         }
-
                     </ul>
                 </div>
-
             </div>
-
         </TodaysContainer>
     );
 };

@@ -1,51 +1,68 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
-import NearbyList from '../components/NearbyList';
-import { useSelector } from 'react-redux';
+import { BsPatchQuestion } from 'react-icons/bs'
 import { BiCurrentLocation } from 'react-icons/bi'
+import WonderList from '../components/WonderList';
+import { onBg } from '../store/modules/boardSlice';
+import WonderPopup from '../components/WonderPopup';
 
 
-const NearbyContainer = styled.div`
-.nearby {
+const WonderContainer = styled.div`
+.wonder {
     width: 100%;
-    .nearlyList{
-
-    
-    ul {
-            display: flex;
-            flex-wrap : wrap;
-            li {
-                position: relative;
-                overflow: hidden;
-                width: 33vw;
-                height: 33vw;
-                margin-right: 0.5vw;
-                margin-bottom: 0.5vw;
-                &:nth-child(3n){
-                    margin: 0;
-                }
-                img {
-                    width: 33vw;
-                    height: 33vw;
-                }
-            }
+    .wonderBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9); 
+    z-index: 200;
+    display: block;
+    }
+  
+    .wonderUpload {
+        width: 90%;
+        position: fixed;
+        left: 50%;
+        bottom: 7%;
+        transform: translateX(-50%);
+        z-index: 100;
+        button {
+            width: 100%;
+            height: 5.5vh;
+            box-sizing: border-box;
+            border-radius: 3vw;
+            background: lightgray;
+            font-size: 4.5vw;
+            font-weight: 700;
         }
     }
-        .weather {
-            width: 100%;
-            height: 10vh;
-            background-image: url('images/weather/rain.gif');
-            background-repeat: no-repeat;
-            background-position: 0 70%;
-            display: flex;
-            align-items: end;
-            span {
-                margin: 3vw;
-                margin-left: auto;
-                font-size: 8vw;
-            }
+    .myWnderBtn {
+        width: 90%;
+        margin: 2vh auto;
+        display: flex;
+        align-items: center;
+        padding: 4vw;
+        box-sizing: border-box;
+        height: 7vh;
+        background: rgb(50,50,50);
+        border-radius: 2vw;
+        margin-bottom: 1vh;
+        justify-content: space-around;
+        
+        button {
+            font-weight: 700;
+            border: none;
+            font-size: 4vw;
+            background: tan;
+            box-sizing: border-box;
+            padding: 2vw 6vw;
+            border-radius: 3vw;
         }
-        .location {
+    }
+    .location {
             width: 100%;
             box-sizing: border-box;
             height: 6vh;
@@ -67,9 +84,8 @@ const NearbyContainer = styled.div`
                         font-size: 7vw;
                     
                         }
-                }
             }
-        }
+    }
     .selectList {
         text-align: right;
         margin-bottom: 2vh;
@@ -87,23 +103,88 @@ const NearbyContainer = styled.div`
 
         }
     }
+    .wonderList {
+        width: 100%;
+        .wonderTitle {
+            display: flex;
+            margin: 1.5vw;
+            svg {
+                font-size: 6vw;
+                margin-right: 2vw;
+            }
+            h3 {
+                font-size: 5vw;
+            }
+            span {
+               margin-left: auto;
+            }
+        }
+        ul {
+            display: flex;
+            flex-wrap : wrap;
+            li {
+                position: relative;
+                overflow: hidden;
+                width: 33vw;
+                height: 33vw;
+                margin-right: 0.5vw;
+                margin-bottom: 0.5vw;
+                &:nth-child(3n){
+                    margin: 0;
+                }
+                background: rgb(40,40,40);
+                img {
+                    position: absolute;
+                    top: 40%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 20vw;
+                    height: 20vw;
+                }
+                .loaction {
+                    display: flex;
+                    position: absolute;
+                    z-index: 10;
+                    bottom: 5%;
+                    left: 3%;
+                    font-size: 3vw;
+                    .loactionCityGu {
+                        span {
+                            margin-left: 1vw;
+                            display: block;
+                            margin-bottom: 1vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 `
 
-const Nearby = () => {
+const Wonder = () => {
+    const wonderBoard = useSelector(state => state.board.wonderBoard)
+    const dispatch = useDispatch()
+
+    // 현재 날짜 사용시
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const formattedDate2 = `${year}-${month}-${day}`;
+    const formattedDate3 = `${month}월 ${day}일`
+
     const [nearCity, setNearCity] = useState('인천광역시')
     const [nearGu, setNearGu] = useState('남동구')
     const [allSelect, setAllSelect] = useState(true)
 
-    const list = useSelector(state => state.board.board)
-    
-    let nearList = list.filter(item => item.loactionCity === nearCity);
-    
+    let wonderList = wonderBoard.filter(item => item.loactionCity === nearCity);
+
     if (nearGu !== '구/군') {
-        nearList = nearList.filter(item => item.loactionGu === nearGu);
+        wonderList = wonderList.filter(item => item.loactionGu === nearGu);
     }
-    const nearSortList = nearList.sort((a, b) => b.dateTime - a.dateTime);
-    
+
     const area = [
         ["시/도 선택", "서울특별시", "인천광역시", "대전광역시", "광주광역시", "대구광역시", "울산광역시", "부산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"],
         ["구/군 선택", "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"],
@@ -124,6 +205,7 @@ const Nearby = () => {
         ["서귀포시", "제주시", "남제주군", "북제주군"]
     ];
 
+
     const [selectedSido, setSelectedSido] = useState('');
     const [selectedGugun, setSelectedGugun] = useState('');
 
@@ -141,13 +223,29 @@ const Nearby = () => {
         setNearGu(selectedGugun)
     };
 
+    // answer
+    const [onWonderPop, setOnWonderPop] = useState(false)
+    const [currentItem, setCurrentItem] = useState({})
 
+    const onWonder = item => {
+        setOnWonderPop(true)
+        dispatch(onBg(true))
+        setCurrentItem(item)
+    }
+    const offWonder =()=>{
+        setOnWonderPop(false)
+        dispatch(onBg(false))
+    }
 
     return (
-        <NearbyContainer>
-            <div className="nearby">
-                <div className="weather">
-                    <span>15°</span>
+        <WonderContainer>
+            <div className="wonder">
+                {
+                    onWonderPop && <div className="wonderBg"><WonderPopup currentItem={currentItem} offWonder={offWonder} /></div>
+                }
+                <div className="myWnderBtn">
+                    <button>내 질문 : 4</button>
+                    <button>내 답변 : 4</button>
                 </div>
                 <div className="location">
                     <p>
@@ -174,18 +272,24 @@ const Nearby = () => {
                         }
                     </select>
                 </div>
-
-                <div className="nearlyList">
+                <div className="wonderList">
+                    <div className="wonderTitle">
+                        <BsPatchQuestion />
+                        <h3>오늘 궁금해요</h3>
+                        <span>- {formattedDate3}</span>
+                    </div>
                     <ul>
                         {
-                            nearSortList.map(item => <NearbyList item={item} key={item.boardId} />)
+                            wonderList.map(item => <WonderList item={item} key={item.wonderBoardId} onWonder={onWonder} />)
                         }
                     </ul>
                 </div>
+                <div className="wonderUpload">
+                    <button>궁금해요</button>
+                </div>
             </div>
-
-        </NearbyContainer >
+        </WonderContainer>
     );
 };
 
-export default Nearby;
+export default Wonder;

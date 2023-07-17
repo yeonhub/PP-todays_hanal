@@ -1,70 +1,83 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
 import { SlLocationPin } from 'react-icons/sl'
 import { HiCalendarDays } from 'react-icons/hi2'
+import { useDispatch, useSelector } from "react-redux";
+import { addBoard, onUploaded } from "../store/modules/boardSlice";
+import { useNavigate } from "react-router-dom";
 
 
-const MyhanalContainer = styled.div`
-.myhanal {
+const MyhanalContainer=styled.div` .myhanal {
     width: 100%;
     height: 100%;
     position: relative;
+
     input {
         display: none;
     }
+
     .upload {
         overflow: hidden;
         background: white;
         width: 90%;
         margin: 3vh auto;
         height: 90vw;
-        
+
         .uploadIcon {
             width: 50%;
             height: 50%;
             transform: translate(50%, 50%);
-            
+
         }
     }
+
     .uploaded {
         overflow: hidden;
         width: 90%;
         margin: 3vh auto;
         height: 90vw;
         text-align: center;
+
         img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain ;
+            object-fit: contain;
         }
     }
+
     .imageInfo {
         width: 90%;
         margin: auto;
+
         .p {
             display: block;
             align-items: center;
             padding: 4vw;
             box-sizing: border-box;
             height: 7vh;
-            background: rgb(50,50,50);
+            background: rgb(50, 50, 50);
             border-radius: 2vw;
             margin-bottom: 1vh;
         }
+
         .location {
             color: lightgray;
             display: flex;
+
             svg {
                 margin-right: 4vw;
             }
-            span{
+
+            span {
                 font-size: 4vw;
+
                 &:last-child {
                     margin-left: auto;
                 }
             }
         }
+
         .weather {
             display: flex;
             font-size: 5vw;
@@ -74,58 +87,66 @@ const MyhanalContainer = styled.div`
             background-repeat: no-repeat;
             background-position: 0 70%;
         }
+
         .yesterday {
 
             font-size: 4vw;
             display: flex;
             justify-content: space-between;
             align-items: center;
+
             div {
                 line-height: 4vh;
                 width: 65%;
                 display: flex;
                 justify-content: space-between;
+
                 span {
                     text-align: center;
                     width: 25vw;
                     height: 4vh;
                     border-radius: 2vw;
                     background: gray;
-                    color : black;
+                    color: black;
                     font-weight: 700;
+
                     &.hot {
                         background: tomato;
                     }
+
                     &.cold {
                         background: skyblue;
                     }
                 }
             }
         }
+
         .lieks {
             display: flex;
             justify-content: space-between;
+
             svg {
                 font-size: 5vw;
             }
+
             input {
-      width: 80%;
-      display: block;
-      box-sizing: border-box;
-    }
+                width: 80%;
+                display: block;
+                box-sizing: border-box;
+            }
         }
     }
+
     .uploadButton {
         width: 100%;
-        height: 7vh;
+        height: 4.5vh;
         border: none;
         background: lightgray;
         margin-top: 5vw;
         bottom: 10%;
         border-radius: 2vw;
-        font-size: 6vw;
+        font-size: 4.5vw;
         font-weight: 700;
-        margin-bottom: 5vh;
     }
 }
 
@@ -135,9 +156,12 @@ const MyhanalContainer = styled.div`
 const Myhanal = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const fileInputRef = useRef(null);
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const onUpload = useSelector(state => state.board.onUpload);
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
@@ -158,9 +182,15 @@ const Myhanal = () => {
 
     // time
     const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const date = `${year}-${month}-${day}`;
+    const seconds = String(today.getSeconds()).padStart(2, '0');
     const hours = ('0' + today.getHours()).slice(-2);
     const minutes = ('0' + today.getMinutes()).slice(-2);
     const time = `${hours}시 ${minutes}분`;
+    const dateTime = year + month + day + hours + minutes + seconds
 
     // yesterday
     const [yesterday, setYesterday] = useState(true)
@@ -170,15 +200,36 @@ const Myhanal = () => {
     }
 
     // weather
-    // const weather = `맑음`
+    const weather = `rain`
     const temperatures = `15`
 
     // seekbar
-    const [like, setLikes] = useState(50);
+    const [authorLike, setAuthorLike] = useState(50);
     const handleChange = (e) => {
-        setLikes(e.target.value);
+        setAuthorLike(e.target.value);
     };
-    console.log(like);
+    // authorAcountId
+    const localCurrentAcount = localStorage.getItem('localCurrentAcount')
+    const authorAcountId = JSON.parse(localCurrentAcount).acountId
+
+    const onUploadBoard = () => {
+        if (!selectedImage) return
+        dispatch(addBoard({ selectedImage, authorAcountId, city, gu, date, time, dateTime, weather, temperatures, yesterday, authorLike }))
+        // console.log(selectedImage);
+        // console.log(authorAcountId);
+        // console.log(city);
+        // console.log(gu);
+        // console.log(date);
+        // console.log(weather);
+        // console.log(temperatures);
+        // console.log(yesterday);
+        // console.log(authorLike);
+    }
+
+    useEffect(() => {
+        if (onUpload) navigate('/');
+        dispatch(onUploaded())
+    }, [onUpload]);
 
     return (
         <MyhanalContainer>
@@ -197,9 +248,9 @@ const Myhanal = () => {
                 }
 
                 <div className="imageInfo">
-                    <div className="p location"><SlLocationPin/><span>{city} - {gu}</span> <span>{time}</span></div>
+                    <div className="p location"><SlLocationPin /><span>{city} - {gu}</span> <span>{time}</span></div>
                     <div className="p weather">{temperatures}°</div>
-                    <div className="p yesterday"><HiCalendarDays/>어제보다 <div><span className={yesterday ? 'hot' : ''} onClick={() => onYesterday('hot')}>더워요</span><span className={!yesterday ? 'cold' : ''} onClick={() => onYesterday('cold')}>추워요</span></div></div>
+                    <div className="p yesterday"><HiCalendarDays />어제보다 <div><span className={yesterday ? 'hot' : ''} onClick={() => onYesterday('hot')}>더워요</span><span className={!yesterday ? 'cold' : ''} onClick={() => onYesterday('cold')}>추워요</span></div></div>
                     <div className="p lieks">
                         <AiOutlineDislike />
                         <input
@@ -207,12 +258,12 @@ const Myhanal = () => {
                             min={0}
                             max={100}
                             step={1}
-                            value={like}
+                            value={authorLike}
                             onChange={handleChange}
                         />
                         <AiOutlineLike />
                     </div>
-                    <button className="uploadButton">업로드</button>
+                    <button className="uploadButton" onClick={() => onUploadBoard()}>업로드</button>
                 </div>
             </div>
         </MyhanalContainer>

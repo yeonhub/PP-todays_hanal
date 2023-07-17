@@ -63,6 +63,12 @@ const InfoContainer = styled.div`
 const Info = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const localOnLogin = localStorage.getItem('localOnLogin')
+
+    if (localOnLogin === 'false') {
+        navigate('/login')
+        return null
+    }
     const localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
     const { nickname, treeType, treeLevel, acountId } = localCurrentAcount
     const board = useSelector(state => state.board.board)
@@ -76,7 +82,7 @@ const Info = () => {
         navigate('/')
     }
     return (
-        <InfoContainer>
+        <InfoContainer >
             <div className="info">
                 <div className="imgbox">
                     <img src={`./images/trees/tree${treeLevel}.png`} alt="" />
@@ -98,7 +104,7 @@ const Info = () => {
                 </div>
                 <button onClick={onLogOut}>로그아웃</button>
             </div>
-        </InfoContainer>
+        </InfoContainer >
     );
 };
 
