@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { BsPatchQuestion } from 'react-icons/bs'
 import { BiCurrentLocation } from 'react-icons/bi'
 import WonderList from '../components/WonderList';
-import { onBg } from '../store/modules/boardSlice';
+import { onBg, ownerCheck } from '../store/modules/boardSlice';
 import WonderPopup from '../components/WonderPopup';
 
 
@@ -26,7 +26,7 @@ const WonderContainer = styled.div`
         width: 90%;
         position: fixed;
         left: 50%;
-        bottom: 7%;
+        bottom: 8%;
         transform: translateX(-50%);
         z-index: 100;
         button {
@@ -52,7 +52,7 @@ const WonderContainer = styled.div`
         margin-bottom: 1vh;
         justify-content: space-around;
         
-        button {
+        span {
             font-weight: 700;
             border: none;
             font-size: 4vw;
@@ -60,6 +60,7 @@ const WonderContainer = styled.div`
             box-sizing: border-box;
             padding: 2vw 6vw;
             border-radius: 3vw;
+            color: black;
         }
     }
     .location {
@@ -138,8 +139,8 @@ const WonderContainer = styled.div`
                     top: 40%;
                     left: 50%;
                     transform: translate(-50%, -50%);
-                    width: 20vw;
-                    height: 20vw;
+                    width: 40vw;
+                    height: 40vw;
                 }
                 .loaction {
                     display: flex;
@@ -159,6 +160,11 @@ const WonderContainer = styled.div`
             }
         }
     }
+    .btnBlock {
+        display: block;
+        width: 100%;
+        height: 6vh;
+    }
 }
 
 `
@@ -177,7 +183,6 @@ const Wonder = () => {
 
     const [nearCity, setNearCity] = useState('인천광역시')
     const [nearGu, setNearGu] = useState('남동구')
-    const [allSelect, setAllSelect] = useState(true)
 
     let wonderList = wonderBoard.filter(item => item.loactionCity === nearCity);
 
@@ -229,10 +234,11 @@ const Wonder = () => {
 
     const onWonder = item => {
         setOnWonderPop(true)
+        dispatch(ownerCheck(item.authorAcountId))
         dispatch(onBg(true))
         setCurrentItem(item)
     }
-    const offWonder =()=>{
+    const offWonder = () => {
         setOnWonderPop(false)
         dispatch(onBg(false))
     }
@@ -241,11 +247,11 @@ const Wonder = () => {
         <WonderContainer>
             <div className="wonder">
                 {
-                    onWonderPop && <div className="wonderBg"><WonderPopup currentItem={currentItem} offWonder={offWonder} /></div>
+                    onWonderPop && <div className="wonderBg"><WonderPopup currentItem={currentItem} offWonder={offWonder} setOnWonderPop={setOnWonderPop}/></div>
                 }
                 <div className="myWnderBtn">
-                    <button>내 질문 : 4</button>
-                    <button>내 답변 : 4</button>
+                    <span>내 질문 : 4</span>
+                    <span>내 답변 : 4</span>
                 </div>
                 <div className="location">
                     <p>
@@ -287,6 +293,7 @@ const Wonder = () => {
                 <div className="wonderUpload">
                     <button>궁금해요</button>
                 </div>
+                <div className="btnBlock"></div>
             </div>
         </WonderContainer>
     );

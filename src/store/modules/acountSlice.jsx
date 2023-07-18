@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     onLogin: false,
-    onJoin : false,
+    onJoin: false,
     currentAcount: {},
     addAcount: {},
     acount: [
@@ -28,6 +28,7 @@ export const acountSlice = createSlice({
                 state.onLogin = true
                 localStorage.setItem('localOnLogin', true);
                 localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
+                localStorage.setItem('localIds', JSON.stringify(state.acount));
             } else if (!state.acount.some((item) => item.loginId === loginId)) {
                 alert('아이디가 존재하지 않음');
             } else {
@@ -55,10 +56,10 @@ export const acountSlice = createSlice({
                 return;
             } else {
                 const newAccount = {
+                    acountId: state.acount.length + 1,
                     loginId,
                     loginPw,
                     nickname,
-                    acountId: state.acount.length + 1,
                     treeType: '밤나무',
                     treeLevel: 1
                 }
@@ -68,6 +69,7 @@ export const acountSlice = createSlice({
                 state.currentAcount = newAccount;
                 localStorage.setItem('localOnLogin', true);
                 localStorage.setItem('localOnJoin', true);
+                localStorage.setItem('localIds', JSON.stringify(state.acount));
                 localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
             }
         },

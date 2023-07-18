@@ -2,7 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     onUpload: false,
+    onAnswer: false,
     onBg: false,
+    isOwner: false,
+    wonderDel: false,
     board: [
         { boardId: 1, date: '2023-07-01', time: '09시 20분', dateTime: '20230717082510', authorAcountId: 1, loactionCity: '인천광역시', loactionGu: '연수구', weather: 'rain', temperatures: '20', yesterday: true, likesAcountId: [1, 2, 3], images: './images/sky/sky1.jpg', authorLike: 70 },
         { boardId: 2, date: '2023-07-01', time: '09시 20분', dateTime: '20230717082510', authorAcountId: 2, loactionCity: '서울특별시', loactionGu: '광진구', weather: 'rain', temperatures: '20', yesterday: true, likesAcountId: [1, 2], images: './images/sky/sky2.jpg', authorLike: 70 },
@@ -25,134 +28,34 @@ const initialState = {
     ],
     wonderBoard: [
         {
-            wonderBoardId: 1, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 1, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 2, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 2, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 3, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 3, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 4, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 4, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 5, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 5, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 6, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 6, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 7, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 7, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 8, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 8, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 9, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 9, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 10, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png', answer: [
-                {
-                    answerAuthorAcountId: '',
-                    answerDate: '',
-                    answerTime: '',
-                    answerWeather: '',
-                    answerYesterday: '',
-                    answerAuthorLike: '',
-                    answerImage: '',
-                }
-            ]
+            wonderBoardId: 10, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
 
     ]
@@ -199,10 +102,50 @@ export const boardSlice = createSlice({
         },
         onBg(state, action) {
             state.onBg = action.payload
-        }
+        },
+        ownerCheck(state, action) {
+            const localAcount = localStorage.getItem('localCurrentAcount')
+            const acountId = localAcount ? JSON.parse(localAcount).acountId : null;
+            if (acountId === action.payload) {
+                state.isOwner = true
+            } else {
+                state.isOwner = false
+            }
+        },
+        onWonderDel(state, action) {
+            state.wonderBoard = state.wonderBoard.filter(item => item.wonderBoardId !== action.payload)
+            state.wonderDel = true
+        },
+        offWonderDel(state, action) {
+            state.wonderDel = false
+        },
+        addAnswer(state, action) {
+            const { selectedImage, answerAuthorAcountId, answerDate, answerTime, answerWeather, answerYesterday, answerAuthorLike, wonderBoardId } = action.payload
+            const newAnswer = {
+                selectedImage,
+                answerAuthorAcountId,
+                answerDate,
+                answerTime,
+                answerWeather,
+                answerYesterday,
+                answerAuthorLike
+            }
+
+            const wonderBoard = state.wonderBoard.find(item => item.wonderBoardId === wonderBoardId);
+            
+            if (wonderBoard) {
+                if (!wonderBoard.answers) wonderBoard.answers = []
+                wonderBoard.answers.push(newAnswer);
+                wonderBoard.images = selectedImage
+                state.onAnswer = true
+            }
+        },
+        offOnAnswer(state, action) {
+            state.onAnswer = false
+        },
     },
 });
 
 
-export const { addBoard, onUploaded, onBg } = boardSlice.actions
+export const { addBoard, onUploaded, onBg, ownerCheck, onWonderDel, offWonderDel, addAnswer, offOnAnswer } = boardSlice.actions
 export default boardSlice.reducer

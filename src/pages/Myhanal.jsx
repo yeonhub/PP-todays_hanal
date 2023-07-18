@@ -36,7 +36,6 @@ const MyhanalContainer=styled.div` .myhanal {
         overflow: hidden;
         width: 90%;
         margin: 3vh auto;
-        height: 90vw;
         text-align: center;
 
         img {
