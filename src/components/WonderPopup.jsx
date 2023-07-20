@@ -431,7 +431,6 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         }
     }, [onAnswer])
 
-
     // answer
     const answerToday = new Date();
     const answerYear = answerToday.getFullYear();
