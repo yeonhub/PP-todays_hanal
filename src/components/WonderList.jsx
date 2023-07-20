@@ -14,8 +14,6 @@ const WonderList = ({ item, onWonder, acountId }) => {
         localOnLogin = localStorage.getItem('localOnLogin')
     }, [onLogin])
 
-
-
     return (
         <li onClick={() => { localOnLogin === 'true' ? onWonder(item) : navigate('/login') }}>
             <img src={images} alt={authorAcountId} />

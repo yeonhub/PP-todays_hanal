@@ -11,10 +11,14 @@ const InfoContainer = styled.div`
         box-sizing: border-box;
         text-align: center;
         .imgbox {
-            margin-top: 10%;
-            width: 100%;
-            height: 35vh;
+            margin: 10% auto;
+            width: 25vh;
+            height: 25vh;
             overflow: hidden;
+            border: 3px dotted gray;
+            border-radius: 50%;
+            padding: 2vh;
+            box-sizing: border-box;
             img {
                 max-width: 100%;
                 max-height: 100%;

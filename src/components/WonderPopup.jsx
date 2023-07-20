@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 const WonderPopupContainer = styled.div`
 .popup {
-    position: absolute;
+    position: fixed;
     width: 90%;
     height: 90%;
     background: gray;
@@ -106,14 +106,15 @@ const WonderPopupContainer = styled.div`
     }
 
     .answer {
-        overflow: auto;
+        /* overflow: auto; */
         width: 90%;
         margin: auto;
 
         height: 64vh;
 
         .noAnswer{
-
+            height: 62vh;
+            overflow: scroll;
         input {
             display: none;
         }
@@ -238,8 +239,6 @@ const WonderPopupContainer = styled.div`
             }
         }
     }
-
-
         .answered{
             background: rgb(80, 80, 80);
             width: 100%;
@@ -249,6 +248,9 @@ const WonderPopupContainer = styled.div`
             font-size: 4.5vw;
             text-align: right;
             border-radius: 1.5vw;
+
+            height: 62vh;
+            overflow: scroll;
             
         .who {
             display: flex;
@@ -293,7 +295,7 @@ const WonderPopupContainer = styled.div`
                 .left {
                     margin-right: auto;
                     svg {
-                        margin-right: 2vw;
+                        margin-right: 4vw;
                         font-size: 5.5vw;
                        
                         &.weatherIcon {
@@ -337,14 +339,15 @@ const WonderPopupContainer = styled.div`
     }
 
     .btn {
-        position: absolute;
-        bottom: 0;
+        /* position: absolute; */
         width: 100%;
-        height: 7vh;
+        height: 7.5vh;
         display: flex;
         align-items: center;
         justify-content: space-around;
         background: rgb(80, 80, 80);
+        border-bottom-left-radius: 2vw;
+        border-bottom-right-radius: 2vw;
         
 
         button {
@@ -373,8 +376,6 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const fileInputRef = useRef(null);
     const dispatch = useDispatch()
-
-
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -454,6 +455,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     }
     const wonderBoard = useSelector(state => state.board.wonderBoard)
     let currentAnswers
+
     if (answers) {
         currentAnswers = wonderBoard.find(item => item.wonderBoardId === wonderBoardId).answers
     }
@@ -473,19 +475,18 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     }
     return (
         <WonderPopupContainer>
-            <div className="popup"
-            ><div className="wonderPopBg" style={{ display: bg ? 'block' : 'none' }}>
-                    <div className="alert" style={{ display: bg ? 'block' : 'none' }}
-                    >
-                        <span>
-                            궁금해요를 삭제합니다
-                        </span>
-                        <p>
-                            <button onClick={() => dispatch(onWonderDel(wonderBoardId))}>삭제</button>
-                            <button onClick={() => setBg(false)}>취소</button>
-                        </p>
-                    </div>
+            <div className="popup"> <div className="wonderPopBg" style={{ display: bg ? 'block' : 'none' }}>
+                <div className="alert" style={{ display: bg ? 'block' : 'none' }}
+                >
+                    <span>
+                        궁금해요를 삭제합니다
+                    </span>
+                    <p>
+                        <button onClick={() => dispatch(onWonderDel(wonderBoardId))}>삭제</button>
+                        <button onClick={() => setBg(false)}>취소</button>
+                    </p>
                 </div>
+            </div>
                 <div className="inner">
                     <div className="request">
                         <p className='who'><img src={`./images/trees/tree${wonderTreeLevel}.png`} alt={wonderNickname} />{wonderNickname} {ownerCheck ? <span className='delete' onClick={() => onDel()}><TiDeleteOutline /></span> : null} </p>

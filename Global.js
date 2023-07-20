@@ -7,6 +7,9 @@ const GlobalStyle = createGlobalStyle`
       font-family: 'Bagel Fat One', cursive;
 font-family: 'Nanum Gothic', sans-serif;
 font-family: 'Orbit', sans-serif;
+button {
+  color: black;
+}
     }
   #wrap {
     overflow: hidden;

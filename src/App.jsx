@@ -9,6 +9,7 @@ import Join from './components/Join';
 import Nearby from './pages/Nearby';
 import Myhanal from './pages/Myhanal';
 import Wonder from './pages/Wonder';
+import HanalDetail from './pages/HanalDetail';
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/nearby" element={<Nearby />} />
             <Route path="/myhanal" element={<Myhanal />} />
             <Route path="/wonder" element={<Wonder />} />
+            <Route path="/hanaldetail" element={<HanalDetail />} />
           </Route>
         </Routes>
       </HashRouter>

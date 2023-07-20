@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import NearbyList from '../components/NearbyList';
 import { useSelector } from 'react-redux';
@@ -95,15 +95,24 @@ const Nearby = () => {
     const [nearGu, setNearGu] = useState('남동구')
     const [allSelect, setAllSelect] = useState(true)
 
-    const list = useSelector(state => state.board.board)
-    
-    let nearList = list.filter(item => item.loactionCity === nearCity);
-    
-    if (nearGu !== '구/군') {
-        nearList = nearList.filter(item => item.loactionGu === nearGu);
-    }
-    const nearSortList = nearList.sort((a, b) => b.dateTime - a.dateTime);
-    
+    const board = useSelector(state => state.board.board)
+
+    const [nearList, setNearList] = useState(board)
+
+    const [selectedSido, setSelectedSido] = useState('');
+    const [selectedGugun, setSelectedGugun] = useState('');
+
+    useEffect(() => {
+        let filteredList = board;
+        if (nearCity != '시/도 선택') {
+            filteredList = filteredList.filter(item => item.loactionCity === nearCity);
+        }
+        if (nearGu !== '구/군') {
+            filteredList = filteredList.filter(item => item.loactionGu === nearGu);
+        }
+        setNearList(filteredList.sort((a, b) => b.dateTime - a.dateTime));
+    }, [selectedSido, selectedGugun])
+
     const area = [
         ["시/도 선택", "서울특별시", "인천광역시", "대전광역시", "광주광역시", "대구광역시", "울산광역시", "부산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"],
         ["구/군 선택", "강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "종로구", "중구", "중랑구"],
@@ -124,8 +133,7 @@ const Nearby = () => {
         ["서귀포시", "제주시", "남제주군", "북제주군"]
     ];
 
-    const [selectedSido, setSelectedSido] = useState('');
-    const [selectedGugun, setSelectedGugun] = useState('');
+
 
     const handleSidoChange = (e) => {
         const selectedSido = e.target.value;
@@ -178,7 +186,7 @@ const Nearby = () => {
                 <div className="nearlyList">
                     <ul>
                         {
-                            nearSortList.map(item => <NearbyList item={item} key={item.boardId} />)
+                            nearList.map(item => <NearbyList item={item} key={item.boardId} />)
                         }
                     </ul>
                 </div>

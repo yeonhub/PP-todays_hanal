@@ -6,6 +6,9 @@ const initialState = {
     onBg: false,
     isOwner: false,
     wonderDel: false,
+    boardNo: 10,
+    wonderBoardNo: 10,
+    detailBoardId: 1,
     board: [
         { boardId: 1, date: '2023-07-01', time: '09시 20분', dateTime: '20230717082510', authorAcountId: 1, loactionCity: '인천광역시', loactionGu: '연수구', weather: 'rain', temperatures: '20', yesterday: true, likesAcountId: [1, 2, 3], images: './images/sky/sky1.jpg', authorLike: 70 },
         { boardId: 2, date: '2023-07-01', time: '09시 20분', dateTime: '20230717082510', authorAcountId: 2, loactionCity: '서울특별시', loactionGu: '광진구', weather: 'rain', temperatures: '20', yesterday: true, likesAcountId: [1, 2], images: './images/sky/sky2.jpg', authorLike: 70 },
@@ -49,13 +52,13 @@ const initialState = {
             wonderBoardId: 7, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 8, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
+            wonderBoardId: 8, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '연수구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 9, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
+            wonderBoardId: 9, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '연수구', images: './images/icons/wonder.png'
         },
         {
-            wonderBoardId: 10, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '남동구', images: './images/icons/wonder.png'
+            wonderBoardId: 10, date: '2023-07-10', time: '09시 50분', dateTime: '20230717082520', authorAcountId: 4, loactionCity: '인천광역시', loactionGu: '연수구', images: './images/icons/wonder.png'
         },
 
     ]
@@ -67,16 +70,7 @@ export const boardSlice = createSlice({
     reducers: {
         addBoard(state, action) {
             const { selectedImage, authorAcountId, city, gu, date, time, dateTime, weather, temperatures, yesterday, authorLike } = action.payload
-            // console.log(selectedImage);
-            // console.log(authorAcountId);
-            // console.log(city);
-            // console.log(gu);
-            // console.log(date);
-            // console.log(weather);
-            // console.log(temperatures);
-            // console.log(yesterday);
-            // console.log(authorLike);
-            const boardId = state.board.length + 1
+            const boardId = state.boardNo + 1
             const newBoard =
             {
                 boardId,
@@ -95,7 +89,6 @@ export const boardSlice = createSlice({
             }
             state.board.push(newBoard)
             state.onUpload = true
-            console.log(JSON.parse(JSON.stringify(state.board)));
         },
         onUploaded(state, action) {
             state.onUpload = false
@@ -132,7 +125,7 @@ export const boardSlice = createSlice({
             }
 
             const wonderBoard = state.wonderBoard.find(item => item.wonderBoardId === wonderBoardId);
-            
+
             if (wonderBoard) {
                 if (!wonderBoard.answers) wonderBoard.answers = []
                 wonderBoard.answers.push(newAnswer);
@@ -143,9 +136,28 @@ export const boardSlice = createSlice({
         offOnAnswer(state, action) {
             state.onAnswer = false
         },
+        addWonder(state, action) {
+            const { uploadDate, uploadTime, uploadDateTime, acountId, selectedGugun, selectedSido } = action.payload
+            const wonderBoardId = state.wonderBoardNo + 1
+            const newWonder = {
+                wonderBoardId,
+                date: uploadDate,
+                time: uploadTime,
+                dateTime: uploadDateTime,
+                authorAcountId: acountId,
+                loactionCity: selectedSido,
+                loactionGu: selectedGugun,
+                images: './images/icons/wonder.png'
+            }
+            state.wonderBoard.push(newWonder)
+        },
+        onDetail(state, action) {
+            state.detailBoardId = action.payload
+            // console.log(state.detailBoardId);
+        }
     },
 });
 
 
-export const { addBoard, onUploaded, onBg, ownerCheck, onWonderDel, offWonderDel, addAnswer, offOnAnswer } = boardSlice.actions
+export const { addBoard, onUploaded, onBg, ownerCheck, onWonderDel, offWonderDel, addAnswer, offOnAnswer, addWonder, onDetail } = boardSlice.actions
 export default boardSlice.reducer

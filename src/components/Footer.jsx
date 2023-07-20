@@ -8,7 +8,7 @@ import { BsChatSquareQuote } from 'react-icons/bs'
 const FooterContainer = styled.div`
   .footer {
     z-index: 1000;
-    border-top: 1px solid gray;
+    border-top: 0.1vh solid gray;
     width: 100%;
     height: 7vh;
     position: fixed;
@@ -17,7 +17,6 @@ const FooterContainer = styled.div`
     box-sizing: border-box;
     ul {
       width: 100%;
-
       display: flex;
       justify-content: space-around;
       background: black;

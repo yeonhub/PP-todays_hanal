@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
 import { BsPatchQuestion } from 'react-icons/bs'
@@ -6,6 +6,8 @@ import { BiCurrentLocation } from 'react-icons/bi'
 import WonderList from '../components/WonderList';
 import { onBg, ownerCheck } from '../store/modules/boardSlice';
 import WonderPopup from '../components/WonderPopup';
+import WonderUpload from '../components/WonderUpload';
+import { useNavigate } from 'react-router-dom';
 
 
 const WonderContainer = styled.div`
@@ -31,12 +33,14 @@ const WonderContainer = styled.div`
         z-index: 100;
         button {
             width: 100%;
-            height: 5.5vh;
-            box-sizing: border-box;
-            border-radius: 3vw;
-            background: lightgray;
-            font-size: 4.5vw;
-            font-weight: 700;
+        height: 4.5vh;
+        border: none;
+        background: lightgray;
+        margin-top: 5vw;
+        bottom: 10%;
+        border-radius: 2vw;
+        font-size: 4.5vw;
+        font-weight: 700;
         }
     }
     .myWnderBtn {
@@ -184,11 +188,22 @@ const Wonder = () => {
     const [nearCity, setNearCity] = useState('인천광역시')
     const [nearGu, setNearGu] = useState('남동구')
 
-    let wonderList = wonderBoard.filter(item => item.loactionCity === nearCity);
+    const [wonderList, setWonderList] = useState(wonderBoard)
 
-    if (nearGu !== '구/군') {
-        wonderList = wonderList.filter(item => item.loactionGu === nearGu);
-    }
+
+    const [selectedSido, setSelectedSido] = useState('');
+    const [selectedGugun, setSelectedGugun] = useState('');
+
+    useEffect(() => {
+        let filteredList = wonderBoard;
+        if (nearCity != '시/도 선택') {
+            filteredList = filteredList.filter(item => item.loactionCity === nearCity).sort((a, b) => b.dateTime - a.dateTime);
+        }
+        if (nearGu !== '구/군') {
+            filteredList = filteredList.filter(item => item.loactionGu === nearGu);
+        }
+        setWonderList(filteredList.sort((a, b) => b.dateTime - a.dateTime))
+    }, [selectedSido, selectedGugun, wonderBoard])
 
     const area = [
         ["시/도 선택", "서울특별시", "인천광역시", "대전광역시", "광주광역시", "대구광역시", "울산광역시", "부산광역시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주도"],
@@ -211,8 +226,6 @@ const Wonder = () => {
     ];
 
 
-    const [selectedSido, setSelectedSido] = useState('');
-    const [selectedGugun, setSelectedGugun] = useState('');
 
     const handleSidoChange = (e) => {
         const selectedSido = e.target.value;
@@ -230,6 +243,7 @@ const Wonder = () => {
 
     // answer
     const [onWonderPop, setOnWonderPop] = useState(false)
+    const [onWonderUpload, setOnWonderUpload] = useState(false)
     const [currentItem, setCurrentItem] = useState({})
 
     const onWonder = item => {
@@ -238,20 +252,56 @@ const Wonder = () => {
         dispatch(onBg(true))
         setCurrentItem(item)
     }
+    const uploadWonder = item => {
+        if (selectedSido && selectedGugun) {
+            setOnWonderUpload(true)
+            dispatch(onBg(true))
+            setCurrentItem(item)
+        } else {
+            alert('궁금한 지역을 선택해 주세요!')
+        }
+    }
+
     const offWonder = () => {
+        setOnWonderUpload(false)
         setOnWonderPop(false)
         dispatch(onBg(false))
+    }
+
+    let localOnLogin = localStorage.getItem('localOnLogin')
+    const onLogin = useSelector(state => state.acount.onLogin)
+    const localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
+    const { nickname, treeType, treeLevel, acountId } = localCurrentAcount
+    useEffect(() => {
+        localOnLogin = localStorage.getItem('localOnLogin')
+    }, [onLogin])
+
+    const navigator = useNavigate()
+
+    const myWonders = wonderBoard.filter(item => item.authorAcountId === acountId)
+    const countMyWonders = myWonders.length
+    const myAnswers = wonderBoard.filter(item => item.answers && item.answers.some(answer => answer.answerAuthorAcountId === acountId));
+    const countMyAnswers = myAnswers.length
+
+    const onMyWonders = () => {
+        setWonderList(myWonders)
+    }
+    const onMyAnswers = () => {
+        setWonderList(myAnswers)
     }
 
     return (
         <WonderContainer>
             <div className="wonder">
                 {
-                    onWonderPop && <div className="wonderBg"><WonderPopup currentItem={currentItem} offWonder={offWonder} setOnWonderPop={setOnWonderPop}/></div>
+                    onWonderPop && <div className="wonderBg"><WonderPopup currentItem={currentItem} offWonder={offWonder} setOnWonderPop={setOnWonderPop} /></div>
+                }
+                {
+                    onWonderUpload && <div className="wonderBg"><WonderUpload currentItem={currentItem} offWonder={offWonder} setOnWonderUpload={setOnWonderUpload} selectedSido={selectedSido} selectedGugun={selectedGugun} /></div>
                 }
                 <div className="myWnderBtn">
-                    <span>내 질문 : 4</span>
-                    <span>내 답변 : 4</span>
+                    <span onClick={() => onMyWonders()}>내 질문 : {countMyWonders}</span>
+                    <span onClick={() => onMyAnswers()}>내 답변 : {countMyAnswers}</span>
                 </div>
                 <div className="location">
                     <p>
@@ -291,7 +341,9 @@ const Wonder = () => {
                     </ul>
                 </div>
                 <div className="wonderUpload">
-                    <button>궁금해요</button>
+                    {
+                        localOnLogin === 'true' ? <button onClick={() => uploadWonder()}>궁금해요</button> : <button onClick={() => navigator('/login')}>궁금해요</button>
+                    }
                 </div>
                 <div className="btnBlock"></div>
             </div>
