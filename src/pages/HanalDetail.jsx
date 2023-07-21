@@ -35,8 +35,14 @@ height: 93vh;
                 height: 5vh;
                 font-size: 5vw;
                 img {
+                    border: 0.7vw dotted gray;
+                    border-radius: 50%;
+                    overflow: hidden;
                     height: 4vh;
-                    margin-right: 5vw;
+                    width: 4vh;
+                    padding: 1vw;
+                    box-sizing: border-box;
+                    margin-right: 3vw;
                 }
             }
         }
