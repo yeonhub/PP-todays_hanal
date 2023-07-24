@@ -25,7 +25,7 @@ const InfoContainer = styled.div`
             }
         }
         .nickname {
-            font-size: 10vw;
+            font-size: 8vw;
             margin-bottom: 5vh;
         }
         .userInfo{
@@ -33,10 +33,10 @@ const InfoContainer = styled.div`
             text-align: right;
 
             div {
-                font-size: 6vw;
-                height: 7vh;
+                font-size: 4vw;
+                height: 6vh;
                 align-items: center;
-                padding: 8vw;
+                padding: 5vw;
                 margin-bottom: 2vh;
                 background: rgb(50,50,50);
                 box-sizing: border-box;
@@ -89,7 +89,7 @@ const Info = () => {
         <InfoContainer >
             <div className="info">
                 <div className="imgbox">
-                    <img src={`./images/trees/tree${treeLevel}.png`} alt="" />
+                    <img src={`./images/trees/tree${treeLevel}.png`} alt="userIcon" />
                 </div>
                 <h3 className='nickname'>{nickname}</h3>
                 <div className="userInfo">

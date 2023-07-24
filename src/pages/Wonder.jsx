@@ -13,6 +13,9 @@ import { useNavigate } from 'react-router-dom';
 const WonderContainer = styled.div`
 .wonder {
     width: 100%;
+    margin-top: 3vh;
+    margin-bottom: 13vh;
+    height: 84vh;
     .wonderBg {
     position: fixed;
     top: 0;
@@ -28,7 +31,7 @@ const WonderContainer = styled.div`
         width: 90%;
         position: fixed;
         left: 50%;
-        bottom: 8%;
+        bottom: 8vh;
         transform: translateX(-50%);
         z-index: 100;
         button {
@@ -36,8 +39,6 @@ const WonderContainer = styled.div`
         height: 4.5vh;
         border: none;
         background: lightgray;
-        margin-top: 5vw;
-        bottom: 10%;
         border-radius: 2vw;
         font-size: 4.5vw;
         font-weight: 700;
@@ -45,7 +46,8 @@ const WonderContainer = styled.div`
     }
     .myWnderBtn {
         width: 90%;
-        margin: 2vh auto;
+        margin: 0 auto;
+        margin-bottom: 2vh;
         display: flex;
         align-items: center;
         padding: 4vw;
@@ -269,17 +271,20 @@ const Wonder = () => {
     }
 
     let localOnLogin = localStorage.getItem('localOnLogin')
+    let localCurrentAcount, myWonders, countMyWonders, nickname, treeType, treeLevel, acountId
     const onLogin = useSelector(state => state.acount.onLogin)
-    const localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
-    const { nickname, treeType, treeLevel, acountId } = localCurrentAcount
+    if (localOnLogin === 'true') {
+        localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
+        ({ nickname, treeType, treeLevel, acountId } = localCurrentAcount)
+        myWonders = wonderBoard.filter(item => item.authorAcountId === acountId)
+        countMyWonders = myWonders.length
+    }
     useEffect(() => {
         localOnLogin = localStorage.getItem('localOnLogin')
     }, [onLogin])
 
     const navigator = useNavigate()
 
-    const myWonders = wonderBoard.filter(item => item.authorAcountId === acountId)
-    const countMyWonders = myWonders.length
     const myAnswers = wonderBoard.filter(item => item.answers && item.answers.some(answer => answer.answerAuthorAcountId === acountId));
     const countMyAnswers = myAnswers.length
 
@@ -299,10 +304,17 @@ const Wonder = () => {
                 {
                     onWonderUpload && <div className="wonderBg"><WonderUpload currentItem={currentItem} offWonder={offWonder} setOnWonderUpload={setOnWonderUpload} selectedSido={selectedSido} selectedGugun={selectedGugun} /></div>
                 }
-                <div className="myWnderBtn">
-                    <span onClick={() => onMyWonders()}>내 질문 : {countMyWonders}</span>
-                    <span onClick={() => onMyAnswers()}>내 답변 : {countMyAnswers}</span>
-                </div>
+                {
+                    localOnLogin === 'true'
+                        ?
+                        <div className="myWnderBtn">
+                            <span onClick={() => onMyWonders()}>내 질문 : {countMyWonders}</span>
+                            <span onClick={() => onMyAnswers()}>내 답변 : {countMyAnswers}</span>
+                        </div>
+                        :
+                        <></>
+
+                }
                 <div className="location">
                     <p>
                         <span>
@@ -345,7 +357,7 @@ const Wonder = () => {
                         localOnLogin === 'true' ? <button onClick={() => uploadWonder()}>궁금해요</button> : <button onClick={() => navigator('/login')}>궁금해요</button>
                     }
                 </div>
-                <div className="btnBlock"></div>
+                {/* <div className="btnBlock"></div> */}
             </div>
         </WonderContainer>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from "styled-components";
 import HanalDetailItem from '../components/HanalDetailItem';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,9 @@ import { Pagination } from 'swiper/modules';
 
 const HanalDetailContainer = styled.div`
 width: 100%;
-height: 93vh;
+height: 90vh;
+margin-top: 1vh;
+margin-bottom: 7vh;
 .swiper {
   width: 100%;
   height: 100%;
@@ -25,8 +27,9 @@ height: 93vh;
         .profile {
             display: flex;
             width: 100%;
-            height: 3.5vh;
-            margin: 3vw;
+            height: 4vh;
+            margin: 1vh 2vh;
+            margin-top: 0;
             box-sizing: border-box;
             align-items: center;
             .who {
@@ -58,7 +61,7 @@ height: 93vh;
             display: flex;
   justify-content: flex-end;
   height: 4vh;
-  padding: 1vw;
+  padding: 0.5vh;
   box-sizing: border-box;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -74,7 +77,7 @@ svg {
         .info {
             display: flex;
             height: 4vh;
-            padding: 1vw;
+            padding: 0.5vh;
             padding-top: 0;
             margin: 0 2vw;
             box-sizing: border-box;
@@ -110,7 +113,7 @@ svg {
             align-items: center;
             height: 4vh;
             font-size: 4vw;
-            padding: 1vw;
+            padding: 0.5vh;
             box-sizing: border-box;
             margin: 2vw 0;
             svg {
@@ -118,13 +121,13 @@ svg {
                 margin: 0 3vw;
             }
         }
-        .comment {
+        .commentBox {
             height: 4vh;
             font-size: 4vw;
-            padding: 1vw;
+            padding: 0.5vh;
             box-sizing: border-box;
             margin: 3vw;
-            p {
+            .comment {
                 height: 100%;
                 display: flex;
             align-items: center;
@@ -160,8 +163,9 @@ svg {
 
 const HanalDetail = () => {
     const board = useSelector(state => state.board.board)
+    const boardId = useSelector(state => state.board.detailBoardId)
+    const swiperRef = useRef(null);
 
-    // 현재 날짜 사용시
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -173,9 +177,22 @@ const HanalDetail = () => {
     const todaysList = board.filter(item => item.date === formattedDate)
     const todaysSortList = todaysList.sort((a, b) => b.dateTime - a.dateTime);
 
+    useEffect(() => {
+        const scrollToBoardId = boardId;
+
+        if (swiperRef.current && scrollToBoardId !== null) {
+            const indexToScroll = todaysSortList.findIndex(item => item.boardId === scrollToBoardId);
+
+            if (indexToScroll !== -1) {
+                swiperRef.current.swiper.slideTo(indexToScroll,0);
+            }
+        }
+    }, [todaysSortList]);
+
     return (
         <HanalDetailContainer>
             <Swiper
+                ref={swiperRef}
                 direction={'vertical'}
                 modules={[Pagination]}
                 className="mySwiper"

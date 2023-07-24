@@ -66,7 +66,7 @@ const Footer = () => {
         </footer>
       </FooterContainer>
 
-      <div className='footerblock' style={{ width: '100%', height: '7vh', zIndex: '100' }}></div>
+      {/* <div className='footerblock' style={{ width: '100%', height: '7vh', zIndex: '100' }}></div> */}
     </>
   );
 };

@@ -10,6 +10,7 @@ import Nearby from './pages/Nearby';
 import Myhanal from './pages/Myhanal';
 import Wonder from './pages/Wonder';
 import HanalDetail from './pages/HanalDetail';
+import HanalComment from './components/HanalComment';
 
 const App = () => {
 
@@ -26,12 +27,14 @@ const App = () => {
             <Route path="/nearby" element={<Nearby />} />
             <Route path="/myhanal" element={<Myhanal />} />
             <Route path="/wonder" element={<Wonder />} />
-            <Route path="/hanaldetail" element={<HanalDetail />} />
+            <Route path="/hanaldetail" >
+              <Route index element={<HanalDetail />} />
+              <Route path=':boardID' element={<HanalComment />} />
+            </Route>
           </Route>
         </Routes>
       </HashRouter>
       {/* </BrowserRouter> */}
-
     </>
   );
 };

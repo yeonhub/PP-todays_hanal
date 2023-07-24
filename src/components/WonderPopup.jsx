@@ -19,347 +19,366 @@ const WonderPopupContainer = styled.div`
     left: 50%;
     top: 46.5%;
     border-radius: 2vw;
+
     .wonderPopBg {
-            position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9); 
-    z-index: 200;
-    display: none;
-    .alert{
-        position: absolute;
-        top: 40%;
-        left: 45%;
-        transform: translate(-50%, -50%);
-        width: 78vw;
-        height: 15vh;
-        background: lightgray;
-        border-radius: 10vw;
-        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 200;
         display: none;
-        transition: 0.5s;
-        span {
-            display: block;
-            margin-top: 3vh;
-            color: black;
-            font-size: 5.5vw;
-            font-weight: 600;
-        }
-        p {
-            margin-top: 2vh;
-            display: flex;
-            justify-content: space-around;
-            button {
-                padding: 2vw;
-                box-sizing: border-box;
-                width: 28vw;
-                height: 4vh;
-                border: none;
-                border-radius: 1vw;
-                background: tan;
-                font-size: 4vw;
-                font-weight: 600;
-                &:first-child{
-                    background: orangered;
-                }
-            }
-        }
-    }
-    }
-    .request {
-        width: 90%;
-        margin: 2vh auto;
-        padding: 4vw;
-        height: 14.5vh;
-        box-sizing: border-box;
-        background: rgb(80, 80, 80);
-        font-size: 4.5vw;
-        text-align: right;
-        border-radius: 1.5vw;
 
-        .who {
-            display: flex;
-            text-align: left;
-            align-items: center;
-            padding-bottom: 1vh;
-            font-size: 5.5vw;
-            border-bottom: 1px solid gray;
-
-            img {
-                width: 7vw;
-                height: 7vw;
-                margin-right: 2vw;
-            }
-            .delete {
-                margin-left: auto;
-                color: tan;
-                font-size: 6.5vw;
-            }
-        }
-
-        .who,
-        .where {
-            margin-bottom: 1vh;
-        }
-    }
-
-    .answer {
-        /* overflow: auto; */
-        width: 90%;
-        margin: auto;
-
-        height: 64vh;
-
-        .noAnswer{
-            height: 62vh;
-            overflow: scroll;
-        input {
-            display: none;
-        }
-
-        .upload {
-            overflow: hidden;
-            background: white;
-            width: 80vw;
-            margin: 3vh auto;
-            margin-top: 0;
-            height: 80vw;
-
-            .uploadIcon {
-                width: 50%;
-                height: 50%;
-                transform: translate(50%, 50%);
-
-            }
-        }
-
-        .uploaded {
-            overflow: hidden;
-            width: 90%;
-            margin: 3vh auto;
-            height: 90vw;
+        .alert {
+            position: absolute;
+            top: 40%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            width: 78vw;
+            height: 15vh;
+            background: lightgray;
+            border-radius: 10vw;
             text-align: center;
-
-            img {
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
-            }
-        }
-
-        .p {
-            display: block;
-            align-items: center;
-            padding: 4vw;
-            box-sizing: border-box;
-            height: 7vh;
-            background: rgb(80, 80, 80);
-            border-radius: 2vw;
-            margin-bottom: 1vh;
-        }
-
-        .location {
-            color: lightgray;
-            display: flex;
-
-            svg {
-                margin-right: 4vw;
-            }
+            display: none;
+            transition: 0.5s;
 
             span {
-                font-size: 4vw;
-
-                &:last-child {
-                    margin-left: auto;
-                }
-            }
-        }
-
-        .weather {
-            display: flex;
-            font-size: 5vw;
-            background-position: 0 70%;
-            justify-content: space-around;
-            font-size: 7vw;
-            svg {
-                &.on {
-                    color: orangered;
-                    transform: scale(1.2);
-                }
-            }
-        }
-
-        .yesterday {
-
-            font-size: 4vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            div {
-                line-height: 4vh;
-                width: 65%;
-                display: flex;
-                justify-content: space-between;
-
-                span {
-                    text-align: center;
-                    width: 23vw;
-                    height: 4vh;
-                    border-radius: 2vw;
-                    background: gray;
-                    color: black;
-                    font-weight: 700;
-
-                    &.hot {
-                        background: tomato;
-                    }
-
-                    &.cold {
-                        background: skyblue;
-                    }
-                }
-            }
-        }
-
-        .likes {
-            display: flex;
-            justify-content: space-between;
-
-            svg {
-                font-size: 5vw;
-            }
-
-            input {
-                width: 80%;
                 display: block;
-                box-sizing: border-box;
+                margin-top: 3vh;
+                color: black;
+                font-size: 5.5vw;
+                font-weight: 600;
+            }
+
+            p {
+                margin-top: 2vh;
+                display: flex;
+                justify-content: space-around;
+
+                button {
+                    padding: 2vw;
+                    box-sizing: border-box;
+                    width: 28vw;
+                    height: 4vh;
+                    border: none;
+                    border-radius: 1vw;
+                    background: tan;
+                    font-size: 4vw;
+                    font-weight: 600;
+
+                    &:first-child {
+                        background: orangered;
+                    }
+                }
             }
         }
     }
-        .answered{
-            background: rgb(80, 80, 80);
-            width: 100%;
+    .inner {
+        margin-top: 2vh;
+        height: 88vh;
+        .request {
+            width: 90%;
+            margin: 2vh auto;
+            margin-top: 0;
             padding: 4vw;
+            height: 14.5vh;
             box-sizing: border-box;
-            
+            background: rgb(80, 80, 80);
             font-size: 4.5vw;
             text-align: right;
             border-radius: 1.5vw;
 
-            height: 62vh;
-            overflow: scroll;
-            
-        .who {
-            display: flex;
-            text-align: left;
-            align-items: center;
-            padding-bottom: 1vh;
-            font-size: 5.5vw;
-            border-bottom: 1px solid gray;
-
-            img {
-                width: 7vw;
-                height: 7vw;
-                margin-right: 2vw;
-            }
-            .delete {
-                margin-left: auto;
-                color: tan;
-                font-size: 6.5vw;
-            }
-        }
-
-        .who,
-        .where {
-            margin-bottom: 1vh;
-        }
-        .answerImage {
-            margin: 2vh 0;
-            width: 100%;
-            img {
-                max-width: 100%;
-                max-height: 100%;
-            }
-        }
-            .p {
+            .who {
                 display: flex;
+                text-align: left;
+                align-items: center;
+                padding-bottom: 1vh;
+                font-size: 5.5vw;
                 border-bottom: 1px solid gray;
-            padding: 3vw;
-            box-sizing: border-box;
-            height: 6vh;
-            margin-bottom: 1vh;
-            align-items: center;
-                .left {
-                    margin-right: auto;
-                    svg {
-                        margin-right: 4vw;
-                        font-size: 5.5vw;
-                       
-                        &.weatherIcon {
-                            color : orangered;
-                        }
-                        
-                    }
 
+                img {
+                    width: 7vw;
+                    height: 7vw;
+                    margin-right: 2vw;
                 }
-                .right {
+
+                .delete {
+                    margin-left: auto;
+                    color: tan;
+                    font-size: 6.5vw;
+                }
+            }
+
+            .who,
+            .where {
+                margin-bottom: 1vh;
+            }
+        }
+
+        .answer {
+            width: 90%;
+            margin: auto;
+            height: 64vh;
+
+            .noAnswer {
+                height: 62vh;
+
+                input {
+                    display: none;
+                }
+
+                .upload {
+                    overflow: hidden;
+                    background: white;
+                    width: 37vh;
+                    margin: 1vh auto;
+                    margin-top: 0;
+                    height: 37vh;
+
+                    .uploadIcon {
+                        width: 50%;
+                        height: 50%;
+                        transform: translate(50%, 50%);
+
+                    }
+                }
+
+                .uploaded {
+                    overflow: hidden;
+                    margin: 1vh auto;
+                    text-align: center;
+                    margin-top: 0;
+
+                    img {
+                        max-width: 100%;
+                        max-height: 37vh;
+                        object-fit: contain;
+                    }
+                }
+
+                .p {
+                    display: block;
+                    align-items: center;
+                    padding: 4vw;
+                    box-sizing: border-box;
+                    height: 7vh;
+                    background: rgb(80, 80, 80);
+                    border-radius: 2vw;
+                    margin-bottom: 1vh;
+                }
+
+                .location {
+                    color: lightgray;
                     display: flex;
 
+                    svg {
+                        margin-right: 4vw;
+                    }
 
+                    span {
+                        font-size: 4vw;
+
+                        &:last-child {
+                            margin-left: auto;
+                        }
+                    }
                 }
-            }
-            .yesterday {
-                .right {
-                    line-height: 3.5vh;
+
+                .weather {
+                    display: flex;
+                    font-size: 5vw;
+                    background-position: 0 70%;
+                    justify-content: space-around;
+                    font-size: 7vw;
+
+                    svg {
+                        &.on {
+                            color: orangered;
+                            transform: scale(1.2);
+                        }
+                    }
+                }
+
+                .yesterday {
+
+                    font-size: 4vw;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    span {
-                        text-align: center;
-                        width: 23vw;
-                        height: 4vh;
-                        border-radius: 2vw;
-                        background: gray;
-                        color: black;
-                        font-weight: 700;
+
+                    div {
+                        line-height: 4vh;
+                        width: 65%;
+                        display: flex;
+                        justify-content: space-between;
+
+                        span {
+                            text-align: center;
+                            width: 23vw;
+                            height: 4vh;
+                            border-radius: 2vw;
+                            background: gray;
+                            color: black;
+                            font-weight: 700;
+
+                            &.hot {
+                                background: tomato;
+                            }
+
+                            &.cold {
+                                background: skyblue;
+                            }
+                        }
                     }
-                    .hot {
-                        background: tomato;
+                }
+
+                .likes {
+                    display: flex;
+                    justify-content: space-between;
+
+                    svg {
+                        font-size: 5vw;
                     }
-                    .cold {
-                        background: skyblue;
+
+                    input {
+                        width: 80%;
+                        display: block;
+                        box-sizing: border-box;
                     }
                 }
             }
+
+            .answered {
+                background: rgb(80, 80, 80);
+                width: 100%;
+                padding: 4vw;
+                box-sizing: border-box;
+                font-size: 4.5vw;
+                text-align: right;
+                border-radius: 1.5vw;
+                height: 62vh;
+
+                .who {
+                    display: flex;
+                    text-align: left;
+                    align-items: center;
+                    padding-bottom: 1vh;
+                    font-size: 5.5vw;
+                    border-bottom: 1px solid gray;
+
+                    img {
+                        width: 7vw;
+                        height: 7vw;
+                        margin-right: 2vw;
+                    }
+
+                    .delete {
+                        margin-left: auto;
+                        color: tan;
+                        font-size: 6.5vw;
+                    }
+                }
+
+                .who,
+                .where {
+                    margin-bottom: 1vh;
+                }
+
+                .answerImage {
+                    margin: 2vh 0;
+                    width: 100%;
+
+                    img {
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+
+                .p {
+                    display: flex;
+                    border-bottom: 1px solid gray;
+                    padding: 3vw;
+                    box-sizing: border-box;
+                    height: 6vh;
+                    margin-bottom: 1vh;
+                    align-items: center;
+
+                    .left {
+                        margin-right: auto;
+
+                        svg {
+                            margin-right: 4vw;
+                            font-size: 5.5vw;
+
+                            &.weatherIcon {
+                                color: orangered;
+                            }
+
+                        }
+
+                    }
+
+                    .right {
+                        display: flex;
+
+
+                    }
+                }
+
+                .yesterday {
+                    .right {
+                        line-height: 3.5vh;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        span {
+                            text-align: center;
+                            width: 23vw;
+                            height: 4vh;
+                            border-radius: 2vw;
+                            background: gray;
+                            color: black;
+                            font-weight: 700;
+                        }
+
+                        .hot {
+                            background: tomato;
+                        }
+
+                        .cold {
+                            background: skyblue;
+                        }
+                    }
+                }
+            }
+
         }
 
-    }
+        .btn {
+            width: 100%;
+            height: 7.5vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: rgb(80, 80, 80);
+            border-bottom-left-radius: 2vw;
+            border-bottom-right-radius: 2vw;
 
-    .btn {
-        /* position: absolute; */
-        width: 100%;
-        height: 7.5vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background: rgb(80, 80, 80);
-        border-bottom-left-radius: 2vw;
-        border-bottom-right-radius: 2vw;
-        
 
-        button {
-            width: 40vw;
-            height: 5vh;
-            background: lightgray;
-            border: none;
-            border-radius: 2vw;
-            font-size: 3.5vw;
-            font-weight: 700;
-            &.goList{
-                width: 70vw;
+            button {
+                width: 40vw;
+                height: 5vh;
+                background: lightgray;
+                border: none;
+                border-radius: 2vw;
+                font-size: 3.5vw;
+                font-weight: 700;
+
+                &.goList {
+                    width: 70vw;
+                }
             }
         }
     }
@@ -376,6 +395,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const fileInputRef = useRef(null);
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -413,14 +433,21 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const onDel = () => {
         setBg(true)
     }
-    const wonderDel = useSelector(state => state.board.wonderDel)
-    useEffect(() => {
-        if (wonderDel) {
-            setBg(false)
-            setOnWonderPop(false)
-            dispatch(offWonderDel())
-        }
-    }, [wonderDel])
+    const sureDel = () => {
+        setBg(false)
+        setOnWonderPop(false)
+        dispatch(offWonderDel())
+        navigate('/wonder')
+        dispatch(onWonderDel(wonderBoardId))
+    }
+    // const wonderDel = useSelector(state => state.board.wonderDel)
+    // useEffect(() => {
+    //     if (wonderDel) {
+    //         setBg(false)
+    //         setOnWonderPop(false)
+    //         dispatch(offWonderDel())
+    //     }
+    // }, [wonderDel])
 
     const onAnswer = useSelector(state => state.board.onAnswer)
     useEffect(() => {
@@ -474,18 +501,18 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     }
     return (
         <WonderPopupContainer>
-            <div className="popup"> <div className="wonderPopBg" style={{ display: bg ? 'block' : 'none' }}>
-                <div className="alert" style={{ display: bg ? 'block' : 'none' }}
-                >
-                    <span>
-                        궁금해요를 삭제합니다
-                    </span>
-                    <p>
-                        <button onClick={() => dispatch(onWonderDel(wonderBoardId))}>삭제</button>
-                        <button onClick={() => setBg(false)}>취소</button>
-                    </p>
+            <div className="popup">
+                <div className="wonderPopBg" style={{ display: bg ? 'block' : 'none' }}>
+                    <div className="alert" style={{ display: bg ? 'block' : 'none' }}>
+                        <span>
+                            궁금해요를 삭제합니다
+                        </span>
+                        <p>
+                            <button onClick={() => sureDel()}>삭제</button>
+                            <button onClick={() => setBg(false)}>취소</button>
+                        </p>
+                    </div>
                 </div>
-            </div>
                 <div className="inner">
                     <div className="request">
                         <p className='who'><img src={`./images/trees/tree${wonderTreeLevel}.png`} alt={wonderNickname} />{wonderNickname} {ownerCheck ? <span className='delete' onClick={() => onDel()}><TiDeleteOutline /></span> : null} </p>

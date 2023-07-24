@@ -8,9 +8,9 @@ import { BiCurrentLocation } from 'react-icons/bi'
 const NearbyContainer = styled.div`
 .nearby {
     width: 100%;
+    height: 93vh;
+    margin-bottom: 7vh;
     .nearlyList{
-
-    
     ul {
             display: flex;
             flex-wrap : wrap;

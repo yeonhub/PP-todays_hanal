@@ -12,6 +12,7 @@ const TodaysContainer = styled.div`
     .logo {
         margin: auto;
         text-align: center;
+        height: 10vh;
         img {
             margin: 2vh 0;
             width: 50%;
@@ -19,6 +20,7 @@ const TodaysContainer = styled.div`
     }
     .todaysRank {
         width: 100%;
+        height: 25vh;
         .rankTitle {
             display: flex;
             margin: 1.5vw;
@@ -67,7 +69,6 @@ const TodaysContainer = styled.div`
         .todaysTitle {
             display: flex;
             margin: 1.5vw;
-            /* align-items: center; */
             svg {
                 font-size: 6vw;
                 margin-right: 2vw;
@@ -81,8 +82,8 @@ const TodaysContainer = styled.div`
         }
         ul {
             display: flex;
-            /* justify-content: space-between; */
             flex-wrap : wrap;
+            margin-bottom: 7vh;
             li {
                 position: relative;
                 overflow: hidden;

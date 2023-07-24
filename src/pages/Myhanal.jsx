@@ -8,10 +8,13 @@ import { addBoard, onUploaded } from "../store/modules/boardSlice";
 import { useNavigate } from "react-router-dom";
 
 
-const MyhanalContainer=styled.div` .myhanal {
+const MyhanalContainer=styled.div` 
+.myhanal {
     width: 100%;
-    height: 100%;
+    height: 84vh;
     position: relative;
+    margin-top: 3vh;
+    margin-bottom: 13vh;
 
     input {
         display: none;
@@ -20,9 +23,10 @@ const MyhanalContainer=styled.div` .myhanal {
     .upload {
         overflow: hidden;
         background: white;
-        width: 90%;
-        margin: 3vh auto;
-        height: 90vw;
+        width: 40vh;
+        margin: 0 auto;
+        margin-bottom: 3vh;
+        height: 40vh;
 
         .uploadIcon {
             width: 50%;
@@ -137,12 +141,14 @@ const MyhanalContainer=styled.div` .myhanal {
     }
 
     .uploadButton {
-        width: 100%;
+        position: fixed;
+        width: 90%;
         height: 4.5vh;
         border: none;
         background: lightgray;
-        margin-top: 5vw;
-        bottom: 10%;
+        bottom: 7.5vh;
+        left: 50%;
+        transform: translateX(-50%);
         border-radius: 2vw;
         font-size: 4.5vw;
         font-weight: 700;
@@ -214,15 +220,6 @@ const Myhanal = () => {
     const onUploadBoard = () => {
         if (!selectedImage) return
         dispatch(addBoard({ selectedImage, authorAcountId, city, gu, date, time, dateTime, weather, temperatures, yesterday, authorLike }))
-        // console.log(selectedImage);
-        // console.log(authorAcountId);
-        // console.log(city);
-        // console.log(gu);
-        // console.log(date);
-        // console.log(weather);
-        // console.log(temperatures);
-        // console.log(yesterday);
-        // console.log(authorLike);
     }
 
     useEffect(() => {
