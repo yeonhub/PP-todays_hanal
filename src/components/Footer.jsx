@@ -8,9 +8,9 @@ import { BsChatSquareQuote } from 'react-icons/bs'
 const FooterContainer = styled.div`
   .footer {
     z-index: 1000;
-    border-top: 0.1vh solid gray;
+    border-top: 0.1dvh solid gray;
     width: 100%;
-    height: 7vh;
+    height: 7dvh;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -22,10 +22,10 @@ const FooterContainer = styled.div`
       background: black;
       li {
         width: 20%;
-        height: 7vh;
+        height: 7dvh;
         text-align: center;
         align-items: center;
-        line-height: 7vh;
+        line-height: 7dvh;
         a {
           width: 100%;
           height: 100%;
@@ -66,7 +66,7 @@ const Footer = () => {
         </footer>
       </FooterContainer>
 
-      {/* <div className='footerblock' style={{ width: '100%', height: '7vh', zIndex: '100' }}></div> */}
+      {/* <div className='footerblock' style={{ width: '100%', height: '7dvh', zIndex: '100' }}></div> */}
     </>
   );
 };

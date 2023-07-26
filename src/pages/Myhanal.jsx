@@ -11,10 +11,10 @@ import { useNavigate } from "react-router-dom";
 const MyhanalContainer=styled.div` 
 .myhanal {
     width: 100%;
-    height: 84vh;
+    height: 84dvh;
     position: relative;
-    margin-top: 3vh;
-    margin-bottom: 13vh;
+    margin-top: 3dvh;
+    margin-bottom: 13dvh;
 
     input {
         display: none;
@@ -23,10 +23,10 @@ const MyhanalContainer=styled.div`
     .upload {
         overflow: hidden;
         background: white;
-        width: 40vh;
+        width: 40dvh;
         margin: 0 auto;
-        margin-bottom: 3vh;
-        height: 40vh;
+        margin-bottom: 3dvh;
+        height: 40dvh;
 
         .uploadIcon {
             width: 50%;
@@ -39,7 +39,7 @@ const MyhanalContainer=styled.div`
     .uploaded {
         overflow: hidden;
         width: 90%;
-        margin: 3vh auto;
+        margin: 3dvh auto;
         text-align: center;
 
         img {
@@ -58,10 +58,10 @@ const MyhanalContainer=styled.div`
             align-items: center;
             padding: 4vw;
             box-sizing: border-box;
-            height: 7vh;
+            height: 7dvh;
             background: rgb(50, 50, 50);
             border-radius: 2vw;
-            margin-bottom: 1vh;
+            margin-bottom: 1dvh;
         }
 
         .location {
@@ -99,7 +99,7 @@ const MyhanalContainer=styled.div`
             align-items: center;
 
             div {
-                line-height: 4vh;
+                line-height: 4dvh;
                 width: 65%;
                 display: flex;
                 justify-content: space-between;
@@ -107,7 +107,7 @@ const MyhanalContainer=styled.div`
                 span {
                     text-align: center;
                     width: 25vw;
-                    height: 4vh;
+                    height: 4dvh;
                     border-radius: 2vw;
                     background: gray;
                     color: black;
@@ -143,10 +143,10 @@ const MyhanalContainer=styled.div`
     .uploadButton {
         position: fixed;
         width: 90%;
-        height: 4.5vh;
+        height: 4.5dvh;
         border: none;
         background: lightgray;
-        bottom: 7.5vh;
+        bottom: 7.5dvh;
         left: 50%;
         transform: translateX(-50%);
         border-radius: 2vw;

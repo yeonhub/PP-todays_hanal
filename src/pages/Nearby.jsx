@@ -8,8 +8,8 @@ import { BiCurrentLocation } from 'react-icons/bi'
 const NearbyContainer = styled.div`
 .nearby {
     width: 100%;
-    height: 93vh;
-    margin-bottom: 7vh;
+    height: 93dvh;
+    margin-bottom: 7dvh;
     .nearlyList{
     ul {
             display: flex;
@@ -33,7 +33,7 @@ const NearbyContainer = styled.div`
     }
         .weather {
             width: 100%;
-            height: 10vh;
+            height: 10dvh;
             background-image: url('images/weather/rain.gif');
             background-repeat: no-repeat;
             background-position: 0 70%;
@@ -48,7 +48,7 @@ const NearbyContainer = styled.div`
         .location {
             width: 100%;
             box-sizing: border-box;
-            height: 6vh;
+            height: 6dvh;
             padding: 1vw;
             font-size: 5.5vw;
             
@@ -72,7 +72,7 @@ const NearbyContainer = styled.div`
         }
     .selectList {
         text-align: right;
-        margin-bottom: 2vh;
+        margin-bottom: 2dvh;
         select {
             border-radius: 2vw;
             border: none;

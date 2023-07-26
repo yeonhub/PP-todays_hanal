@@ -1,176 +1,98 @@
-.popup {
-    position: fixed;
-    width: 90%;
-    height: 90%;
-    background: gray;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 46.5%;
-    border-radius: 2vw;
+width: 100%;
+height: 90dvh;
+margin-top: 1dvh;
+margin-bottom: 7dvh;
 
-    .wonderPopBg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.9);
-        z-index: 200;
-        display: none;
+.swiper {
+    width: 100%;
+    height: 100%;
 
-        .alert {
-            position: absolute;
-            top: 40%;
-            left: 45%;
-            transform: translate(-50%, -50%);
-            width: 78vw;
-            height: 15vh;
-            background: lightgray;
-            border-radius: 10vw;
-            text-align: center;
-            display: none;
-            transition: 0.5s;
+    .swiper-slide {
+        display: block;
+        width: 100%;
+        height: 100%;
 
-            span {
-                display: block;
-                margin-top: 3vh;
-                color: black;
-                font-size: 5.5vw;
-                font-weight: 600;
-            }
+        .inner {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
 
-            p {
-                margin-top: 2vh;
+            .profile {
                 display: flex;
-                justify-content: space-around;
+                width: 100%;
+                height: 4dvh;
+                margin: 1dvh 2dvh;
+                margin-top: 0;
+                box-sizing: border-box;
+                align-items: center;
 
-                button {
-                    padding: 2vw;
-                    box-sizing: border-box;
-                    width: 28vw;
-                    height: 4vh;
-                    border: none;
-                    border-radius: 1vw;
-                    background: tan;
-                    font-size: 4vw;
-                    font-weight: 600;
+                .who {
+                    align-items: center;
+                    display: flex;
+                    height: 5dvh;
+                    font-size: 5vw;
 
-                    &:first-child {
-                        background: orangered;
+                    img {
+                        border: 0.7vw dotted gray;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        height: 4dvh;
+                        width: 4dvh;
+                        padding: 1vw;
+                        box-sizing: border-box;
+                        margin-right: 3vw;
                     }
                 }
             }
-        }
-    }
 
-    .request {
-        width: 90%;
-        margin: 2vh auto;
-        margin-top: 0;
-        padding: 4vw;
-        height: 14.5vh;
-        box-sizing: border-box;
-        background: rgb(80, 80, 80);
-        font-size: 4.5vw;
-        text-align: right;
-        border-radius: 1.5vw;
-
-        .who {
-            display: flex;
-            text-align: left;
-            align-items: center;
-            padding-bottom: 1vh;
-            font-size: 5.5vw;
-            border-bottom: 1px solid gray;
-
-            img {
-                width: 7vw;
-                height: 7vw;
-                margin-right: 2vw;
-            }
-
-            .delete {
-                margin-left: auto;
-                color: tan;
-                font-size: 6.5vw;
-            }
-        }
-
-        .who,
-        .where {
-            margin-bottom: 1vh;
-        }
-    }
-
-    .answer {
-        /* overflow: auto; */
-        width: 90%;
-        margin: auto;
-
-        height: 64vh;
-
-        .noAnswer {
-            height: 62vh;
-            overflow: scroll;
-
-            input {
-                display: none;
-            }
-
-            .upload {
+            .sky {
+                width: 100%;
+                max-height: 60dvh;
                 overflow: hidden;
-                background: white;
-                width: 80vw;
-                margin: 3vh auto;
-                margin-top: 0;
-                height: 80vw;
-
-                .uploadIcon {
-                    width: 50%;
-                    height: 50%;
-                    transform: translate(50%, 50%);
-
-                }
-            }
-
-            .uploaded {
-                overflow: hidden;
-                width: 90%;
-                margin: 3vh auto;
-                height: 90vw;
-                text-align: center;
 
                 img {
                     max-width: 100%;
-                    max-height: 100%;
-                    object-fit: contain;
                 }
             }
 
-            .p {
-                display: block;
-                align-items: center;
-                padding: 4vw;
-                box-sizing: border-box;
-                height: 7vh;
-                background: rgb(80, 80, 80);
-                border-radius: 2vw;
-                margin-bottom: 1vh;
-            }
-
-            .location {
-                color: lightgray;
+            .whereBox {
                 display: flex;
+                justify-content: flex-end;
+                height: 4dvh;
+                padding: 0.5dvh;
+                box-sizing: border-box;
+                padding-bottom: 0;
+                margin-bottom: 0;
+                margin-right: 2vw;
 
-                svg {
-                    margin-right: 4vw;
+                .where {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        margin-right: 3vw;
+                    }
                 }
+            }
 
-                span {
-                    font-size: 4vw;
+            .info {
+                display: flex;
+                height: 4dvh;
+                padding: 0.5dvh;
+                padding-top: 0;
+                margin: 0 2vw;
+                box-sizing: border-box;
+                font-size: 4vw;
+                align-items: center;
+                justify-content: space-between;
 
-                    &:last-child {
-                        margin-left: auto;
+                .authorLike {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        font-size: 5vw;
+                        margin-right: 3vw;
                     }
                 }
             }
@@ -178,201 +100,76 @@
             .weather {
                 display: flex;
                 font-size: 5vw;
+                justify-content: flex-end;
+                background: none;
+                background-image: url('images/weather/rain.gif');
+                background-repeat: no-repeat;
                 background-position: 0 70%;
-                justify-content: space-around;
-                font-size: 7vw;
+                height: 5dvh;
+                align-items: center;
 
-                svg {
-                    &.on {
-                        color: orangered;
-                        transform: scale(1.2);
-                    }
+                span {
+                    margin-right: 3vw;
                 }
             }
 
-            .yesterday {
-
+            .like {
+                display: flex;
+                align-items: center;
+                height: 4dvh;
                 font-size: 4vw;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                div {
-                    line-height: 4vh;
-                    width: 65%;
-                    display: flex;
-                    justify-content: space-between;
-
-                    span {
-                        text-align: center;
-                        width: 23vw;
-                        height: 4vh;
-                        border-radius: 2vw;
-                        background: gray;
-                        color: black;
-                        font-weight: 700;
-
-                        &.hot {
-                            background: tomato;
-                        }
-
-                        &.cold {
-                            background: skyblue;
-                        }
-                    }
-                }
-            }
-
-            .likes {
-                display: flex;
-                justify-content: space-between;
+                padding: 0.5dvh;
+                box-sizing: border-box;
+                margin: 2vw 0;
 
                 svg {
-                    font-size: 5vw;
-                }
-
-                input {
-                    width: 80%;
-                    display: block;
-                    box-sizing: border-box;
-                }
-            }
-        }
-
-        .answered {
-            background: rgb(80, 80, 80);
-            width: 100%;
-            padding: 4vw;
-            box-sizing: border-box;
-
-            font-size: 4.5vw;
-            text-align: right;
-            border-radius: 1.5vw;
-
-            height: 62vh;
-            overflow: scroll;
-
-            .who {
-                display: flex;
-                text-align: left;
-                align-items: center;
-                padding-bottom: 1vh;
-                font-size: 5.5vw;
-                border-bottom: 1px solid gray;
-
-                img {
-                    width: 7vw;
-                    height: 7vw;
-                    margin-right: 2vw;
-                }
-
-                .delete {
-                    margin-left: auto;
-                    color: tan;
-                    font-size: 6.5vw;
+                    font-size: 8vw;
+                    margin: 0 3vw;
                 }
             }
 
-            .who,
-            .where {
-                margin-bottom: 1vh;
-            }
-
-            .answerImage {
-                margin: 2vh 0;
-                width: 100%;
-
-                img {
-                    max-width: 100%;
-                    max-height: 100%;
-                }
-            }
-
-            .p {
-                display: flex;
-                border-bottom: 1px solid gray;
-                padding: 3vw;
+            .commentBox {
+                height: 4dvh;
+                font-size: 4vw;
+                padding: 0.5dvh;
                 box-sizing: border-box;
-                height: 6vh;
-                margin-bottom: 1vh;
-                align-items: center;
+                margin: 3vw;
 
-                .left {
-                    margin-right: auto;
-
-                    svg {
-                        margin-right: 4vw;
-                        font-size: 5.5vw;
-
-                        &.weatherIcon {
-                            color: orangered;
-                        }
-
-                    }
-
-                }
-
-                .right {
+                .comment {
+                    height: 100%;
                     display: flex;
-
-
-                }
-            }
-
-            .yesterday {
-                .right {
-                    line-height: 3.5vh;
-                    display: flex;
-                    justify-content: space-between;
                     align-items: center;
 
-                    span {
-                        text-align: center;
-                        width: 23vw;
-                        height: 4vh;
-                        border-radius: 2vw;
-                        background: gray;
-                        color: black;
-                        font-weight: 700;
+                    .nickname {
+                        max-width: 20%;
+                        margin-right: 3vw;
+                        font-weight: 600;
                     }
 
-                    .hot {
-                        background: tomato;
+                    .text {
+                        max-width: 80%;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
                     }
 
-                    .cold {
-                        background: skyblue;
+                    img {
+                        width: 5vw;
+                        margin-right: 3vw;
                     }
                 }
+
+                .more {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 5dvh;
+
+                }
             }
-        }
 
-    }
-
-    .btn {
-        /* position: absolute; */
-        width: 100%;
-        height: 7.5vh;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background: rgb(80, 80, 80);
-        border-bottom-left-radius: 2vw;
-        border-bottom-right-radius: 2vw;
-
-
-        button {
-            width: 40vw;
-            height: 5vh;
-            background: lightgray;
-            border: none;
-            border-radius: 2vw;
-            font-size: 3.5vw;
-            font-weight: 700;
-
-            &.goList {
-                width: 70vw;
-            }
         }
     }
 }
+
+`

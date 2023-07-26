@@ -13,15 +13,15 @@ import { useNavigate } from 'react-router-dom';
 const WonderContainer = styled.div`
 .wonder {
     width: 100%;
-    margin-top: 3vh;
-    margin-bottom: 13vh;
-    height: 84vh;
+    margin-top: 3dvh;
+    margin-bottom: 13dvh;
+    height: 84dvh;
     .wonderBg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: rgba(0, 0, 0, 0.9); 
     z-index: 200;
     display: block;
@@ -31,12 +31,12 @@ const WonderContainer = styled.div`
         width: 90%;
         position: fixed;
         left: 50%;
-        bottom: 8vh;
+        bottom: 8dvh;
         transform: translateX(-50%);
         z-index: 100;
         button {
             width: 100%;
-        height: 4.5vh;
+        height: 4.5dvh;
         border: none;
         background: lightgray;
         border-radius: 2vw;
@@ -47,15 +47,15 @@ const WonderContainer = styled.div`
     .myWnderBtn {
         width: 90%;
         margin: 0 auto;
-        margin-bottom: 2vh;
+        margin-bottom: 2dvh;
         display: flex;
         align-items: center;
         padding: 4vw;
         box-sizing: border-box;
-        height: 7vh;
+        height: 7dvh;
         background: rgb(50,50,50);
         border-radius: 2vw;
-        margin-bottom: 1vh;
+        margin-bottom: 1dvh;
         justify-content: space-around;
         
         span {
@@ -72,7 +72,7 @@ const WonderContainer = styled.div`
     .location {
             width: 100%;
             box-sizing: border-box;
-            height: 6vh;
+            height: 6dvh;
             padding: 1vw;
             font-size: 5.5vw;
             
@@ -95,7 +95,7 @@ const WonderContainer = styled.div`
     }
     .selectList {
         text-align: right;
-        margin-bottom: 2vh;
+        margin-bottom: 2dvh;
         select {
             border-radius: 2vw;
             border: none;
@@ -169,7 +169,7 @@ const WonderContainer = styled.div`
     .btnBlock {
         display: block;
         width: 100%;
-        height: 6vh;
+        height: 6dvh;
     }
 }
 

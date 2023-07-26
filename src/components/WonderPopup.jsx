@@ -25,7 +25,7 @@ const WonderPopupContainer = styled.div`
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
         background-color: rgba(0, 0, 0, 0.9);
         z-index: 200;
         display: none;
@@ -36,7 +36,7 @@ const WonderPopupContainer = styled.div`
             left: 45%;
             transform: translate(-50%, -50%);
             width: 78vw;
-            height: 15vh;
+            height: 15dvh;
             background: lightgray;
             border-radius: 10vw;
             text-align: center;
@@ -45,14 +45,14 @@ const WonderPopupContainer = styled.div`
 
             span {
                 display: block;
-                margin-top: 3vh;
+                margin-top: 3dvh;
                 color: black;
                 font-size: 5.5vw;
                 font-weight: 600;
             }
 
             p {
-                margin-top: 2vh;
+                margin-top: 2dvh;
                 display: flex;
                 justify-content: space-around;
 
@@ -60,7 +60,7 @@ const WonderPopupContainer = styled.div`
                     padding: 2vw;
                     box-sizing: border-box;
                     width: 28vw;
-                    height: 4vh;
+                    height: 4dvh;
                     border: none;
                     border-radius: 1vw;
                     background: tan;
@@ -75,14 +75,14 @@ const WonderPopupContainer = styled.div`
         }
     }
     .inner {
-        margin-top: 2vh;
-        height: 88vh;
+        margin-top: 2dvh;
+        height: 88dvh;
         .request {
             width: 90%;
-            margin: 2vh auto;
+            margin: 2dvh auto;
             margin-top: 0;
             padding: 4vw;
-            height: 14.5vh;
+            height: 14.5dvh;
             box-sizing: border-box;
             background: rgb(80, 80, 80);
             font-size: 4.5vw;
@@ -93,7 +93,7 @@ const WonderPopupContainer = styled.div`
                 display: flex;
                 text-align: left;
                 align-items: center;
-                padding-bottom: 1vh;
+                padding-bottom: 1dvh;
                 font-size: 5.5vw;
                 border-bottom: 1px solid gray;
 
@@ -112,17 +112,17 @@ const WonderPopupContainer = styled.div`
 
             .who,
             .where {
-                margin-bottom: 1vh;
+                margin-bottom: 1dvh;
             }
         }
 
         .answer {
             width: 90%;
             margin: auto;
-            height: 64vh;
+            height: 64dvh;
 
             .noAnswer {
-                height: 62vh;
+                height: 62dvh;
 
                 input {
                     display: none;
@@ -131,10 +131,10 @@ const WonderPopupContainer = styled.div`
                 .upload {
                     overflow: hidden;
                     background: white;
-                    width: 37vh;
-                    margin: 1vh auto;
+                    width: 37dvh;
+                    margin: 1dvh auto;
                     margin-top: 0;
-                    height: 37vh;
+                    height: 37dvh;
 
                     .uploadIcon {
                         width: 50%;
@@ -146,13 +146,13 @@ const WonderPopupContainer = styled.div`
 
                 .uploaded {
                     overflow: hidden;
-                    margin: 1vh auto;
+                    margin: 1dvh auto;
                     text-align: center;
                     margin-top: 0;
 
                     img {
                         max-width: 100%;
-                        max-height: 37vh;
+                        max-height: 37dvh;
                         object-fit: contain;
                     }
                 }
@@ -162,10 +162,10 @@ const WonderPopupContainer = styled.div`
                     align-items: center;
                     padding: 4vw;
                     box-sizing: border-box;
-                    height: 7vh;
+                    height: 7dvh;
                     background: rgb(80, 80, 80);
                     border-radius: 2vw;
-                    margin-bottom: 1vh;
+                    margin-bottom: 1dvh;
                 }
 
                 .location {
@@ -208,7 +208,7 @@ const WonderPopupContainer = styled.div`
                     align-items: center;
 
                     div {
-                        line-height: 4vh;
+                        line-height: 4dvh;
                         width: 65%;
                         display: flex;
                         justify-content: space-between;
@@ -216,7 +216,7 @@ const WonderPopupContainer = styled.div`
                         span {
                             text-align: center;
                             width: 23vw;
-                            height: 4vh;
+                            height: 4dvh;
                             border-radius: 2vw;
                             background: gray;
                             color: black;
@@ -257,13 +257,13 @@ const WonderPopupContainer = styled.div`
                 font-size: 4.5vw;
                 text-align: right;
                 border-radius: 1.5vw;
-                height: 62vh;
+                height: 62dvh;
 
                 .who {
                     display: flex;
                     text-align: left;
                     align-items: center;
-                    padding-bottom: 1vh;
+                    padding-bottom: 1dvh;
                     font-size: 5.5vw;
                     border-bottom: 1px solid gray;
 
@@ -282,11 +282,11 @@ const WonderPopupContainer = styled.div`
 
                 .who,
                 .where {
-                    margin-bottom: 1vh;
+                    margin-bottom: 1dvh;
                 }
 
                 .answerImage {
-                    margin: 2vh 0;
+                    margin: 2dvh 0;
                     width: 100%;
 
                     img {
@@ -300,8 +300,8 @@ const WonderPopupContainer = styled.div`
                     border-bottom: 1px solid gray;
                     padding: 3vw;
                     box-sizing: border-box;
-                    height: 6vh;
-                    margin-bottom: 1vh;
+                    height: 6dvh;
+                    margin-bottom: 1dvh;
                     align-items: center;
 
                     .left {
@@ -328,7 +328,7 @@ const WonderPopupContainer = styled.div`
 
                 .yesterday {
                     .right {
-                        line-height: 3.5vh;
+                        line-height: 3.5dvh;
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
@@ -336,7 +336,7 @@ const WonderPopupContainer = styled.div`
                         span {
                             text-align: center;
                             width: 23vw;
-                            height: 4vh;
+                            height: 4dvh;
                             border-radius: 2vw;
                             background: gray;
                             color: black;
@@ -358,7 +358,7 @@ const WonderPopupContainer = styled.div`
 
         .btn {
             width: 100%;
-            height: 7.5vh;
+            height: 7.5dvh;
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -369,7 +369,7 @@ const WonderPopupContainer = styled.div`
 
             button {
                 width: 40vw;
-                height: 5vh;
+                height: 5dvh;
                 background: lightgray;
                 border: none;
                 border-radius: 2vw;

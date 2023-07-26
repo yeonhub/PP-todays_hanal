@@ -10,155 +10,180 @@ import { Pagination } from 'swiper/modules';
 
 const HanalDetailContainer = styled.div`
 width: 100%;
-height: 90vh;
-margin-top: 1vh;
-margin-bottom: 7vh;
+height: 92dvh;
+margin-top: 1dvh;
+margin-bottom: 7dvh;
+
 .swiper {
-  width: 100%;
-  height: 100%;
-  .swiper-slide {
-    display: block;
     width: 100%;
     height: 100%;
-    .inner {
+
+    .swiper-slide {
+        display: block;
         width: 100%;
         height: 100%;
-        overflow: hidden;
-        .profile {
-            display: flex;
+
+        .inner {
             width: 100%;
-            height: 4vh;
-            margin: 1vh 2vh;
-            margin-top: 0;
-            box-sizing: border-box;
-            align-items: center;
-            .who {
-                align-items: center;
-                display: flex;
-                height: 5vh;
-                font-size: 5vw;
-                img {
-                    border: 0.7vw dotted gray;
-                    border-radius: 50%;
-                    overflow: hidden;
-                    height: 4vh;
-                    width: 4vh;
-                    padding: 1vw;
-                    box-sizing: border-box;
-                    margin-right: 3vw;
-                }
-            }
-        }
-        .sky {
-            width: 100%;
-            max-height: 60vh;
+            height: 100%;
             overflow: hidden;
-            img {
-                max-width: 100%;
-            }
-        }
-        .whereBox {
-            display: flex;
-  justify-content: flex-end;
-  height: 4vh;
-  padding: 0.5vh;
-  box-sizing: border-box;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  margin-right: 2vw;
-  .where {
-      display: flex;
-align-items: center;
-svg {
-    margin-right: 3vw;
-}
-  }
-        }
-        .info {
-            display: flex;
-            height: 4vh;
-            padding: 0.5vh;
-            padding-top: 0;
-            margin: 0 2vw;
-            box-sizing: border-box;
-            font-size: 4vw;
-            align-items: center;
-            justify-content: space-between;
-            .authorLike {
+
+            .profile {
                 display: flex;
+                width: 100%;
+                height: 4dvh;
+                margin: 1dvh 2dvh;
+                margin-top: 0;
+                box-sizing: border-box;
                 align-items: center;
-                svg {
+
+                .who {
+                    align-items: center;
+                    display: flex;
+                    height: 5dvh;
                     font-size: 5vw;
-                    margin-right: 3vw;
+
+                    img {
+                        border: 0.7vw dotted gray;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        height: 4dvh;
+                        width: 4dvh;
+                        padding: 0.5dvh;
+                        box-sizing: border-box;
+                        margin-right: 3vw;
+                    }
                 }
             }
-        }
 
-        .weather {
-            display: flex;
-            font-size: 5vw;
-            justify-content: flex-end;
-            background: none;
-            background-image: url('images/weather/rain.gif');
-            background-repeat: no-repeat;
-            background-position: 0 70%;
-            height: 5vh;
-            align-items: center;
-            span {
-                margin-right: 3vw;
-            }
-        }
-        .like {
-            display: flex;
-            align-items: center;
-            height: 4vh;
-            font-size: 4vw;
-            padding: 0.5vh;
-            box-sizing: border-box;
-            margin: 2vw 0;
-            svg {
-                font-size: 8vw;
-                margin: 0 3vw;
-            }
-        }
-        .commentBox {
-            height: 4vh;
-            font-size: 4vw;
-            padding: 0.5vh;
-            box-sizing: border-box;
-            margin: 3vw;
-            .comment {
-                height: 100%;
-                display: flex;
-            align-items: center;
-            .nickname {
-                max-width: 20%;
-                margin-right: 3vw;
-                font-weight: 600;
-            }
-            .text {
-                max-width: 80%;
+            .sky {
+                width: 100%;
+                max-height: 60dvh;
                 overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-            }
+
                 img {
-                    width: 5vw;
+                    max-width: 100%;
+                }
+            }
+
+            .whereBox {
+                display: flex;
+                justify-content: flex-end;
+                height: 4dvh;
+                padding: 0.5dvh;
+                box-sizing: border-box;
+                padding-bottom: 0;
+                margin-bottom: 0;
+                margin-right: 2vw;
+
+                .where {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        margin-right: 3vw;
+                    }
+                }
+            }
+
+            .info {
+                display: flex;
+                height: 4dvh;
+                padding: 0.5dvh;
+                padding-top: 0;
+                margin: 0 2vw;
+                box-sizing: border-box;
+                font-size: 4vw;
+                align-items: center;
+                justify-content: space-between;
+
+                .authorLike {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        font-size: 5vw;
+                        margin-right: 3vw;
+                    }
+                }
+            }
+
+            .weather {
+                display: flex;
+                font-size: 5vw;
+                justify-content: flex-end;
+                background: none;
+                background-image: url('images/weather/rain.gif');
+                background-repeat: no-repeat;
+                background-position: 0 70%;
+                height: 5dvh;
+                align-items: center;
+
+                span {
                     margin-right: 3vw;
                 }
             }
-            .more {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 5vh;
 
+            .like {
+                display: flex;
+                align-items: center;
+                height: 4dvh;
+                font-size: 4vw;
+                padding: 0.5dvh;
+                box-sizing: border-box;
+                margin: 0.5dvh 0;
+
+                svg {
+                    font-size: 8vw;
+                    margin: 0 3vw;
+                }
             }
+
+            .commentBox {
+                height: 4dvh;
+                font-size: 4vw;
+                padding: 0.5dvh;
+                box-sizing: border-box;
+                margin:  0.5dvh 3vw;
+                box-sizing: border-box;
+
+                .comment {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    .nickname {
+                        max-width: 20%;
+                        margin-right: 3vw;
+                        font-weight: 600;
+                    }
+
+                    .text {
+                        max-width: 80%;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    img {
+                        width: 5vw;
+                        margin-right: 3vw;
+                    }
+                }
+
+                .more {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 4dvh;
+
+                }
+            }
+
         }
-            
     }
-  }
 }
+
 `
 
 const HanalDetail = () => {
@@ -184,7 +209,7 @@ const HanalDetail = () => {
             const indexToScroll = todaysSortList.findIndex(item => item.boardId === scrollToBoardId);
 
             if (indexToScroll !== -1) {
-                swiperRef.current.swiper.slideTo(indexToScroll,0);
+                swiperRef.current.swiper.slideTo(indexToScroll, 0);
             }
         }
     }, [todaysSortList]);
@@ -198,11 +223,12 @@ const HanalDetail = () => {
                 className="mySwiper"
             >
                 {
-                    todaysSortList.map(item => <SwiperSlide key={item.boardId}>
-                        <div className="inner">
-                            <HanalDetailItem item={item} />
-                        </div>
-                    </SwiperSlide>)
+                    todaysSortList.map(item =>
+                        <SwiperSlide key={item.boardId}>
+                            <div className="inner">
+                                <HanalDetailItem item={item} />
+                            </div>
+                        </SwiperSlide>)
                 }
 
             </Swiper>

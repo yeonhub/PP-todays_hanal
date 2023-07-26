@@ -19,7 +19,7 @@ const WonderUploadContainer = styled.div`
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-color: rgba(0, 0, 0, 0.9); 
     z-index: 200;
     display: none;
@@ -27,9 +27,9 @@ const WonderUploadContainer = styled.div`
     }
     .request {
         width: 90%;
-        margin: 2vh auto;
+        margin: 2dvh auto;
         padding: 4vw;
-        height: 14.5vh;
+        height: 14.5dvh;
         box-sizing: border-box;
         background: rgb(80, 80, 80);
         font-size: 4.5vw;
@@ -40,7 +40,7 @@ const WonderUploadContainer = styled.div`
             display: flex;
             text-align: left;
             align-items: center;
-            padding-bottom: 1vh;
+            padding-bottom: 1dvh;
             font-size: 5.5vw;
             border-bottom: 1px solid gray;
 
@@ -52,13 +52,13 @@ const WonderUploadContainer = styled.div`
         }
         .who,
         .where {
-            margin-bottom: 1vh;
+            margin-bottom: 1dvh;
         }
     }
     .uploaded {
             overflow: hidden;
             width: 90%;
-            height: 24vh;
+            height: 24dvh;
             margin:auto;
             text-align: center;
 
@@ -72,7 +72,7 @@ const WonderUploadContainer = styled.div`
     .btn {
         /* position: absolute; */
         width: 100%;
-        height: 7.5vh;
+        height: 7.5dvh;
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -83,7 +83,7 @@ const WonderUploadContainer = styled.div`
 
         button {
             width: 40vw;
-            height: 5vh;
+            height: 5dvh;
             background: lightgray;
             border: none;
             border-radius: 2vw;

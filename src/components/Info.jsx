@@ -12,12 +12,12 @@ const InfoContainer = styled.div`
         text-align: center;
         .imgbox {
             margin: 10% auto;
-            width: 25vh;
-            height: 25vh;
+            width: 25dvh;
+            height: 25dvh;
             overflow: hidden;
             border: 3px dotted gray;
             border-radius: 50%;
-            padding: 2vh;
+            padding: 2dvh;
             box-sizing: border-box;
             img {
                 max-width: 100%;
@@ -26,7 +26,7 @@ const InfoContainer = styled.div`
         }
         .nickname {
             font-size: 8vw;
-            margin-bottom: 5vh;
+            margin-bottom: 5dvh;
         }
         .userInfo{
             width: 100%;
@@ -34,10 +34,10 @@ const InfoContainer = styled.div`
 
             div {
                 font-size: 4vw;
-                height: 6vh;
+                height: 6dvh;
                 align-items: center;
                 padding: 5vw;
-                margin-bottom: 2vh;
+                margin-bottom: 2dvh;
                 background: rgb(50,50,50);
                 box-sizing: border-box;
                 display: flex;
@@ -46,7 +46,7 @@ const InfoContainer = styled.div`
                     margin: 0 2vw;
                 }
                 &:last-child {
-                    margin-bottom: 5vh;
+                    margin-bottom: 5dvh;
                 }
             }
         }
@@ -54,8 +54,8 @@ const InfoContainer = styled.div`
         display: block;
         margin: auto;
         width: 80%;
-        height: 5vh;
-        margin-bottom: 2vh;
+        height: 5dvh;
+        margin-bottom: 2dvh;
         font-size: 4vw;
         border-radius: 5vw;
         background: lightgray;

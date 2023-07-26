@@ -12,9 +12,9 @@ const JoinContainer = styled.div`
         .logo {
         margin: auto;
         text-align: center;
-        margin-bottom: 5vh;
+        margin-bottom: 5dvh;
         img {
-            margin: 2vh 0;
+            margin: 2dvh 0;
             width: 50%;
         }
     }
@@ -32,22 +32,22 @@ const JoinContainer = styled.div`
             display: block;
         margin: auto;
         width: 80%;
-        height: 5vh;
+        height: 5dvh;
         padding: 2vw;
         box-sizing: border-box;
         outline: none;
         font-size: 5vw;
             margin-bottom: 5%;
         &:nth-child(4) {
-            margin-bottom: 10vh;
+            margin-bottom: 10dvh;
         }
     }
         button {
         display: block;
         margin: auto;
         width: 80%;
-        height: 5vh;
-        margin-bottom: 2vh;
+        height: 5dvh;
+        margin-bottom: 2dvh;
         font-size: 4vw;
         border-radius: 5vw;
             background: gray;

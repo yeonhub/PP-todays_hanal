@@ -12,15 +12,15 @@ const TodaysContainer = styled.div`
     .logo {
         margin: auto;
         text-align: center;
-        height: 10vh;
+        height: 10dvh;
         img {
-            margin: 2vh 0;
+            margin: 2dvh 0;
             width: 50%;
         }
     }
     .todaysRank {
         width: 100%;
-        height: 25vh;
+        height: 25dvh;
         .rankTitle {
             display: flex;
             margin: 1.5vw;
@@ -83,7 +83,7 @@ const TodaysContainer = styled.div`
         ul {
             display: flex;
             flex-wrap : wrap;
-            margin-bottom: 7vh;
+            margin-bottom: 7dvh;
             li {
                 position: relative;
                 overflow: hidden;

@@ -11,7 +11,7 @@ const CommentContainer = styled.div`
     position: relative;
         .back {
             width: 100%;
-            height: 7vh;
+            height: 7dvh;
             background: rgb(50,50,50);
             display: flex;
             align-items: center;
@@ -23,15 +23,15 @@ const CommentContainer = styled.div`
         }
         .comments{
             width: 100%;
-            height: 79vh;
+            height: 79dvh;
             ul {
                 padding: 3vw;
-                height: 79vh;
+                height: 79dvh;
                 overflow: auto;
                 li {
                     border-bottom: 0.3vw solid rgb(50,50,50);
-                    margin-bottom: 1vh;
-                    padding-bottom: 1vh;    
+                    margin-bottom: 1dvh;
+                    padding-bottom: 1dvh;    
                     display: flex;
                     align-items: center;
                     &:last-child{
@@ -64,10 +64,10 @@ const CommentContainer = styled.div`
             }
         .addComment{
             position: fixed;
-            bottom: 7vh;
+            bottom: 7dvh;
             left: 0;
             width: 100%;
-            height: 7vh;
+            height: 7dvh;
             background: rgb(50,50,50);
             display: flex;
             align-items: center;
@@ -86,7 +86,7 @@ const CommentContainer = styled.div`
                 align-items: center;
                 input {
                     width: 78%;
-                    height: 4.5vh;
+                    height: 4.5dvh;
                     margin-right: 3vw;
                     background: lightgray;
                     outline: none;
@@ -109,7 +109,7 @@ const CommentContainer = styled.div`
                 margin: auto;
                 border-radius: 2vw;
                 width: 40vw;
-                height: 4.5vh;
+                height: 4.5dvh;
                 font-size: 4vw;
                 background: lightgray;
                 border: none;
