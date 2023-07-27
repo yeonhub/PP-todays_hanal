@@ -8,6 +8,7 @@ import { onBg, ownerCheck } from '../store/modules/boardSlice';
 import WonderPopup from '../components/WonderPopup';
 import WonderUpload from '../components/WonderUpload';
 import { useNavigate } from 'react-router-dom';
+import useLocationHook from '../hooks/nowLocation';
 
 
 const WonderContainer = styled.div`
@@ -77,12 +78,12 @@ const WonderContainer = styled.div`
             font-size: 5.5vw;
             
             p {
-                text-align: right;
-                margin-left: auto;
+                display: flex;
+                align-items: center;
                 padding: 2vw;
                 
                 span {
-                    display: inline-block;
+                    margin-left: auto;
                 }
             
                     
@@ -176,9 +177,12 @@ const WonderContainer = styled.div`
 `
 
 const Wonder = () => {
+    const location = useSelector(state => state.acount.location);
+    const callLocationHook = useLocationHook()
     const wonderBoard = useSelector(state => state.board.wonderBoard)
     const dispatch = useDispatch()
-
+    const city = location.nowLocationCity
+    const gu = location.nowLocationGu
     // 현재 날짜 사용시
     const currentDate = new Date();
     const year = currentDate.getFullYear();
@@ -187,14 +191,21 @@ const Wonder = () => {
     const formattedDate2 = `${year}-${month}-${day}`;
     const formattedDate3 = `${month}월 ${day}일`
 
-    const [nearCity, setNearCity] = useState('인천광역시')
-    const [nearGu, setNearGu] = useState('남동구')
+    const [nearCity, setNearCity] = useState(city)
+    const [nearGu, setNearGu] = useState(gu)
 
     const [wonderList, setWonderList] = useState(wonderBoard)
 
 
     const [selectedSido, setSelectedSido] = useState('');
     const [selectedGugun, setSelectedGugun] = useState('');
+
+    const resetLocation = () => {
+        setNearCity(location.nowLocationCity)
+        setNearGu(location.nowLocationGu)
+        setSelectedSido(location.nowLocationCity)
+        setSelectedGugun(location.nowLocationGu)
+    }
 
     useEffect(() => {
         let filteredList = wonderBoard;
@@ -320,7 +331,7 @@ const Wonder = () => {
                         <span>
                             {nearCity} - {nearGu}
                         </span>
-                        <BiCurrentLocation />
+                        <BiCurrentLocation onClick={() => resetLocation()} />
                     </p>
                 </div>
 
@@ -357,7 +368,6 @@ const Wonder = () => {
                         localOnLogin === 'true' ? <button onClick={() => uploadWonder()}>궁금해요</button> : <button onClick={() => navigator('/login')}>궁금해요</button>
                     }
                 </div>
-                {/* <div className="btnBlock"></div> */}
             </div>
         </WonderContainer>
     );

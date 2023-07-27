@@ -2,13 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { AiOutlineDislike, AiOutlineLike } from 'react-icons/ai'
 import { SlLocationPin } from 'react-icons/sl'
+import { BiCurrentLocation } from 'react-icons/bi'
 import { HiCalendarDays } from 'react-icons/hi2'
 import { useDispatch, useSelector } from "react-redux";
 import { addBoard, onUploaded } from "../store/modules/boardSlice";
 import { useNavigate } from "react-router-dom";
+import useLocationHook from "../hooks/nowLocation";
+import useWeatherHook from "../hooks/nowWeather";
+import useConvertHook from "../hooks/nowConvert";
 
 
-const MyhanalContainer=styled.div` 
+const MyhanalContainer = styled.div` 
 .myhanal {
     width: 100%;
     height: 84dvh;
@@ -67,9 +71,17 @@ const MyhanalContainer=styled.div`
         .location {
             color: lightgray;
             display: flex;
+            align-items: center;
+            box-sizing: border-box;
 
             svg {
                 margin-right: 4vw;
+        
+            }
+            .locationBtn {
+                margin-right: 0;
+                margin-left: 4vw;
+                font-size: 6vw;
             }
 
             span {
@@ -164,6 +176,17 @@ const Myhanal = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const onUpload = useSelector(state => state.board.onUpload);
+    const boards = useSelector(state => state.board.board);
+    const location = useSelector(state => state.acount.location);
+    const nowWeather = useSelector(state => state.acount.weather);
+    const v1 = location.nowLatitude
+    const v2 = location.nowLongitude
+    const city = location.nowLocationCity
+    const gu = location.nowLocationGu
+    const callLocationHook = useLocationHook()
+    const callConvertHook = useConvertHook(v1, v2)
+    const callWeatherHook = useWeatherHook()
+
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -179,12 +202,9 @@ const Myhanal = () => {
         fileInputRef.current.click();
     };
 
-
-
-    // location
-    const city = `인천광역시`
-    const gu = `연수구`
-
+    const resetLocation = () => {
+        callLocationHook
+    }
     // time
     const today = new Date();
     const year = today.getFullYear();
@@ -205,8 +225,9 @@ const Myhanal = () => {
     }
 
     // weather
-    const weather = `rain`
-    const temperatures = `15`
+    console.log(nowWeather);
+    const weather = nowWeather.nowWeather
+    const temperatures = nowWeather.nowTem
 
     // seekbar
     const [authorLike, setAuthorLike] = useState(50);
@@ -227,6 +248,7 @@ const Myhanal = () => {
         dispatch(onUploaded())
     }, [onUpload]);
 
+
     return (
         <MyhanalContainer>
             <div className="myhanal">
@@ -244,7 +266,7 @@ const Myhanal = () => {
                 }
 
                 <div className="imageInfo">
-                    <div className="p location"><SlLocationPin /><span>{city} - {gu}</span> <span>{time}</span></div>
+                    <div className="p location"><SlLocationPin /><span>{city} - {gu}</span><BiCurrentLocation className="locationBtn" onClick={() => resetLocation()} /> <span>{time}</span></div>
                     <div className="p weather">{temperatures}°</div>
                     <div className="p yesterday"><HiCalendarDays />어제보다 <div><span className={yesterday ? 'hot' : ''} onClick={() => onYesterday('hot')}>더워요</span><span className={!yesterday ? 'cold' : ''} onClick={() => onYesterday('cold')}>추워요</span></div></div>
                     <div className="p lieks">

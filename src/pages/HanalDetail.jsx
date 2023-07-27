@@ -204,7 +204,6 @@ const HanalDetail = () => {
 
     useEffect(() => {
         const scrollToBoardId = boardId;
-
         if (swiperRef.current && scrollToBoardId !== null) {
             const indexToScroll = todaysSortList.findIndex(item => item.boardId === scrollToBoardId);
 
@@ -212,7 +211,7 @@ const HanalDetail = () => {
                 swiperRef.current.swiper.slideTo(indexToScroll, 0);
             }
         }
-    }, [todaysSortList]);
+    }, []);
 
     return (
         <HanalDetailContainer>

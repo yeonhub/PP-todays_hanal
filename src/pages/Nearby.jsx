@@ -3,6 +3,7 @@ import styled from "styled-components";
 import NearbyList from '../components/NearbyList';
 import { useSelector } from 'react-redux';
 import { BiCurrentLocation } from 'react-icons/bi'
+import useLocationHook from '../hooks/nowLocation';
 
 
 const NearbyContainer = styled.div`
@@ -53,12 +54,12 @@ const NearbyContainer = styled.div`
             font-size: 5.5vw;
             
             p {
-                text-align: right;
-                margin-left: auto;
+                display: flex;
+                align-items: center;
                 padding: 2vw;
                 
                 span {
-                    display: inline-block;
+                    margin-left: auto;
                 }
             
                     
@@ -91,8 +92,18 @@ const NearbyContainer = styled.div`
 `
 
 const Nearby = () => {
-    const [nearCity, setNearCity] = useState('인천광역시')
-    const [nearGu, setNearGu] = useState('남동구')
+    const location = useSelector(state => state.acount.location);
+    const nowWeather = useSelector(state => state.acount.weather);
+    const callLocationHook = useLocationHook()
+    const resetLocation = () => {
+        callLocationHook
+        setNearCity(location.nowLocationCity)
+        setNearGu(location.nowLocationGu)
+        setSelectedSido(location.nowLocationCity)
+        setSelectedGugun(location.nowLocationGu)
+    }
+    const [nearCity, setNearCity] = useState(location.nowLocationCity)
+    const [nearGu, setNearGu] = useState(location.nowLocationGu)
     const [allSelect, setAllSelect] = useState(true)
 
     const board = useSelector(state => state.board.board)
@@ -148,21 +159,22 @@ const Nearby = () => {
         setSelectedGugun(selectedGugun);
         setNearGu(selectedGugun)
     };
-
+    const weather = nowWeather.nowWeather
+    const temperatures = nowWeather.nowTem
 
 
     return (
         <NearbyContainer>
             <div className="nearby">
                 <div className="weather">
-                    <span>15°</span>
+                    <span>{temperatures}°</span>
                 </div>
                 <div className="location">
                     <p>
                         <span>
                             {nearCity} - {nearGu}
                         </span>
-                        <BiCurrentLocation />
+                        <BiCurrentLocation onClick={() => resetLocation()} />
                     </p>
                 </div>
 

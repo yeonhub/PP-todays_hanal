@@ -5,6 +5,18 @@ const initialState = {
     onJoin: false,
     currentAcount: {},
     addAcount: {},
+    location: {
+        nowLocationCity: '서울특별시',
+        nowLocationGu: '강서구',
+        nowLatitude: 0,
+        nowLongitude: 0,
+        nowX: 0,
+        nowY: 0,
+    },
+    weather: {
+        nowWeather: '',
+        nowTem: 0
+    },
     acount: [
         { acountId: 1, loginId: 'lsy', loginPw: '1234', nickname: '상쌤', treeType: '도토리나무', treeLevel: 5 },
         { acountId: 2, loginId: 'kog', loginPw: '1234', nickname: '옥찌', treeType: '사과나무', treeLevel: 1 },
@@ -73,9 +85,39 @@ export const acountSlice = createSlice({
                 localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
             }
         },
+        getLocation(state, action) {
+            const { nowLocationCity, nowLocationGu, latitude, longitude } = action.payload
+            state.location.nowLocationCity = nowLocationCity
+            state.location.nowLocationGu = nowLocationGu
+            state.location.nowLatitude = latitude
+            state.location.nowLongitude = longitude
+        },
+        getConvert(state, action) {
+            const { x, y } = action.payload
+            state.location.nowX = x
+            state.location.nowY = y
+        },
+        getWeather(state, action) {
+            const { tem, sky, pty } = action.payload
+            const nowTem = tem.fcstValue
+            const skyNo = sky.fcstValue
+            const ptyNo = pty.fcstValue
+            state.weather.nowTem = nowTem
+            if (skyNo === 1 || 3 || 4) {
+                if (skyNo === 1) {
+                    state.weather.nowWeather = 'clear'
+                } else {
+                    state.weather.nowWeather = 'cloudy'
+                }
+            } else if (ptyNo === 1 || 2 || 5 || 6) {
+                state.weather.nowWeather = 'rain'
+            } else if (ptyNo === 3 || 7) {
+                state.weather.nowWeather = 'snow'
+            }
+        }
     },
 });
 
 
-export const { login, logout, join } = acountSlice.actions
+export const { login, logout, join, getLocation, getConvert, getWeather } = acountSlice.actions
 export default acountSlice.reducer

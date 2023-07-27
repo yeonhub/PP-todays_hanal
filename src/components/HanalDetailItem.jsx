@@ -26,7 +26,7 @@ const HanalDetailItem = ({ item }) => {
     useEffect(() => {
         likesAcountId.includes(currentAcountId) ? setIsLike(true) : setIsLike(false)
     }, [changeLike])
-
+    
     useEffect(() => {
         setLikeCount(likesAcountId.length)
     }, [likesAcountId])
@@ -41,13 +41,13 @@ const HanalDetailItem = ({ item }) => {
     }, [comment]);
     let commentNickname, commentTree
     const { commentId, commentAuthorId, text, dateTime } = lastestComment
-    console.log(lastestComment);
     const commentAcount = acount.find(item => item.acountId === commentAuthorId)
     if (commentAcount) {
         commentTree = commentAcount.treeLevel
         commentNickname = commentAcount.nickname
     }
     const clickLike = () => {
+        console.log(1);
         if (localOnLogin === 'true') {
             const likeInfo = { boardId, currentAcountId }
             dispatch(onLike(likeInfo))

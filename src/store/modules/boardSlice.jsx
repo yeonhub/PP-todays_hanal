@@ -6,8 +6,6 @@ const initialState = {
     onBg: false,
     isOwner: false,
     wonderDel: false,
-    boardNo: 10,
-    wonderBoardNo: 10,
     detailBoardId: 1,
     board: [
         {
@@ -492,7 +490,13 @@ export const boardSlice = createSlice({
     reducers: {
         addBoard(state, action) {
             const { selectedImage, authorAcountId, city, gu, date, time, dateTime, weather, temperatures, yesterday, authorLike } = action.payload
-            const boardId = state.boardNo++
+            let maxBoardId = 0;
+            state.board.forEach((item) => {
+                if (item.boardId > maxBoardId) {
+                    maxBoardId = item.boardId;
+                }
+            });
+            const boardId = maxBoardId + 1;
             const newBoard =
             {
                 boardId,
@@ -536,6 +540,7 @@ export const boardSlice = createSlice({
         },
         addAnswer(state, action) {
             const { selectedImage, answerAuthorAcountId, answerDate, answerTime, answerWeather, answerYesterday, answerAuthorLike, wonderBoardId } = action.payload
+            console.log(action.payload);
             const newAnswer = {
                 selectedImage,
                 answerAuthorAcountId,
@@ -560,7 +565,14 @@ export const boardSlice = createSlice({
         },
         addWonder(state, action) {
             const { uploadDate, uploadTime, uploadDateTime, acountId, selectedGugun, selectedSido } = action.payload
-            const wonderBoardId = state.wonderBoardNo++
+
+            let maxBoardId = 0;
+            state.wonderBoard.forEach((item) => {
+                if (item.boardId > maxBoardId) {
+                    maxBoardId = item.boardId;
+                }
+            });
+            const wonderBoardId = maxBoardId + 1;
             const newWonder = {
                 wonderBoardId,
                 date: uploadDate,

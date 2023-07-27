@@ -550,7 +550,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
                                     날씨
                                 </div>
                                 <div className='right'>
-                                    {authorLike} 만큼 좋아요
+                                    {answerShowAuthorLike} 만큼 좋아요
                                 </div>
                             </div>
 
