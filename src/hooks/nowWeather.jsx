@@ -5,11 +5,13 @@ import { getWeather } from '../store/modules/acountSlice';
 
 const useWeatherHook = () => {
     const dispatch = useDispatch()
-    const { nowX, nowY } = useSelector(state => state.acount.location)
+    // const { nowX, nowY } = useSelector(state => state.acount.location)
+    const nowX = 54
+    const nowY = 124
     // console.log(nowX, nowY);
     const [weatherData, setWeatherData] = useState()
     const setWeather = async () => {
-        const KMAAPikey = ''
+        const KMAAPikey = import.meta.env.REACT_APP_KMA_API_KEY
         const now = new Date();
         let year = now.getFullYear();
         let month = now.getMonth() + 1;
@@ -18,7 +20,7 @@ const useWeatherHook = () => {
         let minutes = now.getMinutes();
         month = month < 10 ? '0' + month : month;
         day = day < 10 ? '0' + day : day;
-        hours = hours -1;
+        hours = hours - 1;
         if (hours < 0) {
             now.setDate(now.getDate() - 1);
             year = now.getFullYear();
@@ -40,7 +42,7 @@ const useWeatherHook = () => {
             const tem = weatherItem.find(item => item.category === 'T1H')
             const sky = weatherItem.find(item => item.category === 'SKY')
             const pty = weatherItem.find(item => item.category === 'PTY')
-            setWeatherData({tem, sky, pty});
+            setWeatherData({ tem, sky, pty });
         } catch (error) {
             // console.error('--- ERROR ---', error);
         }
@@ -49,7 +51,7 @@ const useWeatherHook = () => {
         setWeather();
     }, [nowX, nowY]);
     useEffect(() => {
-        if(weatherData){
+        if (weatherData) {
             dispatch(getWeather(weatherData))
         }
     }, [weatherData]);
