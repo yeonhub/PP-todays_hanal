@@ -5,13 +5,14 @@ import { getWeather } from '../store/modules/acountSlice';
 
 const useWeatherHook = () => {
     const dispatch = useDispatch()
-    // const { nowX, nowY } = useSelector(state => state.acount.location)
-    const nowX = 54
-    const nowY = 124
-    // console.log(nowX, nowY);
+    const { nowX, nowY } = useSelector(state => state.acount.location)
+    // const nowX = 54
+    // const nowY = 124
+    console.log(nowX, nowY);
     const [weatherData, setWeatherData] = useState()
     const setWeather = async () => {
-        const KMAAPikey = import.meta.env.REACT_APP_KMA_API_KEY
+        // const KMAAPikey = import.meta.env.REACT_APP_KMA_API_KEY
+        const KMAAPikey = ''
         const now = new Date();
         let year = now.getFullYear();
         let month = now.getMonth() + 1;

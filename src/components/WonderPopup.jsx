@@ -13,7 +13,7 @@ const WonderPopupContainer = styled.div`
 .popup {
     position: fixed;
     width: 90%;
-    height: 90%;
+    height: 90dvh;
     background: gray;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -81,7 +81,7 @@ const WonderPopupContainer = styled.div`
             width: 90%;
             margin: 2dvh auto;
             margin-top: 0;
-            padding: 4vw;
+            padding: 2dvh;
             height: 14.5dvh;
             box-sizing: border-box;
             background: rgb(80, 80, 80);
@@ -94,12 +94,14 @@ const WonderPopupContainer = styled.div`
                 text-align: left;
                 align-items: center;
                 padding-bottom: 1dvh;
-                font-size: 5.5vw;
+                font-size: 2.5dvh;
                 border-bottom: 1px solid gray;
-
+                box-sizing: border-box;
+                height: 4.5dvh;
+                margin-bottom: 1dvh;
                 img {
-                    width: 7vw;
-                    height: 7vw;
+                    width: 4dvh;
+                    height: 4dvh;
                     margin-right: 2vw;
                 }
 
@@ -109,10 +111,10 @@ const WonderPopupContainer = styled.div`
                     font-size: 6.5vw;
                 }
             }
-
-            .who,
-            .where {
+            .where,.when {
+                height: 2dvh;
                 margin-bottom: 1dvh;
+                font-size: 2dvh;
             }
         }
 

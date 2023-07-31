@@ -35,9 +35,9 @@ const NearbyContainer = styled.div`
         .weather {
             width: 100%;
             height: 10dvh;
-            background-image: url('images/weather/rain.gif');
             background-repeat: no-repeat;
             background-position: 0 70%;
+            background-size: cover;
             display: flex;
             align-items: end;
             span {
@@ -166,7 +166,7 @@ const Nearby = () => {
     return (
         <NearbyContainer>
             <div className="nearby">
-                <div className="weather">
+                <div className="weather" style={{ backgroundImage: `url(images/weather/${weather}.gif)` }}>
                     <span>{temperatures}°</span>
                 </div>
                 <div className="location">

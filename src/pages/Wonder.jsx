@@ -16,7 +16,7 @@ const WonderContainer = styled.div`
     width: 100%;
     margin-top: 3dvh;
     margin-bottom: 13dvh;
-    height: 84dvh;
+    height: 83.5dvh;
     .wonderBg {
     position: fixed;
     top: 0;
@@ -37,7 +37,7 @@ const WonderContainer = styled.div`
         z-index: 100;
         button {
             width: 100%;
-        height: 4.5dvh;
+        height: 5dvh;
         border: none;
         background: lightgray;
         border-radius: 2vw;

@@ -98,6 +98,7 @@ export const acountSlice = createSlice({
             state.location.nowY = y
         },
         getWeather(state, action) {
+            console.log(1);
             const { tem, sky, pty } = action.payload
             const nowTem = tem.fcstValue
             const skyNo = sky.fcstValue

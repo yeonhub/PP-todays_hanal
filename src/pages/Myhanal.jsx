@@ -15,7 +15,7 @@ import useConvertHook from "../hooks/nowConvert";
 const MyhanalContainer = styled.div` 
 .myhanal {
     width: 100%;
-    height: 84dvh;
+    height: 83.5dvh;
     position: relative;
     margin-top: 3dvh;
     margin-bottom: 13dvh;
@@ -98,9 +98,9 @@ const MyhanalContainer = styled.div`
             font-size: 5vw;
             justify-content: flex-end;
             background: none;
-            background-image: url('images/weather/rain.gif');
             background-repeat: no-repeat;
-            background-position: 0 70%;
+            background-position: 0 30%;
+            background-size: cover;
         }
 
         .yesterday {
@@ -155,10 +155,10 @@ const MyhanalContainer = styled.div`
     .uploadButton {
         position: fixed;
         width: 90%;
-        height: 4.5dvh;
+        height: 5dvh;
         border: none;
         background: lightgray;
-        bottom: 7.5dvh;
+        bottom: 8dvh;
         left: 50%;
         transform: translateX(-50%);
         border-radius: 2vw;
@@ -267,7 +267,9 @@ const Myhanal = () => {
 
                 <div className="imageInfo">
                     <div className="p location"><SlLocationPin /><span>{city} - {gu}</span><BiCurrentLocation className="locationBtn" onClick={() => resetLocation()} /> <span>{time}</span></div>
-                    <div className="p weather">{temperatures}°</div>
+                    <div className="p weather" style={{ backgroundImage: `url(images/weather/${weather}.gif)` }}>
+                        {temperatures}°
+                    </div>
                     <div className="p yesterday"><HiCalendarDays />어제보다 <div><span className={yesterday ? 'hot' : ''} onClick={() => onYesterday('hot')}>더워요</span><span className={!yesterday ? 'cold' : ''} onClick={() => onYesterday('cold')}>추워요</span></div></div>
                     <div className="p lieks">
                         <AiOutlineDislike />

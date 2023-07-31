@@ -9,6 +9,8 @@ import { MdOutlineToday } from 'react-icons/md'
 const TodaysContainer = styled.div`
 .todays {
     width: 100%;
+    height: 93dvh;
+    overflow: auto;
     .logo {
         margin: auto;
         text-align: center;
