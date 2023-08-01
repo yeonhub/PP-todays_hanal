@@ -19,6 +19,7 @@ const WonderContainer = styled.div`
     margin-top: 3dvh;
     margin-bottom: 13dvh;
     height: 83.5dvh;
+    overflow: auto;
     .wonderBg {
     position: fixed;
     top: 0;
@@ -224,11 +225,12 @@ const Wonder = () => {
         let filteredList = wonderBoard;
         if (nearCity != '시/도 선택') {
             filteredList = filteredList.filter(item => item.loactionCity === nearCity).sort((a, b) => b.dateTime - a.dateTime);
+            setWonderList(filteredList.sort((a, b) => b.dateTime - a.dateTime))
         }
         if (nearGu !== '구/군') {
             filteredList = filteredList.filter(item => item.loactionGu === nearGu);
+            setWonderList(filteredList.sort((a, b) => b.dateTime - a.dateTime))
         }
-        setWonderList(filteredList.sort((a, b) => b.dateTime - a.dateTime))
     }, [selectedSido, selectedGugun, wonderBoard])
 
     const area = [

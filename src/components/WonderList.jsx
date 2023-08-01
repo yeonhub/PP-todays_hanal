@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 const WonderList = ({ item, onWonder, acountId }) => {
     const { authorAcountId, loactionCity, loactionGu, images } = item
     const navigate = useNavigate()
-
     let localOnLogin = localStorage.getItem('localOnLogin')
     const onLogin = useSelector(state => state.acount.onLogin)
 

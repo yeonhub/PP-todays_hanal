@@ -117,11 +117,12 @@ const Nearby = () => {
         let filteredList = board;
         if (nearCity != '시/도 선택') {
             filteredList = filteredList.filter(item => item.loactionCity === nearCity);
+            setNearList(filteredList.sort((a, b) => b.dateTime - a.dateTime));
         }
         if (nearGu !== '구/군') {
             filteredList = filteredList.filter(item => item.loactionGu === nearGu);
+            setNearList(filteredList.sort((a, b) => b.dateTime - a.dateTime));
         }
-        setNearList(filteredList.sort((a, b) => b.dateTime - a.dateTime));
     }, [selectedSido, selectedGugun])
 
     const area = [

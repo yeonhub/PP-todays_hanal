@@ -18,10 +18,12 @@ const initialState = {
         nowTem: 0
     },
     acount: [
-        { acountId: 1, loginId: 'lsy', loginPw: '1234', nickname: '상쌤', treeType: '도토리나무', treeLevel: 5 },
-        { acountId: 2, loginId: 'kog', loginPw: '1234', nickname: '옥찌', treeType: '사과나무', treeLevel: 1 },
-        { acountId: 3, loginId: 'lmk', loginPw: '1234', nickname: '명돌', treeType: '도토리나무', treeLevel: 3 },
-        { acountId: 4, loginId: 'khj', loginPw: '1234', nickname: '하입보이', treeType: '배나무', treeLevel: 2 },
+        { acountId: 1, loginId: 'lsy', loginPw: '123', nickname: '상쌤', treeType: '도토리나무', treeLevel: 5 },
+        { acountId: 2, loginId: 'kog', loginPw: '123', nickname: '옥찌', treeType: '사과나무', treeLevel: 1 },
+        { acountId: 3, loginId: 'lmk', loginPw: '123', nickname: '명돌', treeType: '도토리나무', treeLevel: 3 },
+        { acountId: 4, loginId: 'khj', loginPw: '123', nickname: '하입보이', treeType: '배나무', treeLevel: 2 },
+        { acountId: 5, loginId: 'kye', loginPw: '123', nickname: '0=2', treeType: '은행나무', treeLevel: 2 },
+        { acountId: 6, loginId: 'lwc', loginPw: '123', nickname: '원추링', treeType: '소나무', treeLevel: 4 },
     ]
 }
 

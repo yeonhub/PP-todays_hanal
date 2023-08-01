@@ -134,8 +134,9 @@ const Todays = () => {
     const day = String(currentDate.getDate()).padStart(2, '0');
     const formattedDate2 = `${year}-${month}-${day}`;
     const formattedDate3 = `${month}월 ${day}일`
-
-    const formattedDate = '2023-07-17'
+    
+    const formattedDate = `${year}-${month}-${day}`;
+    // const formattedDate = '2023-07-17'
     const todaysList = board.filter(item => item.date === formattedDate)
 
     const todaysTopThreeList = todaysList.sort((a, b) => b.likesAcountId.length - a.likesAcountId.length).slice(0, 3)

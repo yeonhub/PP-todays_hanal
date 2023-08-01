@@ -41,7 +41,7 @@ const WonderPopupContainer = styled.div`
             width: 78vw;
             height: 15dvh;
             background: lightgray;
-            border-radius: 10vw;
+            border-radius: 5vw;
             text-align: center;
             display: none;
             transition: 0.5s;
@@ -71,7 +71,7 @@ const WonderPopupContainer = styled.div`
                     font-weight: 600;
 
                     &:first-child {
-                        background: orangered;
+                        background: orange;
                     }
                 }
             }
@@ -257,12 +257,13 @@ const WonderPopupContainer = styled.div`
             .answered {
                 background: rgb(80, 80, 80);
                 width: 100%;
-                padding: 4vw;
+                padding: 1.5dvh;
                 box-sizing: border-box;
                 font-size: 4.5vw;
                 text-align: right;
                 border-radius: 1.5vw;
                 height: 62dvh;
+                overflow: auto;
 
                 .who {
                     display: flex;
@@ -387,6 +388,55 @@ const WonderPopupContainer = styled.div`
             }
         }
     }
+    .wonderAnswerPopBg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 200;
+  
+        .alert {
+            position: absolute;
+            top: 40%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            width: 78vw;
+            height: 15dvh;
+            background: lightgray;
+            border-radius: 5vw;
+            text-align: center;
+   
+            transition: 0.5s;
+
+            span {
+                display: block;
+                margin-top: 3dvh;
+                color: black;
+                font-size: 5.5vw;
+                font-weight: 600;
+            }
+
+            p {
+                margin-top: 2dvh;
+                display: flex;
+                justify-content: space-around;
+
+                button {
+                    padding: 2vw;
+                    box-sizing: border-box;
+                    width: 28vw;
+                    height: 4dvh;
+                    border: none;
+                    border-radius: 1vw;
+                    background: tan;
+                    font-size: 4vw;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
 }
 
 `
@@ -410,6 +460,16 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const fileInputRef = useRef(null);
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [locationDone, setLocationDone] = useState(true)
+    const [alertBg, setAlertBg] = useState(false)
+
+    useEffect(() => {
+        if (gu === '조회 실패') {
+            setLocationDone(false)
+        } else {
+            setLocationDone(true)
+        }
+    }, [location])
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -490,7 +550,13 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const answerAuthorLike = authorLike
 
     const onUploadAnswer = () => {
-        if (!selectedImage || loactionCity !== city) return
+        if (!locationDone) {
+            setAlertBg(true)
+            return
+        }
+        if (!selectedImage || loactionCity !== city) {
+            return
+        }
         dispatch(addAnswer({ selectedImage, answerAuthorAcountId, answerDate, answerTime, answerWeather, answerYesterday, answerAuthorLike, wonderBoardId }))
     }
     const wonderBoard = useSelector(state => state.board.wonderBoard)
@@ -529,7 +595,15 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
                 </div>
                 <div className="inner">
                     <div className="request">
-                        <p className='who'><img src={`./images/trees/tree${wonderTreeLevel}.png`} alt={wonderNickname} />{wonderNickname} {ownerCheck ? <span className='delete' onClick={() => onDel()}><TiDeleteOutline /></span> : null} </p>
+                        <p className='who'>
+                            <img src={`./images/trees/tree${wonderTreeLevel}.png`} alt={wonderNickname} />
+                            {wonderNickname}
+                            {ownerCheck && !currentAnswers
+                                ?
+                                <span className='delete' onClick={() => onDel()}><TiDeleteOutline /></span>
+                                : null
+                            }
+                        </p>
                         <p className='where'><SlLocationPin /> {loactionCity} - {loactionGu}</p>
                         <p className='when'>{date} | {time}</p>
                     </div>
@@ -615,8 +689,17 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
                         }
                     </div>
                 </div>
+                <div className="wonderAnswerPopBg" style={{ display: alertBg ? 'block' : 'none' }}>
+                    <div className="alert" style={{ display: alertBg ? 'block' : 'none' }}>
+                        <span>
+                            현재 위치와 궁금해요의 <br /> 위치가 같아야 가능합니다.
+                        </span>
+                        <p>
+                            <button onClick={() => setAlertBg(false)}>확인</button>
+                        </p>
+                    </div>
+                </div>
             </div>
-
         </WonderPopupContainer >
     );
 };

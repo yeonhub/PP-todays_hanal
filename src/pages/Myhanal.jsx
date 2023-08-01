@@ -165,6 +165,55 @@ const MyhanalContainer = styled.div`
         font-size: 4.5vw;
         font-weight: 700;
     }
+    .myhanalPopBg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 200;
+        /* display: none; */
+        .alert {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 78vw;
+            height: 15dvh;
+            background: lightgray;
+            border-radius: 5vw;
+            text-align: center;
+            /* display: none; */
+            transition: 0.5s;
+
+            span {
+                display: block;
+                margin-top: 3dvh;
+                color: black;
+                font-size: 5.5vw;
+                font-weight: 600;
+            }
+
+            p {
+                margin-top: 2dvh;
+                display: flex;
+                justify-content: space-around;
+
+                button {
+                    padding: 2vw;
+                    box-sizing: border-box;
+                    width: 28vw;
+                    height: 4dvh;
+                    border: none;
+                    border-radius: 1vw;
+                    background: tan;
+                    font-size: 4vw;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
 }
 
 `;
@@ -186,6 +235,16 @@ const Myhanal = () => {
     const callLocationHook = useLocationHook()
     const callConvertHook = useConvertHook(v1, v2)
     const callWeatherHook = useWeatherHook()
+    const [locationDone, setLocationDone] = useState(true)
+    const [bg, setBg] = useState(false)
+
+    useEffect(() => {
+        if (gu === '조회 실패') {
+            setLocationDone(false)
+        } else {
+            setLocationDone(true)
+        }
+    }, [location])
 
 
     const handleImageChange = (e) => {
@@ -241,7 +300,13 @@ const Myhanal = () => {
     const authorAcountId = JSON.parse(localCurrentAcount).acountId
 
     const onUploadBoard = () => {
-        if (!selectedImage || gu === '조회 실패') return
+        if (!locationDone) {
+            setBg(true)
+            return
+        }
+        if (!selectedImage || gu === '조회 실패') {
+            return
+        }
         dispatch(addBoard({ selectedImage, authorAcountId, city, gu, date, time, dateTime, weather, temperatures, yesterday, authorLike }))
     }
 
@@ -286,6 +351,16 @@ const Myhanal = () => {
                         <AiOutlineLike />
                     </div>
                     <button className="uploadButton" onClick={() => onUploadBoard()}>업로드</button>
+                </div>
+                <div className="myhanalPopBg"  style={{ display: bg ? 'block' : 'none' }}>
+                    <div className="alert"  style={{ display: bg ? 'block' : 'none' }}>
+                        <span>
+                            현재 위치 정보를 <br /> 불러올 수 없습니다.
+                        </span>
+                        <p>
+                            <button onClick={()=>setBg(false)}>확인</button>
+                        </p>
+                    </div>
                 </div>
             </div>
         </MyhanalContainer>
