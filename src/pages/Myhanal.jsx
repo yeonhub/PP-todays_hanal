@@ -203,7 +203,9 @@ const Myhanal = () => {
     };
 
     const resetLocation = () => {
-        callLocationHook
+        // const newCallLocationHook = useLocationHook()
+        // const newCallConvertHook = useConvertHook(v1, v2)
+        // const newCallWeatherHook = useWeatherHook()
     }
     // time
     const today = new Date();
@@ -239,7 +241,7 @@ const Myhanal = () => {
     const authorAcountId = JSON.parse(localCurrentAcount).acountId
 
     const onUploadBoard = () => {
-        if (!selectedImage) return
+        if (!selectedImage || gu === '조회 실패') return
         dispatch(addBoard({ selectedImage, authorAcountId, city, gu, date, time, dateTime, weather, temperatures, yesterday, authorLike }))
     }
 

@@ -5,7 +5,7 @@ import { getLocation } from "../store/modules/acountSlice";
 
 const useLocationHook = () => {
     const dispatch = useDispatch()
-    const [address, setAddress] = useState('');
+    // const [address, setAddress] = useState('');
     const [location, setLocation] = useState({
         latitude: 0,
         longitude: 0,
@@ -40,6 +40,8 @@ const useLocationHook = () => {
     const error = (err) => {
         setLocation({
             ...location,
+            nowLocationCity: '현재위치',
+            nowLocationGu: '조회 실패',
             error: '현재위치를 가져올 수 없습니다.',
         });
     };
@@ -68,6 +70,8 @@ const useLocationHook = () => {
         } catch (error) {
             setLocation({
                 ...location,
+                nowLocationCity: '현재위치',
+                nowLocationGu: '조회 실패',
                 error: 'kakao API 호출 실패',
             });
         }

@@ -37,7 +37,7 @@ const useWeatherHook = () => {
         const dataType = 'JSON';
         try {
             const response = await axios.get(
-                `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst?serviceKey=${KMAAPikey}&pageNo=1&numOfRows=1000&dataType=${dataType}&base_date=${baseDate}&base_time=${baseTime}&nx=${nowX}&ny=${nowY}`
+                `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst?serviceKey=${KMAAPikey}&pageNo=1&numOfRows=1000&dataType=${dataType}&base_date=${baseDate}&base_time=${baseTime}&nx=${nowX}&ny=${nowY}`
             );
             const weatherItem = response.data.response.body.items.item
             const tem = weatherItem.find(item => item.category === 'T1H')

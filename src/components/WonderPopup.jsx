@@ -8,6 +8,9 @@ import { TiDeleteOutline } from 'react-icons/ti'
 import { useDispatch, useSelector } from 'react-redux';
 import { addAnswer, offOnAnswer, offWonderDel, onWonderDel } from '../store/modules/boardSlice';
 import { useNavigate } from 'react-router-dom';
+import useLocationHook from '../hooks/nowLocation';
+import useConvertHook from '../hooks/nowConvert';
+import useWeatherHook from '../hooks/nowWeather';
 
 const WonderPopupContainer = styled.div`
 .popup {
@@ -390,6 +393,15 @@ const WonderPopupContainer = styled.div`
 
 
 const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
+    const location = useSelector(state => state.acount.location);
+    const nowWeather = useSelector(state => state.acount.weather);
+    const v1 = location.nowLatitude
+    const v2 = location.nowLongitude
+    const city = location.nowLocationCity
+    const gu = location.nowLocationGu
+    const callLocationHook = useLocationHook()
+    const callConvertHook = useConvertHook(v1, v2)
+    const callWeatherHook = useWeatherHook()
     const acount = useSelector(state => state.acount.acount)
     const { wonderBoardId, date, time, dateTime, authorAcountId, loactionCity, loactionGu, images, answers } = currentItem
     const wonderNickname = acount.find((item) => item.acountId === authorAcountId).nickname;
@@ -478,7 +490,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const answerAuthorLike = authorLike
 
     const onUploadAnswer = () => {
-        if (!selectedImage) return
+        if (!selectedImage || loactionCity !== city) return
         dispatch(addAnswer({ selectedImage, answerAuthorAcountId, answerDate, answerTime, answerWeather, answerYesterday, answerAuthorLike, wonderBoardId }))
     }
     const wonderBoard = useSelector(state => state.board.wonderBoard)

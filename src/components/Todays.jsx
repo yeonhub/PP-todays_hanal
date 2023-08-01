@@ -9,7 +9,6 @@ import { MdOutlineToday } from 'react-icons/md'
 const TodaysContainer = styled.div`
 .todays {
     width: 100%;
-    height: 93dvh;
     overflow: auto;
     .logo {
         margin: auto;
@@ -18,6 +17,7 @@ const TodaysContainer = styled.div`
         img {
             margin: 2dvh 0;
             width: 50%;
+            height: 6dvh;
         }
     }
     .todaysRank {

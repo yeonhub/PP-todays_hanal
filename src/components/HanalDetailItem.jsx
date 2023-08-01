@@ -6,7 +6,8 @@ import { onLike } from '../store/modules/boardSlice';
 import { useNavigate } from 'react-router-dom';
 
 const HanalDetailItem = ({ item }) => {
-    const { boardId, date, images, time, authorLike, authorAcountId, loactionCity, loactionGu, yesterday, likesAcountId, temperatures, comment } = item
+    console.log(item);
+    const { boardId, date, images, time, authorLike, authorAcountId, loactionCity, loactionGu, yesterday, likesAcountId, temperatures, comment, weather } = item
     const acount = useSelector(state => state.acount.acount)
     const authorAcount = acount.find(item => item.acountId === authorAcountId)
     const authorNickname = authorAcount.nickname
@@ -26,7 +27,7 @@ const HanalDetailItem = ({ item }) => {
     useEffect(() => {
         likesAcountId.includes(currentAcountId) ? setIsLike(true) : setIsLike(false)
     }, [changeLike])
-    
+
     useEffect(() => {
         setLikeCount(likesAcountId.length)
     }, [likesAcountId])
@@ -80,7 +81,7 @@ const HanalDetailItem = ({ item }) => {
                     {date} | {time}
                 </div>
             </div>
-            <div className="weather">
+            <div className="weather" style={{ backgroundImage: `url(images/weather/${weather}.gif)` }}>
                 <span>
                     {temperatures}°
                 </span>

@@ -112,13 +112,11 @@ margin-bottom: 7dvh;
                 display: flex;
                 font-size: 5vw;
                 justify-content: flex-end;
-                background: none;
-                background-image: url('images/weather/rain.gif');
                 background-repeat: no-repeat;
-                background-position: 0 70%;
+                background-position: 0 35%;
+                background-size: cover;
                 height: 5dvh;
                 align-items: center;
-
                 span {
                     margin-right: 3vw;
                 }

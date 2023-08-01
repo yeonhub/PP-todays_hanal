@@ -9,6 +9,8 @@ import WonderPopup from '../components/WonderPopup';
 import WonderUpload from '../components/WonderUpload';
 import { useNavigate } from 'react-router-dom';
 import useLocationHook from '../hooks/nowLocation';
+import useConvertHook from '../hooks/nowConvert';
+import useWeatherHook from '../hooks/nowWeather';
 
 
 const WonderContainer = styled.div`
@@ -178,11 +180,22 @@ const WonderContainer = styled.div`
 
 const Wonder = () => {
     const location = useSelector(state => state.acount.location);
-    const callLocationHook = useLocationHook()
-    const wonderBoard = useSelector(state => state.board.wonderBoard)
-    const dispatch = useDispatch()
+    const nowWeather = useSelector(state => state.acount.weather);
+    const v1 = location.nowLatitude
+    const v2 = location.nowLongitude
     const city = location.nowLocationCity
     const gu = location.nowLocationGu
+    const callLocationHook = useLocationHook()
+    const callConvertHook = useConvertHook(v1, v2)
+    const callWeatherHook = useWeatherHook()
+    const wonderBoard = useSelector(state => state.board.wonderBoard)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        setNearCity(city)
+        setNearGu(gu)
+    }, [])
+
     // 현재 날짜 사용시
     const currentDate = new Date();
     const year = currentDate.getFullYear();
