@@ -263,11 +263,6 @@ const Myhanal = () => {
         fileInputRef.current.click();
     };
 
-    const resetLocation = () => {
-        // const newCallLocationHook = useLocationHook()
-        // const newCallConvertHook = useConvertHook(v1, v2)
-        // const newCallWeatherHook = useWeatherHook()
-    }
     // time
     const today = new Date();
     const year = today.getFullYear();

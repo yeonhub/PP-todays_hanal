@@ -195,7 +195,9 @@ const Wonder = () => {
     useEffect(() => {
         setNearCity(city)
         setNearGu(gu)
-    }, [])
+        setSelectedSido(location.nowLocationCity)
+        setSelectedGugun(location.nowLocationGu)
+    }, [location])
 
     // 현재 날짜 사용시
     const currentDate = new Date();

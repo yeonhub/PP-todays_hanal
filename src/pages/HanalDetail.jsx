@@ -214,7 +214,6 @@ const HanalDetail = () => {
 
     // toplist
     const todaysTopThreeList = todaysList.sort((a, b) => b.likesAcountId.length - a.likesAcountId.length).slice(0, 3)
-    console.log(todaysTopThreeList);
 
     useEffect(() => {
         if (detailType === 'todays') {

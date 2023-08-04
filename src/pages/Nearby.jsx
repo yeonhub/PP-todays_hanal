@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BiCurrentLocation } from 'react-icons/bi'
 import useLocationHook from '../hooks/nowLocation';
 import { setNearLocation } from '../store/modules/boardSlice';
+import useConvertHook from '../hooks/nowConvert';
+import useWeatherHook from '../hooks/nowWeather';
 
 
 const NearbyContainer = styled.div`
@@ -96,14 +98,19 @@ const Nearby = () => {
     const dispatch = useDispatch()
     const location = useSelector(state => state.acount.location);
     const nowWeather = useSelector(state => state.acount.weather);
+    const v1 = location.nowLatitude
+    const v2 = location.nowLongitude
     const callLocationHook = useLocationHook()
-    const resetLocation = () => {
-        callLocationHook
+    const callConvertHook = useConvertHook(v1, v2)
+    const callWeatherHook = useWeatherHook()
+
+    useEffect(() => {
         setNearCity(location.nowLocationCity)
         setNearGu(location.nowLocationGu)
         setSelectedSido(location.nowLocationCity)
         setSelectedGugun(location.nowLocationGu)
-    }
+    }, [location])
+
     const [nearCity, setNearCity] = useState(location.nowLocationCity)
     const [nearGu, setNearGu] = useState(location.nowLocationGu)
     const [allSelect, setAllSelect] = useState(true)
