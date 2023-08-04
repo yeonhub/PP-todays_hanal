@@ -117,10 +117,13 @@ export const acountSlice = createSlice({
             } else if (ptyNo === 3 || 7) {
                 state.weather.nowWeather = 'snow'
             }
+        },
+        offJoin(state, action) {
+            state.onJoin = false
         }
     },
 });
 
 
-export const { login, logout, join, getLocation, getConvert, getWeather } = acountSlice.actions
+export const { login, logout, join, getLocation, getConvert, getWeather, offJoin } = acountSlice.actions
 export default acountSlice.reducer

@@ -238,6 +238,8 @@ const Myhanal = () => {
     const [locationDone, setLocationDone] = useState(true)
     const [bg, setBg] = useState(false)
 
+
+
     useEffect(() => {
         if (gu === '조회 실패') {
             setLocationDone(false)

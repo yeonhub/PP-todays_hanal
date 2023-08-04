@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from "styled-components";
 import HanalDetailItem from '../components/HanalDetailItem';
 import { useSelector } from 'react-redux';
@@ -185,9 +185,14 @@ margin-bottom: 7dvh;
 `
 
 const HanalDetail = () => {
+    const detailType = useSelector(state => state.board.detailType)
     const board = useSelector(state => state.board.board)
     const boardId = useSelector(state => state.board.detailBoardId)
     const swiperRef = useRef(null);
+
+    const nearlyCity = useSelector(state => state.board.nearCity)
+    const nearlyGu = useSelector(state => state.board.nearGu)
+
 
     const currentDate = new Date();
     const year = currentDate.getFullYear();
@@ -195,19 +200,46 @@ const HanalDetail = () => {
     const day = String(currentDate.getDate()).padStart(2, '0');
     const formattedDate2 = `${year}-${month}-${day}`;
     const formattedDate3 = `${month}월 ${day}일`
-    
-    const formattedDate = `${year}-${month}-${day}`;
-    // const formattedDate = '2023-07-17'
+
+    // const formattedDate = `${year}-${month}-${day}`;
+    const formattedDate = '2023-08-01'
+
+    // todays
     const todaysList = board.filter(item => item.date === formattedDate)
     const todaysSortList = todaysList.sort((a, b) => b.dateTime - a.dateTime);
 
-    useEffect(() => {
-        const scrollToBoardId = boardId;
-        if (swiperRef.current && scrollToBoardId !== null) {
-            const indexToScroll = todaysSortList.findIndex(item => item.boardId === scrollToBoardId);
+    // nearly
+    const nearlyList = board.filter(item => item.loactionCity === nearlyCity || item.loactionGu === nearlyGu)
+    const nearlySortList = nearlyList.sort((a, b) => b.dateTime - a.dateTime);
 
-            if (indexToScroll !== -1) {
-                swiperRef.current.swiper.slideTo(indexToScroll, 0);
+    // toplist
+    const todaysTopThreeList = todaysList.sort((a, b) => b.likesAcountId.length - a.likesAcountId.length).slice(0, 3)
+    console.log(todaysTopThreeList);
+
+    useEffect(() => {
+        if (detailType === 'todays') {
+            const scrollToBoardId = boardId;
+            if (swiperRef.current && scrollToBoardId !== null) {
+                const indexToScroll = todaysSortList.findIndex(item => item.boardId === scrollToBoardId);
+                if (indexToScroll !== -1) {
+                    swiperRef.current.swiper.slideTo(indexToScroll, 0);
+                }
+            }
+        } else if (detailType === 'nearly') {
+            const scrollToBoardId = boardId;
+            if (swiperRef.current && scrollToBoardId !== null) {
+                const indexToScroll = nearlySortList.findIndex(item => item.boardId === scrollToBoardId);
+                if (indexToScroll !== -1) {
+                    swiperRef.current.swiper.slideTo(indexToScroll, 0);
+                }
+            }
+        } else if (detailType === 'toplist') {
+            const scrollToBoardId = boardId;
+            if (swiperRef.current && scrollToBoardId !== null) {
+                const indexToScroll = todaysTopThreeList.findIndex(item => item.boardId === scrollToBoardId);
+                if (indexToScroll !== -1) {
+                    swiperRef.current.swiper.slideTo(indexToScroll, 0);
+                }
             }
         }
     }, []);
@@ -220,13 +252,20 @@ const HanalDetail = () => {
                 modules={[Pagination]}
                 className="mySwiper"
             >
-                {
-                    todaysSortList.map(item =>
-                        <SwiperSlide key={item.boardId}>
-                            <div className="inner">
-                                <HanalDetailItem item={item} />
-                            </div>
-                        </SwiperSlide>)
+
+                {(`${detailType}` === 'todays'
+                    ? todaysSortList
+                    : `${detailType}` === 'nearly'
+                        ? nearlySortList
+                        : `${detailType}` === 'toplist'
+                            ? todaysTopThreeList
+                            : []
+                ).map(item =>
+                    <SwiperSlide key={item.boardId}>
+                        <div className="inner">
+                            <HanalDetailItem item={item} />
+                        </div>
+                    </SwiperSlide>)
                 }
 
             </Swiper>

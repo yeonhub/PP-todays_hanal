@@ -2,15 +2,16 @@ import React from 'react';
 import { SlLocationPin } from 'react-icons/sl'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { onDetail } from '../store/modules/boardSlice';
+import { onDetail, setDetail } from '../store/modules/boardSlice';
 
 const TodaysList = ({ item }) => {
     const { boardId, date, authorAcountId, loactionCity, loactionGu, likesAcountId, images } = item
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const goDetail = () => {
-        navigate('/hanaldetail')
+        dispatch(setDetail('todays'))
         dispatch(onDetail(boardId))
+        navigate('/hanaldetail')
     }
     return (
         <li onClick={() => goDetail()}>

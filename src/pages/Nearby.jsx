@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import NearbyList from '../components/NearbyList';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BiCurrentLocation } from 'react-icons/bi'
 import useLocationHook from '../hooks/nowLocation';
+import { setNearLocation } from '../store/modules/boardSlice';
 
 
 const NearbyContainer = styled.div`
@@ -92,6 +93,7 @@ const NearbyContainer = styled.div`
 `
 
 const Nearby = () => {
+    const dispatch = useDispatch()
     const location = useSelector(state => state.acount.location);
     const nowWeather = useSelector(state => state.acount.weather);
     const callLocationHook = useLocationHook()
@@ -112,6 +114,14 @@ const Nearby = () => {
 
     const [selectedSido, setSelectedSido] = useState('');
     const [selectedGugun, setSelectedGugun] = useState('');
+
+    useEffect(() => {
+        const locationCity = nearCity
+        const locationGu = nearGu
+        const nearLocation = { locationCity, locationGu }
+        dispatch(setNearLocation(nearLocation))
+    }, [nearCity])
+
 
     useEffect(() => {
         let filteredList = board;
@@ -163,6 +173,8 @@ const Nearby = () => {
     const weather = nowWeather.nowWeather
     const temperatures = nowWeather.nowTem
 
+    const nearlyCity = useSelector(state => state.board.nearCity)
+    const nearlyGu = useSelector(state => state.board.nearGu)
 
     return (
         <NearbyContainer>

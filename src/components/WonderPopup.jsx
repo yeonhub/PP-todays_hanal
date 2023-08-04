@@ -460,14 +460,14 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const fileInputRef = useRef(null);
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [locationDone, setLocationDone] = useState(true)
+    const [sameLocation, setSameLocation] = useState(false)
     const [alertBg, setAlertBg] = useState(false)
 
     useEffect(() => {
-        if (gu === '조회 실패') {
-            setLocationDone(false)
+        if (gu === loactionGu) {
+            setSameLocation(true)
         } else {
-            setLocationDone(true)
+            setLocationDone(false)
         }
     }, [location])
 
@@ -550,7 +550,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const answerAuthorLike = authorLike
 
     const onUploadAnswer = () => {
-        if (!locationDone) {
+        if (!sameLocation) {
             setAlertBg(true)
             return
         }

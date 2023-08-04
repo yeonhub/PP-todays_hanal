@@ -95,7 +95,7 @@ const Join = () => {
         } else if (!nickname) {
             alert('닉네임을 입력하세요');
             return;
-        } else if (loginPw === !loginPwCheck) {
+        } else if (loginPw !== loginPwCheck) {
             alert('비밀번호가 동일하지 않습니다')
             return;
         } else {
@@ -104,7 +104,7 @@ const Join = () => {
     }
     useEffect(() => {
         if (acount.onJoin) {
-            navigate('/info');
+            navigate('/');
         }
     }, [acount.onJoin, navigate]);
 

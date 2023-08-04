@@ -7,6 +7,9 @@ const initialState = {
     isOwner: false,
     wonderDel: false,
     detailBoardId: 1,
+    detailType: 'todays',
+    nearCity: '서울특별시',
+    nearGu: '강서구',
     board: [
         {
             boardId: 1,
@@ -521,6 +524,36 @@ const initialState = {
             loactionGu: '연수구',
             images: './images/icons/wonder.png'
         },
+        {
+            wonderBoardId: 11,
+            date: '2023-08-01',
+            time: '14시 11분',
+            dateTime: 20230801141122,
+            authorAcountId: 2,
+            loactionCity: '서울특별시',
+            loactionGu: '광진구',
+            images: './images/icons/wonder.png'
+        },
+        {
+            wonderBoardId: 12,
+            date: '2023-08-01',
+            time: '14시 22분',
+            dateTime: 20230801142222,
+            authorAcountId: 2,
+            loactionCity: '서울특별시',
+            loactionGu: '광진구',
+            images: './images/icons/wonder.png'
+        },
+        {
+            wonderBoardId: 13,
+            date: '2023-08-01',
+            time: '14시 55분',
+            dateTime: 20230801145522,
+            authorAcountId: 1,
+            loactionCity: '서울특별시',
+            loactionGu: '송파구',
+            images: './images/icons/wonder.png'
+        },
     ]
 }
 
@@ -654,9 +687,17 @@ export const boardSlice = createSlice({
                 dateTime: commentDateTime
             }
             currentBoard.comment.push(newComment)
+        },
+        setDetail(state, action) {
+            state.detailType = action.payload
+        },
+        setNearLocation(state, action) {
+            const { locationCity, locationGu } = action.payload;
+            state.nearCity = locationCity;
+            state.nearGu = locationGu;
         }
     },
 });
 
-export const { addBoard, onUploaded, onBg, ownerCheck, onWonderDel, offWonderDel, addAnswer, offOnAnswer, addWonder, onDetail, onLike, addComment } = boardSlice.actions
+export const { addBoard, onUploaded, onBg, ownerCheck, onWonderDel, offWonderDel, addAnswer, offOnAnswer, addWonder, onDetail, onLike, addComment, setDetail, setNearLocation } = boardSlice.actions
 export default boardSlice.reducer
