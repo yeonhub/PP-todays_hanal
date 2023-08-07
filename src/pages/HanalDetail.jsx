@@ -117,6 +117,7 @@ margin-bottom: 7dvh;
                 background-size: cover;
                 height: 5dvh;
                 align-items: center;
+
                 span {
                     margin-right: 3vw;
                 }
@@ -142,7 +143,7 @@ margin-bottom: 7dvh;
                 font-size: 4vw;
                 padding: 0.5dvh;
                 box-sizing: border-box;
-                margin:  0.5dvh 3vw;
+                margin: 0.5dvh 3vw;
                 box-sizing: border-box;
 
                 .comment {
@@ -205,15 +206,17 @@ const HanalDetail = () => {
     const formattedDate = '2023-08-01'
 
     // todays
+    // todays
     const todaysList = board.filter(item => item.date === formattedDate)
-    const todaysSortList = todaysList.sort((a, b) => b.dateTime - a.dateTime);
+    const todaysSortList = todaysList.slice().sort((a, b) => b.dateTime - a.dateTime);
+
 
     // nearly
     const nearlyList = board.filter(item => item.loactionCity === nearlyCity || item.loactionGu === nearlyGu)
     const nearlySortList = nearlyList.sort((a, b) => b.dateTime - a.dateTime);
 
     // toplist
-    const todaysTopThreeList = todaysList.sort((a, b) => b.likesAcountId.length - a.likesAcountId.length).slice(0, 3)
+    const todaysTopThreeList = todaysList.slice().sort((a, b) => b.likesAcountId.length - a.likesAcountId.length).slice(0, 3)
 
     useEffect(() => {
         if (detailType === 'todays') {

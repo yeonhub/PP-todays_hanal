@@ -584,8 +584,10 @@ export const boardSlice = createSlice({
                 yesterday,
                 authorLike,
                 images: selectedImage,
-                likesAcountId: []
+                likesAcountId: [],
+                comment : []
             }
+            console.log(newBoard);
             state.board.push(newBoard)
             state.onUpload = true
         },
@@ -662,6 +664,7 @@ export const boardSlice = createSlice({
         },
         onLike(state, action) {
             const { boardId, currentAcountId } = action.payload
+            console.log(action.payload);
             const currentBoard = state.board.find(item => item.boardId === boardId)
             if (currentBoard) {
                 const isLiked = currentBoard.likesAcountId.includes(currentAcountId)
@@ -679,9 +682,14 @@ export const boardSlice = createSlice({
         addComment(state, action) {
             const { acountId, text, commentDateTime, currentBoardId } = action.payload
             const currentBoard = state.board.find(item => item.boardId === currentBoardId)
-            console.log(action.payload);
+            let no
+            if(currentBoard.comment){
+                no = currentBoard.comment.length + 1
+            } else {
+                no = 1
+            }
             const newComment = {
-                commentId: currentBoard.comment.length + 1,
+                commentId: no,
                 commentAuthorId: acountId,
                 text,
                 dateTime: commentDateTime

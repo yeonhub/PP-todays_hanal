@@ -5,31 +5,36 @@ import styled from "styled-components";
 import { join } from '../store/modules/acountSlice';
 
 const JoinContainer = styled.div`
-    .join {
-        width: 100%;
-        padding: 10%;
-        box-sizing: border-box;
-        .logo {
+.join {
+    width: 100%;
+    padding: 10%;
+    box-sizing: border-box;
+
+    .logo {
         margin: auto;
         text-align: center;
         margin-bottom: 5dvh;
+
         img {
             margin: 2dvh 0;
             width: 50%;
         }
     }
-        h3 {
-            font-size: 14vw;
-            margin-bottom: 10%;
-        }
-        p {
-            line-height: 6vw;
-            text-align:center;
-            font-size: 4vw;
-            margin-bottom: 5%;
-        }
-        input {
-            display: block;
+
+    h3 {
+        font-size: 14vw;
+        margin-bottom: 10%;
+    }
+
+    p {
+        line-height: 6vw;
+        text-align: center;
+        font-size: 4vw;
+        margin-bottom: 5%;
+    }
+
+    input {
+        display: block;
         margin: auto;
         width: 80%;
         height: 5dvh;
@@ -37,12 +42,14 @@ const JoinContainer = styled.div`
         box-sizing: border-box;
         outline: none;
         font-size: 5vw;
-            margin-bottom: 5%;
+        margin-bottom: 5%;
+
         &:nth-child(4) {
             margin-bottom: 10dvh;
         }
     }
-        button {
+
+    button {
         display: block;
         margin: auto;
         width: 80%;
@@ -50,13 +57,14 @@ const JoinContainer = styled.div`
         margin-bottom: 2dvh;
         font-size: 4vw;
         border-radius: 5vw;
-            background: gray;
-            font-weight: 700;
+        background: gray;
+        font-weight: 700;
+
         &:last-child {
             background: tan;
         }
-      }
     }
+}
 `
 
 const Join = () => {

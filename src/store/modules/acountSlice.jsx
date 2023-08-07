@@ -100,22 +100,19 @@ export const acountSlice = createSlice({
             state.location.nowY = y
         },
         getWeather(state, action) {
-            console.log(1);
             const { tem, sky, pty } = action.payload
             const nowTem = tem.fcstValue
             const skyNo = sky.fcstValue
             const ptyNo = pty.fcstValue
             state.weather.nowTem = nowTem
-            if (skyNo === 1 || 3 || 4) {
-                if (skyNo === 1) {
-                    state.weather.nowWeather = 'clear'
-                } else {
+            if (skyNo === '1') {
+                state.weather.nowWeather = 'clear'
+            } else {
+                if (ptyNo === '0') {
                     state.weather.nowWeather = 'cloudy'
+                } else {
+                    state.weather.nowWeather = 'rain'
                 }
-            } else if (ptyNo === 1 || 2 || 5 || 6) {
-                state.weather.nowWeather = 'rain'
-            } else if (ptyNo === 3 || 7) {
-                state.weather.nowWeather = 'snow'
             }
         },
         offJoin(state, action) {

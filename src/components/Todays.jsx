@@ -13,163 +13,198 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { offJoin } from '../store/modules/acountSlice';
 
 const TodaysContainer = styled.div`
-.howtouse{
+.howtouse {
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    z-index: 10000;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: tan;
+    }
+
+    .logo {
         position: absolute;
-        width: 100%;
-        height: 100dvh;
-        z-index: 10000;
-        .swiper-button-prev, .swiper-button-next{
-            color : tan;
-        }
-        .logo{
-            position: absolute;
-            width: 80vw;
-            z-index: 1000;
-            text-align: center;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 10%;
-            img {
-                width: 40vw;
-                margin-bottom: 5dvh;
-            }
-            p{
-                margin-bottom: 2dvh;
-            }
+        width: 80vw;
+        z-index: 1000;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10%;
+
+        img {
+            width: 40vw;
+            margin-bottom: 5dvh;
         }
 
-        .swiper-slide{
-            box-sizing: border-box;
-            width: 100vw;
-            height: 93dvh;
-            background: rgba(20,20,20,0.9);
-
-            &:nth-child(1) {
-                .line {
-                    left: 10%;
-                }
-            }
-            &:nth-child(2) {
-                .line {
-                    left: 30%;
-                }
-            }
-            &:nth-child(3) {
-                .line {
-                    left: 50%;
-                }
-            }
-            &:nth-child(4) {
-                .line {
-                    left: 70%;
-                }
-            }
-            &:nth-child(5) {
-                .line {
-                    left: 90%;
-                }
-            }
-            .info{
-                position: absolute;
-                bottom: 22dvh;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 90%;
-                p {
-                    font-size: 4vw;
-                    line-height: 5vw;
-                }
-                
-            }
-            .line {
-                position: absolute;
-                bottom: 0;
-                margin-top: 2dvh;
-                height: 20dvh;
-                border-left: 0.5vw solid white;
-            }
+        p {
+            margin-bottom: 2dvh;
         }
     }
+
+    .swiper-slide {
+        box-sizing: border-box;
+        width: 100vw;
+        height: 93dvh;
+        background: rgba(20, 20, 20, 0.9);
+
+        &:nth-child(1) {
+            .line {
+                left: 10%;
+            }
+        }
+
+        &:nth-child(2) {
+            .line {
+                left: 30%;
+            }
+        }
+
+        &:nth-child(3) {
+            .line {
+                left: 50%;
+            }
+        }
+
+        &:nth-child(4) {
+            .line {
+                left: 70%;
+            }
+        }
+
+        &:nth-child(5) {
+            .line {
+                left: 90%;
+            }
+        }
+
+        .info {
+            position: absolute;
+            bottom: 20dvh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            border: 1px solid white;
+            padding: 3vw;
+            box-sizing: border-box;
+            border-radius: 2vw;
+
+            p {
+                font-size: 4vw;
+                line-height: 5.5vw;
+            }
+
+        }
+
+        .line {
+            position: absolute;
+            bottom: 0;
+            margin-top: 2dvh;
+            height: 20dvh;
+            border-left: 0.5vw solid white;
+        }
+    }
+}
+
 .todays {
 
     width: 100%;
     overflow: auto;
+
     .logo {
         margin: auto;
         text-align: center;
         height: 10vh;
+
         img {
             margin: 2vh 0;
             width: 50%;
             height: 6vh;
         }
     }
+
     .todaysRank {
         width: 100%;
         margin-bottom: 1vh;
         padding-bottom: 1vh;
+
         .rankTitle {
             display: flex;
             margin: 1.5vw;
             align-items: center;
+
             svg {
                 font-size: 6vw;
                 margin-right: 2vw;
             }
+
             h3 {
                 font-size: 5vw;
             }
         }
+
         ul {
             display: flex;
             justify-content: space-between;
             margin-bottom: 8vw;
+
             li {
                 overflow: hidden;
                 width: 33vw;
                 position: relative;
+
                 img {
-            
+
                     width: 33vw;
                     height: 33vw;
                 }
+
                 span {
                     margin-left: 1vw;
                     font-size: 3vw;
                 }
+
                 &:before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 0;
-                height: 0;
-                border-bottom: 6vw solid transparent;
-                border-left: 6vw solid tomato;    
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 0;
+                    height: 0;
+                    border-bottom: 6vw solid transparent;
+                    border-left: 6vw solid tomato;
                 }
             }
         }
     }
+
     .todaysList {
         width: 100%;
+
         .todaysTitle {
             display: flex;
             margin: 1.5vw;
+
             svg {
                 font-size: 6vw;
                 margin-right: 2vw;
             }
+
             h3 {
                 font-size: 5vw;
             }
+
             span {
-               margin-left: auto;
+                margin-left: auto;
             }
         }
+
         ul {
             display: flex;
-            flex-wrap : wrap;
+            flex-wrap: wrap;
             margin-bottom: 7vh;
+
             li {
                 position: relative;
                 overflow: hidden;
@@ -177,14 +212,17 @@ const TodaysContainer = styled.div`
                 height: 33vw;
                 margin-right: 0.5vw;
                 margin-bottom: 0.5vw;
-                &:nth-child(3n){
+
+                &:nth-child(3n) {
                     margin: 0;
                 }
+
                 img {
-                    
+
                     width: 33vw;
                     height: 33vw;
                 }
+
                 .loaction {
                     display: flex;
                     position: absolute;
@@ -192,6 +230,7 @@ const TodaysContainer = styled.div`
                     bottom: 5%;
                     left: 3%;
                     font-size: 3vw;
+
                     .loactionCityGu {
                         span {
                             margin-left: 1vw;
@@ -203,7 +242,6 @@ const TodaysContainer = styled.div`
             }
         }
     }
-
 }
 `
 

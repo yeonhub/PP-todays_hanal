@@ -7,65 +7,72 @@ import { useSelector } from 'react-redux';
 import { AiOutlineSmile } from 'react-icons/ai'
 
 const LoginContainer = styled.div`
-  .login {
+.login {
     width: 100%;
     padding: 10%;
-        box-sizing: border-box;
+    box-sizing: border-box;
+
     .logo {
         margin: auto;
         text-align: center;
         margin-bottom: 5dvh;
+
         img {
             margin: 2dvh 0;
             width: 50%;
         }
     }
+
     p {
 
-            line-height: 6vw;
-            text-align:center;
-            font-size: 4vw;
-            margin-bottom: 5%;
-     
-    }
-    form {
-      label {
-        display: block;
+        line-height: 6vw;
         text-align: center;
-      }
-      input {
-        display: block;
-        margin: auto;
-        width: 80%;
-        height: 5dvh;
-        margin-bottom: 2dvh;
-        padding: 2vw;
-        box-sizing: border-box;
-        outline: none;
-        font-size: 5vw;
-        &:nth-child(2) {
-            margin-bottom: 10dvh;
-        }
-    }
-    button {
-        display: block;
-        margin: auto;
-        width: 80%;
-        height: 5dvh;
-        margin-bottom: 2dvh;
         font-size: 4vw;
-        border-radius: 5vw;
-        font-weight: 700;
+        margin-bottom: 5%;
+
+    }
+
+    form {
+        label {
+            display: block;
+            text-align: center;
+        }
+
+        input {
+            display: block;
+            margin: auto;
+            width: 80%;
+            height: 5dvh;
+            margin-bottom: 2dvh;
+            padding: 2vw;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 5vw;
+
+            &:nth-child(2) {
+                margin-bottom: 10dvh;
+            }
+        }
+
+        button {
+            display: block;
+            margin: auto;
+            width: 80%;
+            height: 5dvh;
+            margin-bottom: 2dvh;
+            font-size: 4vw;
+            border-radius: 5vw;
+            font-weight: 700;
 
 
             background: gray;
 
-        &:last-child {
-            background: tan;
+            &:last-child {
+                background: tan;
+            }
         }
-      }
     }
-  }
+}
 `;
 
 const Login = () => {

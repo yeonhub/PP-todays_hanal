@@ -6,7 +6,7 @@ import { BiLocationPlus, BiUser, BiLogInCircle, BiHome, BiUpload } from 'react-i
 import { BsChatSquareQuote } from 'react-icons/bs'
 
 const FooterContainer = styled.div`
-  .footer {
+.footer {
     z-index: 1000;
     border-top: 0.1dvh solid gray;
     width: 100%;
@@ -15,28 +15,31 @@ const FooterContainer = styled.div`
     bottom: 0;
     left: 0;
     box-sizing: border-box;
-    ul {
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      background: black;
-      li {
-        width: 20%;
-        height: 7dvh;
-        text-align: center;
-        align-items: center;
-        line-height: 7dvh;
-        a {
-          width: 100%;
-          height: 100%;
-          color: white;
-          text-decoration: none;;
-          font-size: 6vw;
-        }
-      }
-    }
-  }
 
+    ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        background: black;
+
+        li {
+            width: 20%;
+            height: 7dvh;
+            text-align: center;
+            align-items: center;
+            line-height: 7dvh;
+
+            a {
+                width: 100%;
+                height: 100%;
+                color: white;
+                text-decoration: none;
+                ;
+                font-size: 6vw;
+            }
+        }
+    }
+}
   `
 
 

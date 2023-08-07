@@ -8,7 +8,6 @@ const useWeatherHook = () => {
     const { nowX, nowY } = useSelector(state => state.acount.location)
     // const nowX = 54
     // const nowY = 124
-    console.log(nowX, nowY);
     const [weatherData, setWeatherData] = useState()
     const setWeather = async () => {
         // const KMAAPikey = import.meta.env.REACT_APP_KMA_API_KEY
@@ -44,6 +43,10 @@ const useWeatherHook = () => {
             const sky = weatherItem.find(item => item.category === 'SKY')
             const pty = weatherItem.find(item => item.category === 'PTY')
             setWeatherData({ tem, sky, pty });
+            if (weatherData) {
+                console.log(weatherData);
+            }
+            console.log(weatherData);
         } catch (error) {
             // console.error('--- ERROR ---', error);
         }

@@ -14,10 +14,12 @@ const NearbyContainer = styled.div`
     width: 100%;
     height: 93dvh;
     margin-bottom: 7dvh;
-    .nearlyList{
-    ul {
+
+    .nearlyList {
+        ul {
             display: flex;
-            flex-wrap : wrap;
+            flex-wrap: wrap;
+
             li {
                 position: relative;
                 overflow: hidden;
@@ -25,9 +27,11 @@ const NearbyContainer = styled.div`
                 height: 33vw;
                 margin-right: 0.5vw;
                 margin-bottom: 0.5vw;
-                &:nth-child(3n){
+
+                &:nth-child(3n) {
                     margin: 0;
                 }
+
                 img {
                     width: 33vw;
                     height: 33vw;
@@ -35,62 +39,67 @@ const NearbyContainer = styled.div`
             }
         }
     }
-        .weather {
-            width: 100%;
-            height: 10dvh;
-            background-repeat: no-repeat;
-            background-position: 0 70%;
-            background-size: cover;
-            display: flex;
-            align-items: end;
-            span {
-                margin: 3vw;
-                margin-left: auto;
-                font-size: 8vw;
-            }
-        }
-        .location {
-            width: 100%;
-            box-sizing: border-box;
-            height: 6dvh;
-            padding: 1vw;
-            font-size: 5.5vw;
-            
-            p {
-                display: flex;
-                align-items: center;
-                padding: 2vw;
-                
-                span {
-                    margin-left: auto;
-                }
-            
-                    
-                        svg {
-                            margin-left: 2vw;
-                        font-size: 7vw;
-                    
-                        }
-                }
-            }
-        }
-    .selectList {
-        text-align: right;
-        margin-bottom: 2dvh;
-        select {
-            border-radius: 2vw;
-            border: none;
-            background: lightgray;
-            padding: 1vw;
-            box-sizing: border-box;
-            width: 27vw;
-            font-size: 4vw;
-            margin: 1vw;
-            outline: none;
-            margin-right: 3vw;
 
+    .weather {
+        width: 100%;
+        height: 10dvh;
+        background-repeat: no-repeat;
+        background-position: 0 70%;
+        background-size: cover;
+        display: flex;
+        align-items: end;
+
+        span {
+            margin: 3vw;
+            margin-left: auto;
+            font-size: 8vw;
         }
     }
+
+    .location {
+        width: 100%;
+        box-sizing: border-box;
+        height: 6dvh;
+        padding: 1vw;
+        font-size: 5.5vw;
+
+        p {
+            display: flex;
+            align-items: center;
+            padding: 2vw;
+
+            span {
+                margin-left: auto;
+            }
+
+
+            svg {
+                margin-left: 2vw;
+                font-size: 7vw;
+
+            }
+        }
+    }
+}
+
+.selectList {
+    text-align: right;
+    margin-bottom: 2dvh;
+
+    select {
+        border-radius: 2vw;
+        border: none;
+        background: lightgray;
+        padding: 1vw;
+        box-sizing: border-box;
+        width: 27vw;
+        font-size: 4vw;
+        margin: 1vw;
+        outline: none;
+        margin-right: 3vw;
+
+    }
+}
 
 `
 

@@ -14,17 +14,19 @@ const WonderUploadContainer = styled.div`
     left: 50%;
     top: 46.5%;
     border-radius: 2vw;
+
     .wonderPopBg {
-            position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.9); 
-    z-index: 200;
-    display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 200;
+        display: none;
 
     }
+
     .request {
         width: 90%;
         margin: 2dvh auto;
@@ -50,25 +52,28 @@ const WonderUploadContainer = styled.div`
                 margin-right: 2vw;
             }
         }
+
         .who,
         .where {
             margin-bottom: 1dvh;
         }
     }
-    .uploaded {
-            overflow: hidden;
-            width: 90%;
-            height: 24dvh;
-            margin:auto;
-            text-align: center;
 
-            img {
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
-                transform: scale(1.6);
-            }
+    .uploaded {
+        overflow: hidden;
+        width: 90%;
+        height: 24dvh;
+        margin: auto;
+        text-align: center;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transform: scale(1.6);
+        }
     }
+
     .btn {
         /* position: absolute; */
         width: 100%;
@@ -79,7 +84,7 @@ const WonderUploadContainer = styled.div`
         background: rgb(80, 80, 80);
         border-bottom-left-radius: 2vw;
         border-bottom-right-radius: 2vw;
-        
+
 
         button {
             width: 40vw;
@@ -89,7 +94,8 @@ const WonderUploadContainer = styled.div`
             border-radius: 2vw;
             font-size: 3.5vw;
             font-weight: 700;
-            &.goList{
+
+            &.goList {
                 width: 70vw;
             }
         }

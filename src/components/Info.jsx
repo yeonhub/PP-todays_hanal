@@ -5,52 +5,59 @@ import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import { logout } from '../store/modules/acountSlice';
 const InfoContainer = styled.div`
-    .info {
-        width: 100%;
-        padding: 10%;
-        box-sizing: border-box;
-        text-align: center;
-        .imgbox {
-            margin: 10% auto;
-            width: 25dvh;
-            height: 25dvh;
-            overflow: hidden;
-            border: 3px dotted gray;
-            border-radius: 50%;
-            padding: 2dvh;
-            box-sizing: border-box;
-            img {
-                max-width: 100%;
-                max-height: 100%;
-            }
-        }
-        .nickname {
-            font-size: 8vw;
-            margin-bottom: 5dvh;
-        }
-        .userInfo{
-            width: 100%;
-            text-align: right;
+.info {
+    width: 100%;
+    padding: 10%;
+    box-sizing: border-box;
+    text-align: center;
 
-            div {
-                font-size: 4vw;
-                height: 6dvh;
-                align-items: center;
-                padding: 5vw;
-                margin-bottom: 2dvh;
-                background: rgb(50,50,50);
-                box-sizing: border-box;
-                display: flex;
-                justify-content: space-between;
-                span {
-                    margin: 0 2vw;
-                }
-                &:last-child {
-                    margin-bottom: 5dvh;
-                }
+    .imgbox {
+        margin: 10% auto;
+        width: 25dvh;
+        height: 25dvh;
+        overflow: hidden;
+        border: 3px dotted gray;
+        border-radius: 50%;
+        padding: 2dvh;
+        box-sizing: border-box;
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    .nickname {
+        font-size: 8vw;
+        margin-bottom: 5dvh;
+    }
+
+    .userInfo {
+        width: 100%;
+        text-align: right;
+
+        div {
+            font-size: 4vw;
+            height: 6dvh;
+            align-items: center;
+            padding: 5vw;
+            margin-bottom: 2dvh;
+            background: rgb(50, 50, 50);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                margin: 0 2vw;
+            }
+
+            &:last-child {
+                margin-bottom: 5dvh;
             }
         }
-        button {
+    }
+
+    button {
         display: block;
         margin: auto;
         width: 80%;

@@ -6,7 +6,7 @@ import { onLike } from '../store/modules/boardSlice';
 import { useNavigate } from 'react-router-dom';
 
 const HanalDetailItem = ({ item }) => {
-    const { boardId, date, images, time, authorLike, authorAcountId, loactionCity, loactionGu, yesterday, likesAcountId, temperatures, comment, weather } = item
+    const { boardId, date, images, time, authorLike, authorAcountId, loactionCity, loactionGu, yesterday, likesAcountId, temperatures, comment, weather, } = item
     const acount = useSelector(state => state.acount.acount)
     const authorAcount = acount.find(item => item.acountId === authorAcountId)
     const authorNickname = authorAcount.nickname
@@ -47,7 +47,6 @@ const HanalDetailItem = ({ item }) => {
         commentNickname = commentAcount.nickname
     }
     const clickLike = () => {
-        console.log(1);
         if (localOnLogin === 'true') {
             const likeInfo = { boardId, currentAcountId }
             dispatch(onLike(likeInfo))

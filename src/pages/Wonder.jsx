@@ -20,17 +20,18 @@ const WonderContainer = styled.div`
     margin-bottom: 13dvh;
     height: 83.5dvh;
     overflow: auto;
+
     .wonderBg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100dvh;
-    background-color: rgba(0, 0, 0, 0.9); 
-    z-index: 200;
-    display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 200;
+        display: block;
     }
-  
+
     .wonderUpload {
         width: 90%;
         position: fixed;
@@ -38,16 +39,18 @@ const WonderContainer = styled.div`
         bottom: 8dvh;
         transform: translateX(-50%);
         z-index: 100;
+
         button {
             width: 100%;
-        height: 5dvh;
-        border: none;
-        background: lightgray;
-        border-radius: 2vw;
-        font-size: 4.5vw;
-        font-weight: 700;
+            height: 5dvh;
+            border: none;
+            background: lightgray;
+            border-radius: 2vw;
+            font-size: 4.5vw;
+            font-weight: 700;
         }
     }
+
     .myWnderBtn {
         width: 90%;
         margin: 0 auto;
@@ -57,11 +60,11 @@ const WonderContainer = styled.div`
         padding: 4vw;
         box-sizing: border-box;
         height: 7dvh;
-        background: rgb(50,50,50);
+        background: rgb(50, 50, 50);
         border-radius: 2vw;
         margin-bottom: 1dvh;
         justify-content: space-around;
-        
+
         span {
             font-weight: 700;
             border: none;
@@ -73,33 +76,36 @@ const WonderContainer = styled.div`
             color: black;
         }
     }
+
     .location {
-            width: 100%;
-            box-sizing: border-box;
-            height: 6dvh;
-            padding: 1vw;
-            font-size: 5.5vw;
-            
-            p {
-                display: flex;
-                align-items: center;
-                padding: 2vw;
-                
-                span {
-                    margin-left: auto;
-                }
-            
-                    
-                        svg {
-                            margin-left: 2vw;
-                        font-size: 7vw;
-                    
-                        }
+        width: 100%;
+        box-sizing: border-box;
+        height: 6dvh;
+        padding: 1vw;
+        font-size: 5.5vw;
+
+        p {
+            display: flex;
+            align-items: center;
+            padding: 2vw;
+
+            span {
+                margin-left: auto;
             }
+
+
+            svg {
+                margin-left: 2vw;
+                font-size: 7vw;
+
+            }
+        }
     }
+
     .selectList {
         text-align: right;
         margin-bottom: 2dvh;
+
         select {
             border-radius: 2vw;
             border: none;
@@ -114,25 +120,32 @@ const WonderContainer = styled.div`
 
         }
     }
+
     .wonderList {
         width: 100%;
+
         .wonderTitle {
             display: flex;
             margin: 1.5vw;
+
             svg {
                 font-size: 6vw;
                 margin-right: 2vw;
             }
+
             h3 {
                 font-size: 5vw;
             }
+
             span {
-               margin-left: auto;
+                margin-left: auto;
             }
         }
+
         ul {
             display: flex;
-            flex-wrap : wrap;
+            flex-wrap: wrap;
+
             li {
                 position: relative;
                 overflow: hidden;
@@ -140,10 +153,13 @@ const WonderContainer = styled.div`
                 height: 33vw;
                 margin-right: 0.5vw;
                 margin-bottom: 0.5vw;
-                &:nth-child(3n){
+
+                &:nth-child(3n) {
                     margin: 0;
                 }
-                background: rgb(40,40,40);
+
+                background: rgb(40, 40, 40);
+
                 img {
                     position: absolute;
                     top: 40%;
@@ -152,6 +168,7 @@ const WonderContainer = styled.div`
                     width: 40vw;
                     height: 40vw;
                 }
+
                 .loaction {
                     display: flex;
                     position: absolute;
@@ -159,6 +176,7 @@ const WonderContainer = styled.div`
                     bottom: 5%;
                     left: 3%;
                     font-size: 3vw;
+
                     .loactionCityGu {
                         span {
                             margin-left: 1vw;
@@ -170,6 +188,7 @@ const WonderContainer = styled.div`
             }
         }
     }
+
     .btnBlock {
         display: block;
         width: 100%;

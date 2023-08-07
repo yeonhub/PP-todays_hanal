@@ -8,69 +8,42 @@ import { BiCommentAdd } from 'react-icons/bi'
 import { addComment, onDetail } from '../store/modules/boardSlice';
 
 const CommentContainer = styled.div`
-    position: relative;
-        .back {
-            width: 100%;
-            height: 7dvh;
-            background: rgb(50,50,50);
+position: relative;
+
+.back {
+    width: 100%;
+    height: 7dvh;
+    background: rgb(50, 50, 50);
+    display: flex;
+    align-items: center;
+
+    svg {
+        margin-left: auto;
+        margin-right: 4vw;
+        font-size: 7vw;
+    }
+}
+
+.comments {
+    width: 100%;
+    height: 79dvh;
+
+    ul {
+        padding: 3vw;
+        height: 79dvh;
+        overflow: auto;
+
+        li {
+            border-bottom: 0.3vw solid rgb(50, 50, 50);
+            margin-bottom: 1dvh;
+            padding-bottom: 1dvh;
             display: flex;
             align-items: center;
-            svg {
-                margin-left: auto;
-                margin-right: 4vw;
-                font-size: 7vw;
+
+            &:last-child {
+                border: none;
             }
-        }
-        .comments{
-            width: 100%;
-            height: 79dvh;
-            ul {
-                padding: 3vw;
-                height: 79dvh;
-                overflow: auto;
-                li {
-                    border-bottom: 0.3vw solid rgb(50,50,50);
-                    margin-bottom: 1dvh;
-                    padding-bottom: 1dvh;    
-                    display: flex;
-                    align-items: center;
-                    &:last-child{
-                        border: none;
-                    }    
-                        img {
-                        width: 9vw;
-                        height: 9vw;
-                        border: 1px dotted gray;
-                        border-radius: 50%;
-                        box-sizing: border-box;
-                        padding: 0.5vw;
-                        display: inline-block;
-                        margin-right: 4vw;
-                        }
-                        .nickname {
-                            display: inline-block;
-                            font-weight: 600;
-                            font-size: 4vw;
-                        }
-                    }
-                    
-                    .text{
-                        width: 55vw;
-                        margin-left: 10vw;
-                        word-wrap: break-word;
-                        white-space: pre-wrap;
-                    }
-                }
-            }
-        .addComment{
-            position: fixed;
-            bottom: 7dvh;
-            left: 0;
-            width: 100%;
-            height: 7dvh;
-            background: rgb(50,50,50);
-            display: flex;
-            align-items: center;
+
             img {
                 width: 9vw;
                 height: 9vw;
@@ -78,44 +51,86 @@ const CommentContainer = styled.div`
                 border-radius: 50%;
                 box-sizing: border-box;
                 padding: 0.5vw;
-                margin: 0 4vw;
+                display: inline-block;
+                margin-right: 4vw;
             }
-            form {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                input {
-                    width: 78%;
-                    height: 4.5dvh;
-                    margin-right: 3vw;
-                    background: lightgray;
-                    outline: none;
-                    border-radius: 2vw;
-                    border: none;
-                    font-size: 4.5vw;
-                    padding-left: 2vw;
-                    box-sizing: border-box;
-                }
-                button {
-                    background: none;
-                    border: none;
-                    svg {
-                        color:  white;
-                        font-size: 8vw;
-                    }
-                }
-            }
-            .loginBtn {
-                margin: auto;
-                border-radius: 2vw;
-                width: 40vw;
-                height: 4.5dvh;
-                font-size: 4vw;
-                background: lightgray;
-                border: none;
+
+            .nickname {
+                display: inline-block;
                 font-weight: 600;
+                font-size: 4vw;
             }
         }
+
+        .text {
+            width: 55vw;
+            margin-left: 10vw;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+    }
+}
+
+.addComment {
+    position: fixed;
+    bottom: 7dvh;
+    left: 0;
+    width: 100%;
+    height: 7dvh;
+    background: rgb(50, 50, 50);
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 9vw;
+        height: 9vw;
+        border: 1px dotted gray;
+        border-radius: 50%;
+        box-sizing: border-box;
+        padding: 0.5vw;
+        margin: 0 4vw;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        input {
+            width: 78%;
+            height: 4.5dvh;
+            margin-right: 3vw;
+            background: lightgray;
+            outline: none;
+            border-radius: 2vw;
+            border: none;
+            font-size: 4.5vw;
+            padding-left: 2vw;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: none;
+            border: none;
+
+            svg {
+                color: white;
+                font-size: 8vw;
+            }
+        }
+    }
+
+    .loginBtn {
+        margin: auto;
+        border-radius: 2vw;
+        width: 40vw;
+        height: 4.5dvh;
+        font-size: 4vw;
+        background: lightgray;
+        border: none;
+        font-weight: 600;
+    }
+}
 `
 
 const HanalComment = () => {
@@ -183,7 +198,7 @@ const HanalComment = () => {
                         </>
                         :
                         <>
-                            <button className='loginBtn' onClick={()=>navigate('/login')}>로그인하기</button>
+                            <button className='loginBtn' onClick={() => navigate('/login')}>로그인하기</button>
                         </>
                 }
             </div>

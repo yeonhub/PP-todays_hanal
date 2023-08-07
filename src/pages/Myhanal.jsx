@@ -76,8 +76,9 @@ const MyhanalContainer = styled.div`
 
             svg {
                 margin-right: 4vw;
-        
+
             }
+
             .locationBtn {
                 margin-right: 0;
                 margin-left: 4vw;
@@ -165,6 +166,7 @@ const MyhanalContainer = styled.div`
         font-size: 4.5vw;
         font-weight: 700;
     }
+
     .myhanalPopBg {
         position: fixed;
         top: 0;
@@ -173,6 +175,7 @@ const MyhanalContainer = styled.div`
         height: 100dvh;
         background-color: rgba(0, 0, 0, 0.9);
         z-index: 200;
+
         /* display: none; */
         .alert {
             position: absolute;
@@ -215,7 +218,6 @@ const MyhanalContainer = styled.div`
         }
     }
 }
-
 `;
 
 
@@ -268,12 +270,20 @@ const Myhanal = () => {
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
-    const date = `${year}-${month}-${day}`;
+    // const date = `${year}-${month}-${day}`;
+
+    // test date
+    // test date
+    const date = '2023-08-01'
+    // test date
+    // test date
+
     const seconds = String(today.getSeconds()).padStart(2, '0');
     const hours = ('0' + today.getHours()).slice(-2);
     const minutes = ('0' + today.getMinutes()).slice(-2);
     const time = `${hours}시 ${minutes}분`;
-    const dateTime = year + month + day + hours + minutes + seconds
+    // const dateTime = year + month + day + hours + minutes + seconds
+    const dateTime = '20230801' + hours + minutes + seconds
 
     // yesterday
     const [yesterday, setYesterday] = useState(true)
@@ -283,7 +293,6 @@ const Myhanal = () => {
     }
 
     // weather
-    console.log(nowWeather);
     const weather = nowWeather.nowWeather
     const temperatures = nowWeather.nowTem
 
@@ -349,13 +358,13 @@ const Myhanal = () => {
                     </div>
                     <button className="uploadButton" onClick={() => onUploadBoard()}>업로드</button>
                 </div>
-                <div className="myhanalPopBg"  style={{ display: bg ? 'block' : 'none' }}>
-                    <div className="alert"  style={{ display: bg ? 'block' : 'none' }}>
+                <div className="myhanalPopBg" style={{ display: bg ? 'block' : 'none' }}>
+                    <div className="alert" style={{ display: bg ? 'block' : 'none' }}>
                         <span>
                             현재 위치 정보를 <br /> 불러올 수 없습니다.
                         </span>
                         <p>
-                            <button onClick={()=>setBg(false)}>확인</button>
+                            <button onClick={() => setBg(false)}>확인</button>
                         </p>
                     </div>
                 </div>

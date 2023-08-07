@@ -77,9 +77,11 @@ const WonderPopupContainer = styled.div`
             }
         }
     }
+
     .inner {
         margin-top: 2dvh;
         height: 88dvh;
+
         .request {
             width: 90%;
             margin: 2dvh auto;
@@ -102,6 +104,7 @@ const WonderPopupContainer = styled.div`
                 box-sizing: border-box;
                 height: 4.5dvh;
                 margin-bottom: 1dvh;
+
                 img {
                     width: 4dvh;
                     height: 4dvh;
@@ -114,7 +117,9 @@ const WonderPopupContainer = styled.div`
                     font-size: 6.5vw;
                 }
             }
-            .where,.when {
+
+            .where,
+            .when {
                 height: 2dvh;
                 margin-bottom: 1dvh;
                 font-size: 2dvh;
@@ -388,6 +393,7 @@ const WonderPopupContainer = styled.div`
             }
         }
     }
+
     .wonderAnswerPopBg {
         position: fixed;
         top: 0;
@@ -396,7 +402,7 @@ const WonderPopupContainer = styled.div`
         height: 100dvh;
         background-color: rgba(0, 0, 0, 0.9);
         z-index: 200;
-  
+
         .alert {
             position: absolute;
             top: 40%;
@@ -407,7 +413,7 @@ const WonderPopupContainer = styled.div`
             background: lightgray;
             border-radius: 5vw;
             text-align: center;
-   
+
             transition: 0.5s;
 
             span {
@@ -467,7 +473,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         if (gu === loactionGu) {
             setSameLocation(true)
         } else {
-            setLocationDone(false)
+            setSameLocation(false)
         }
     }, [location])
 
