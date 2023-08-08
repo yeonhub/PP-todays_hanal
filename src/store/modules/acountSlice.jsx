@@ -36,7 +36,6 @@ export const acountSlice = createSlice({
             const accountRight = state.acount.find(
                 (item) => item.loginId === loginId && item.loginPw === loginPw
             );
-
             if (accountRight) {
                 state.currentAcount = accountRight;
                 state.onLogin = true
@@ -58,10 +57,8 @@ export const acountSlice = createSlice({
         },
         join(state, action) {
             const { loginId, loginPw, nickname } = action.payload;
-
             const isExistingId = state.acount.some((item) => item.loginId === loginId);
             const isExistingNickname = state.acount.some((item) => item.nickname === nickname);
-
             if (isExistingId) {
                 alert('이미 존재하는 아이디입니다.');
                 return;
@@ -120,7 +117,6 @@ export const acountSlice = createSlice({
         }
     },
 });
-
 
 export const { login, logout, join, getLocation, getConvert, getWeather, offJoin } = acountSlice.actions
 export default acountSlice.reducer

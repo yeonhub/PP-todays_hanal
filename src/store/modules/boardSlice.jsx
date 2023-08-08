@@ -73,13 +73,7 @@ const initialState = {
                 { commentId: 2, commentAuthorId: 5, text: 'ㅎㅇ', dateTime: 20230721103000 },
                 { commentId: 3, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
                 { commentId: 4, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
-                { commentId: 5, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
-                { commentId: 6, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
-                { commentId: 7, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
-                { commentId: 8, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
-                { commentId: 9, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
-                { commentId: 10, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
-                { commentId: 11, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 },
+                { commentId: 5, commentAuthorId: 4, text: '왜 반말?', dateTime: 20230721113000 }
             ]
         },
         {
@@ -587,7 +581,6 @@ export const boardSlice = createSlice({
                 likesAcountId: [],
                 comment : []
             }
-            console.log(newBoard);
             state.board.push(newBoard)
             state.onUpload = true
         },
