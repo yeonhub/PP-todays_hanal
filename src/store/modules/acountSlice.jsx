@@ -82,6 +82,7 @@ export const acountSlice = createSlice({
                 localStorage.setItem('localOnJoin', true);
                 localStorage.setItem('localIds', JSON.stringify(state.acount));
                 localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
+                console.log(newAccount);
             }
         },
         getLocation(state, action) {

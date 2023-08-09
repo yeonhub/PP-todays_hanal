@@ -584,6 +584,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         answerShowWeather = answerWeather
         answerShowNickname = acount.find((item) => item.acountId === answerAuthorAcountId).nickname;
         answerShowTreeLevel = acount.find((item) => item.acountId === answerAuthorAcountId).treeLevel;
+        console.log(currentItem);
     }
     return (
         <WonderPopupContainer>

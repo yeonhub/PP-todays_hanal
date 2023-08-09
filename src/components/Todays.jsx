@@ -152,6 +152,7 @@ const TodaysContainer = styled.div`
             li {
                 overflow: hidden;
                 width: 33vw;
+                height: 18dvh;
                 position: relative;
 
                 img {

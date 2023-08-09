@@ -82,7 +82,6 @@ const Join = () => {
                 ...user,
                 [name]: alphanumeric
             });
-
         } else {
             setUser({
                 ...user,

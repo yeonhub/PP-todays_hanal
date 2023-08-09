@@ -48,7 +48,7 @@ const MyhanalContainer = styled.div`
 
         img {
             max-width: 100%;
-            max-height: 100%;
+            max-height: 45dvh;
             object-fit: contain;
         }
     }
@@ -339,7 +339,7 @@ const Myhanal = () => {
                 }
 
                 <div className="imageInfo">
-                    <div className="p location"><SlLocationPin /><span>{city} - {gu}</span><BiCurrentLocation className="locationBtn" onClick={() => resetLocation()} /> <span>{time}</span></div>
+                    <div className="p location"><SlLocationPin /><span>{city} - {gu}</span><BiCurrentLocation className="locationBtn" /> <span>{time}</span></div>
                     <div className="p weather" style={{ backgroundImage: `url(images/weather/${weather}.gif)` }}>
                         {temperatures}°
                     </div>

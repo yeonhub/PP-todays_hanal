@@ -583,6 +583,7 @@ export const boardSlice = createSlice({
             }
             state.board.push(newBoard)
             state.onUpload = true
+            console.log(newBoard);
         },
         onUploaded(state, action) {
             state.onUpload = false
@@ -635,8 +636,8 @@ export const boardSlice = createSlice({
 
             let maxBoardId = 0;
             state.wonderBoard.forEach((item) => {
-                if (item.boardId > maxBoardId) {
-                    maxBoardId = item.boardId;
+                if (item.wonderBoardId > maxBoardId) {
+                    maxBoardId = item.wonderBoardId;
                 }
             });
             const wonderBoardId = maxBoardId + 1;
@@ -651,13 +652,13 @@ export const boardSlice = createSlice({
                 images: './images/icons/wonder.png'
             }
             state.wonderBoard.push(newWonder)
+            console.log(newWonder);
         },
         onDetail(state, action) {
             state.detailBoardId = action.payload
         },
         onLike(state, action) {
             const { boardId, currentAcountId } = action.payload
-            console.log(action.payload);
             const currentBoard = state.board.find(item => item.boardId === boardId)
             if (currentBoard) {
                 const isLiked = currentBoard.likesAcountId.includes(currentAcountId)

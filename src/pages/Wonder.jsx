@@ -390,7 +390,7 @@ const Wonder = () => {
                 <div className="wonderList">
                     <div className="wonderTitle">
                         <BsPatchQuestion />
-                        <h3>오늘 궁금해요</h3>
+                        <h3>궁금해요</h3>
                         <span>- {formattedDate3}</span>
                     </div>
                     <ul>

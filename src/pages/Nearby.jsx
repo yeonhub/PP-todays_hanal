@@ -3,6 +3,7 @@ import styled from "styled-components";
 import NearbyList from '../components/NearbyList';
 import { useDispatch, useSelector } from 'react-redux';
 import { BiCurrentLocation } from 'react-icons/bi'
+import { MdOutlineNearMe } from 'react-icons/md'
 import useLocationHook from '../hooks/nowLocation';
 import { setNearLocation } from '../store/modules/boardSlice';
 import useConvertHook from '../hooks/nowConvert';
@@ -16,6 +17,24 @@ const NearbyContainer = styled.div`
     margin-bottom: 7dvh;
 
     .nearlyList {
+        width: 100%;
+        .nearlyTitle {
+            display: flex;
+            margin: 1.5vw;
+
+            svg {
+                font-size: 6vw;
+                margin-right: 2vw;
+            }
+
+            h3 {
+                font-size: 5vw;
+            }
+
+            span {
+                margin-left: auto;
+            }
+        }
         ul {
             display: flex;
             flex-wrap: wrap;
@@ -138,6 +157,13 @@ const Nearby = () => {
         dispatch(setNearLocation(nearLocation))
     }, [nearCity])
 
+    // 현재 날짜 사용시
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const day = String(currentDate.getDate()).padStart(2, '0');
+    const formattedDate2 = `${year}-${month}-${day}`;
+    const formattedDate3 = `${month}월 ${day}일`
 
     useEffect(() => {
         let filteredList = board;
@@ -225,6 +251,11 @@ const Nearby = () => {
                 </div>
 
                 <div className="nearlyList">
+                    <div className="nearlyTitle">
+                        <MdOutlineNearMe />
+                        <h3>내 주변</h3>
+                        <span>- {formattedDate3}</span>
+                    </div>
                     <ul>
                         {
                             nearList.map(item => <NearbyList item={item} key={item.boardId} />)

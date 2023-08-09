@@ -43,10 +43,6 @@ const useWeatherHook = () => {
             const sky = weatherItem.find(item => item.category === 'SKY')
             const pty = weatherItem.find(item => item.category === 'PTY')
             setWeatherData({ tem, sky, pty });
-            if (weatherData) {
-                console.log(weatherData);
-            }
-            console.log(weatherData);
         } catch (error) {
             // console.error('--- ERROR ---', error);
         }

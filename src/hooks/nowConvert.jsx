@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 
 const useConvertHook = (v1, v2) => {
     const dispatch = useDispatch()
-
     const RE = 6371.00877;
     const GRID = 5.0;
     const SLAT1 = 30.0;
@@ -20,15 +19,12 @@ const useConvertHook = (v1, v2) => {
     const toXY = (v1, v2) => {
         let DEGRAD = Math.PI / 180.0;
         let RADDEG = 180.0 / Math.PI;
-
         let re2 = RE / GRID;
         let slat3 = SLAT1 * DEGRAD;
         let slat4 = SLAT2 * DEGRAD;
         let olon2 = OLON * DEGRAD;
         let olat2 = OLAT * DEGRAD;
-
         const xy = {}
-
         let sn = Math.tan(Math.PI * 0.25 + slat4 * 0.5) / Math.tan(Math.PI * 0.25 + slat3 * 0.5);
         sn = Math.log(Math.cos(slat3) / Math.cos(slat4)) / Math.log(sn);
         let sf = Math.tan(Math.PI * 0.25 + slat3 * 0.5);
@@ -45,7 +41,6 @@ const useConvertHook = (v1, v2) => {
         theta *= sn;
         xy['x'] = Math.floor(ra * Math.sin(theta) + XO + 0.5);
         xy['y'] = Math.floor(ro - ra * Math.cos(theta) + YO + 0.5);
-
         setConvertXY({ x: xy.x, y: xy.y })
     };
     useEffect(() => {
@@ -54,7 +49,6 @@ const useConvertHook = (v1, v2) => {
     useEffect(()=>{
         dispatch(getConvert(convertXY));
     },[convertXY])
-
     return convertXY;
 }
 

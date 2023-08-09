@@ -5,7 +5,6 @@ import { getLocation } from "../store/modules/acountSlice";
 
 const useLocationHook = () => {
     const dispatch = useDispatch()
-    // const [address, setAddress] = useState('');
     const [location, setLocation] = useState({
         latitude: 0,
         longitude: 0,
@@ -13,14 +12,6 @@ const useLocationHook = () => {
         nowLocationGu: '',
         error: null,
     });
-    const loading = {
-        latitude: 0,
-        longitude: 0,
-        nowLocationCity: '현재위치',
-        nowLocationGu: '조회중',
-        error: null,
-    }
-
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success, error);
@@ -31,12 +22,10 @@ const useLocationHook = () => {
             });
         }
     }, []);
-
     const success = (position) => {
         const { latitude, longitude } = position.coords;
         getKakaoAddress(latitude, longitude);
     };
-
     const error = (err) => {
         setLocation({
             ...location,
@@ -77,9 +66,6 @@ const useLocationHook = () => {
         }
     };
     useEffect(() => {
-        // dispatch(getLocation(loading))
-        // setTimeout(() => {
-        // }, 500);
         dispatch(getLocation(location))
     }, [location])
 
