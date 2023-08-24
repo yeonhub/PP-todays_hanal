@@ -116,7 +116,7 @@ const todaysSortList = todaysList.sort((a, b) => b.dateTime - a.dateTime);
 따라서 위치 정보 조회 허용을 하지 않으면 업로드가 불가능합니다.
 업로더는 사진을 찍거나 선택해서 게시할 수 있고 어제와 비교해 더운지 추운지 선택 가능하며 현재 날씨의 좋음 정도를 선택할 수 있습니다.
 
-사진
+<img src='./mdimg/myhanal.gif' width="40%">
 
 위경도로 행정구역을 받는 KAKAO API, 위경도를 기상청 API에서 사용 가능한 XY좌표로 변환, XY좌표로 날씨와 기온을 받는 기상청 API 총 3가지를 UserHooks으로 구현했습니다.
 
