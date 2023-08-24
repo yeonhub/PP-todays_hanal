@@ -12,9 +12,7 @@
 
 ## 기술 스택
 
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
-<img src="https://img.shields.io/badge/Styled Components-DB7093.svg?&style=for-the-badge&logo=styled-components&logoColor=white"/>
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> <img src="https://img.shields.io/badge/Styled Components-DB7093.svg?&style=for-the-badge&logo=styled-components&logoColor=white"/>
 
 
 ## 프로젝트 제작 과정
@@ -40,10 +38,8 @@ React기반으로 제작하되 추후 Node를 이용한 백엔드 작업을 고�
 
 프로젝트 발표시 사용했던 PPT중 일부
 
-<img src='./mdimg/todayshanal1.PNG' width="49%">
-<img src='./mdimg/todayshanal2.PNG' width="49%">
-<img src='./mdimg/todayshanal3.PNG' width="49%">
-<img src='./mdimg/todayshanal4.PNG' width="49%">
+<img src='./mdimg/todayshanal1.PNG' width="49%"> <img src='./mdimg/todayshanal2.PNG' width="49%">
+<img src='./mdimg/todayshanal3.PNG' width="49%"> <img src='./mdimg/todayshanal4.PNG' width="49%">
 
 ## 프로젝트 기능 구현
 
@@ -368,8 +364,7 @@ month = month < 10 ? '0' + month : month;
 답변으로 답변자, 날짜, 시간, 하늘 사진, 실제 날씨, 어제와 차이, 좋은 정도가 추가 된다.
 궁금해요 작성자의 경우 본인이 작성한 궁금해요는 삭제가 가능하다.
 
-<img src='./mdimg/wonder.gif' width="40%">
-<img src='./mdimg/wonderdel.gif' width="40%">
+<img src='./mdimg/wonder.gif' width="40%"> <img src='./mdimg/wonderdel.gif' width="40%">
 
 ```javascript
 {
