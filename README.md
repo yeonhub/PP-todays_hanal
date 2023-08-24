@@ -9,6 +9,14 @@
 <a href="https://yeonhub.github.io/todays-hanal-test/" target="_blank"> <img src='./mdimg/hanal_logo_w.png'> </a>
 <a href="https://yeonhub.github.io/todays-hanal-test/" target="_blank"> <img src='./mdimg/icon.png' width="30%"></a>
 
+
+## 기술 스택
+
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/Styled Components-DB7093.svg?&style=for-the-badge&logo=styled-components&logoColor=white"/>
+
+
 ## 프로젝트 제작 과정
 
 ### 1) 주제 선정
@@ -54,7 +62,6 @@ React기반으로 제작하되 추후 Node를 이용한 백엔드 작업을 고�
 
 <img src='./mdimg/login.gif' width="40%">
 
-
 ```javascript
 join(state, action) {
             const { loginId, loginPw, nickname } = action.payload;
@@ -72,6 +79,7 @@ join(state, action) {
 ```
 
 ### 2) 오늘하날
+
 오늘 날짜에 해당하는 게시글이 출력되며 시간을 기준으로 내림차순하여 보여줍니다.
 (테스트를 위해 게시글의 날짜는 고정되어 있습니다.)
 게시글 클릭시 해당하는 게시글을 팝업으로 보여주며 시간순으로 정렬된 게시글들이 위,아래로 스윕 가능합니다.
@@ -98,6 +106,7 @@ if (swiperRef.current && scrollToBoardId !== null) {
     }
 }
 ```
+
 ```javascript
 // 오늘 날짜 기준 좋아요를 가장 많이 받은 게시글 3개 상단에 출력
 
@@ -106,6 +115,7 @@ const todaysSortList = todaysList.sort((a, b) => b.dateTime - a.dateTime);
 ```
 
 ### 3) 내 하날
+
 하늘 업로드시 게시글의 신뢰성을 위해 날짜, 시간, 위치, 날씨는 geolocation, KAKAO API, 기상청 API를 통해 자동으로 업로드 되며 수정할 수 없습니다.
 따라서 위치 정보 조회 허용을 하지 않으면 업로드가 불가능합니다.
 업로더는 사진을 찍거나 선택해서 게시할 수 있고 어제와 비교해 더운지 추운지 선택 가능하며 현재 날씨의 좋음 정도를 선택할 수 있습니다.
@@ -113,12 +123,15 @@ const todaysSortList = todaysList.sort((a, b) => b.dateTime - a.dateTime);
 사진
 
 위경도로 행정구역을 받는 KAKAO API, 위경도를 기상청 API에서 사용 가능한 XY좌표로 변환, XY좌표로 날씨와 기온을 받는 기상청 API 총 3가지를 UserHooks으로 구현했습니다.
+
 ```javascript
 src - hooks ┌ nowLocation.jsx
             ├ nowConvert.jsx
             └ nowWeather.jsx
 ```
+
 최종적으로 날씨와 기온 정보를 얻는 순서
+
 1) geolocation -> 현재 위치의 위도와 경도를 얻음
 2) KAKAO API -> 위경도를 이용해 나온 행정구역중 시와 구만 파싱
 3) nowConvert -> 위경도 값을 기상청 API에서 사용 가능한 XY좌표로 변환
@@ -170,7 +183,7 @@ const error = (err) => {
         const data = response.data;
 
 // 여러 데이터중 시와 구만 파싱하여 사용
-    
+  
         const nowLocationCity = data.documents.length > 0 ? data.documents[0]region_1depth_name : 'unknown';
         const nowLocationGu = data.documents.length > 0 ? data.documents[0]region_2depth_name : 'unknown';
         setLocation(
@@ -192,6 +205,7 @@ const error = (err) => {
     }
 
 ```
+
 ```javascript
 const useConvertHook = (v1, v2) => {
 
@@ -247,6 +261,7 @@ const useConvertHook = (v1, v2) => {
 }
 
 ```
+
 ```javascript
 
 // nowWeather.jsx
@@ -285,6 +300,7 @@ month = month < 10 ? '0' + month : month;
 ```
 
 ### 4) 좋아요 / 댓글
+
 로그인이 되어있는 경우 게시글에 좋아요와 댓글을 추가할 수 있습니다.
 게시글엔 가장 최근 댓글 하나만 표시됩니다.
 
@@ -322,6 +338,7 @@ month = month < 10 ? '0' + month : month;
 ```
 
 ### 5) 내 근처
+
 현재 위치를 기준으로 시 단위의 게시글이 처음 출력되며, 구를 선택할 경우 해당 구만 출력이 됩니다.
 게시글을 클릭했을 때 똑같이 팝업이 나오게 되고 위 아래로 스윕시 시단위만 일치하는 게시글을이 시간 내림차순으로 보여집니다. (구 단위까지 일치시 게시글이 적기 때문)
 
@@ -345,6 +362,7 @@ month = month < 10 ? '0' + month : month;
 ```
 
 ### 6) 궁금해요
+
 궁금한 지역에 하늘 게시글이 없을때 혹은 지금 날씨가 궁금할 때 요청할 수 있다.
 궁금한 지역의 시/구를 선택 후 궁금해요를 등록하면 해당 지역에 있는 사람만 답변이 가능하다.
 답변으로 답변자, 날짜, 시간, 하늘 사진, 실제 날씨, 어제와 차이, 좋은 정도가 추가 된다.
@@ -379,6 +397,7 @@ month = month < 10 ? '0' + month : month;
     images: './images/sky/sky8.jpg'
 },
 ```
+
 ```javascript
 
 // 현재 로그인 되어있는 유저ID와 작성자 ID를 비교해 일치하면 삭제 버튼이 생긴다.
