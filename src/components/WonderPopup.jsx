@@ -8,9 +8,10 @@ import { TiDeleteOutline } from 'react-icons/ti'
 import { useDispatch, useSelector } from 'react-redux';
 import { addAnswer, offOnAnswer, offWonderDel, onWonderDel } from '../store/modules/boardSlice';
 import { useNavigate } from 'react-router-dom';
-import useLocationHook from '../hooks/nowLocation';
-import useConvertHook from '../hooks/nowConvert';
-import useWeatherHook from '../hooks/nowWeather';
+// import useLocationHook from '../hooks/nowLocation';
+// import useConvertHook from '../hooks/nowConvert';
+// import useWeatherHook from '../hooks/nowWeather';
+import getCurrentTime from '../utils/dateUtils'
 
 const WonderPopupContainer = styled.div`
 .popup {
@@ -450,14 +451,8 @@ const WonderPopupContainer = styled.div`
 
 const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const location = useSelector(state => state.acount.location);
-    const nowWeather = useSelector(state => state.acount.weather);
-    const v1 = location.nowLatitude
-    const v2 = location.nowLongitude
     const city = location.nowLocationCity
     const gu = location.nowLocationGu
-    const callLocationHook = useLocationHook()
-    const callConvertHook = useConvertHook(v1, v2)
-    const callWeatherHook = useWeatherHook()
     const acount = useSelector(state => state.acount.acount)
     const { wonderBoardId, date, time, dateTime, authorAcountId, loactionCity, loactionGu, images, answers } = currentItem
     const wonderNickname = acount.find((item) => item.acountId === authorAcountId).nickname;
@@ -538,19 +533,22 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         }
     }, [onAnswer])
 
+    // utils
     // answer
-    const answerToday = new Date();
-    const answerYear = answerToday.getFullYear();
-    const answerMonth = String(answerToday.getMonth() + 1).padStart(2, '0');
-    const answerDay = String(answerToday.getDate()).padStart(2, '0');
-    const answerSeconds = String(answerToday.getSeconds()).padStart(2, '0');
-    const answerHours = ('0' + answerToday.getHours()).slice(-2);
-    const answerMinutes = ('0' + answerToday.getMinutes()).slice(-2);
+    // const answerToday = new Date();
+    // const answerYear = answerToday.getFullYear();
+    // const answerMonth = String(answerToday.getMonth() + 1).padStart(2, '0');
+    // const answerDay = String(answerToday.getDate()).padStart(2, '0');
+    // const answerSeconds = String(answerToday.getSeconds()).padStart(2, '0');
+    // const answerHours = ('0' + answerToday.getHours()).slice(-2);
+    // const answerMinutes = ('0' + answerToday.getMinutes()).slice(-2);
+
+    const { currentToday, currentYear, currentMonth, currentDay, currentSeconds, currentHours, currentMinutes } = getCurrentTime();
 
     const answerAcount = localStorage.getItem('localCurrentAcount')
     const answerAuthorAcountId = JSON.parse(answerAcount).acountId
-    const answerDate = `${answerYear}-${answerMonth}-${answerDay}`;
-    const answerTime = `${answerHours}시 ${answerMinutes}분`;
+    const answerDate = `${currentYear}-${currentMonth}-${currentDay}`;
+    const answerTime = `${currentHours}시 ${currentMinutes}분`;
     const answerWeather = weatherIcon
     const answerYesterday = yesterday
     const answerAuthorLike = authorLike

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getWeather } from '../store/modules/acountSlice';
 
 const useWeatherHook = () => {
+    
     const dispatch = useDispatch()
     const { nowX, nowY } = useSelector(state => state.acount.location)
     // const nowX = 54
@@ -44,7 +45,7 @@ const useWeatherHook = () => {
             const pty = weatherItem.find(item => item.category === 'PTY')
             setWeatherData({ tem, sky, pty });
         } catch (error) {
-            // console.error('--- ERROR ---', error);
+            console.error('--- ERROR ---', error);
         }
     };
     useEffect(() => {

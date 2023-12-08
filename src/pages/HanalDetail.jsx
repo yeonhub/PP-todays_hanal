@@ -199,17 +199,13 @@ const HanalDetail = () => {
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0');
     const day = String(currentDate.getDate()).padStart(2, '0');
-    const formattedDate2 = `${year}-${month}-${day}`;
-    const formattedDate3 = `${month}월 ${day}일`
 
     // const formattedDate = `${year}-${month}-${day}`;
     const formattedDate = '2023-08-01'
 
     // todays
-    // todays
     const todaysList = board.filter(item => item.date === formattedDate)
     const todaysSortList = todaysList.slice().sort((a, b) => b.dateTime - a.dateTime);
-
 
     // nearly
     const nearlyList = board.filter(item => item.loactionCity === nearlyCity || item.loactionGu === nearlyGu)

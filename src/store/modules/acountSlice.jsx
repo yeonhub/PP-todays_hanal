@@ -119,5 +119,5 @@ export const acountSlice = createSlice({
     },
 });
 
-export const { login, logout, join, getLocation, getConvert, getWeather, offJoin } = acountSlice.actions
+export const { login, logout, join, getLocation, getConvert, getWeather, offJoin, location } = acountSlice.actions
 export default acountSlice.reducer

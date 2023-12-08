@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { getLocation } from "../store/modules/acountSlice";
+import useConvertHook from "./nowConvert";
 
 const useLocationHook = () => {
+    let v1, v2
     const dispatch = useDispatch()
     const [location, setLocation] = useState({
         latitude: 0,
@@ -25,6 +27,8 @@ const useLocationHook = () => {
     const success = (position) => {
         const { latitude, longitude } = position.coords;
         getKakaoAddress(latitude, longitude);
+        v1 = latitude
+        v2 = longitude
     };
     const error = (err) => {
         setLocation({
@@ -68,6 +72,9 @@ const useLocationHook = () => {
     useEffect(() => {
         dispatch(getLocation(location))
     }, [location])
+
+    useConvertHook(location.latitude, location.longitude)
+
 
     return location;
 };

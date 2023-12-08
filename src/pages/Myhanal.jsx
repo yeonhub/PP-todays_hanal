@@ -222,6 +222,7 @@ const MyhanalContainer = styled.div`
 
 
 const Myhanal = () => {
+    useLocationHook()
     const [selectedImage, setSelectedImage] = useState(null);
     const fileInputRef = useRef(null);
     const dispatch = useDispatch()
@@ -230,13 +231,9 @@ const Myhanal = () => {
     const boards = useSelector(state => state.board.board);
     const location = useSelector(state => state.acount.location);
     const nowWeather = useSelector(state => state.acount.weather);
-    const v1 = location.nowLatitude
-    const v2 = location.nowLongitude
+    console.log(nowWeather);
     const city = location.nowLocationCity
     const gu = location.nowLocationGu
-    const callLocationHook = useLocationHook()
-    const callConvertHook = useConvertHook(v1, v2)
-    const callWeatherHook = useWeatherHook()
     const [locationDone, setLocationDone] = useState(true)
     const [bg, setBg] = useState(false)
 

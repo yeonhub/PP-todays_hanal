@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getConvert } from '../store/modules/acountSlice';
+import { getConvert,location } from '../store/modules/acountSlice';
 import { useEffect } from 'react';
+import useWeatherHook from "../hooks/nowWeather";
 
 const useConvertHook = (v1, v2) => {
     const dispatch = useDispatch()
@@ -49,6 +50,9 @@ const useConvertHook = (v1, v2) => {
     useEffect(()=>{
         dispatch(getConvert(convertXY));
     },[convertXY])
+
+    useWeatherHook()
+
     return convertXY;
 }
 
