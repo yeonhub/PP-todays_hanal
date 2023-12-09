@@ -75,7 +75,6 @@ const useLocationHook = () => {
 
     useConvertHook(location.latitude, location.longitude)
 
-
     return location;
 };
 

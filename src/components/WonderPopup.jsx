@@ -450,20 +450,28 @@ const WonderPopupContainer = styled.div`
 
 
 const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
+
+    // 데이터 + 계산 ?
     const location = useSelector(state => state.acount.location);
     const city = location.nowLocationCity
     const gu = location.nowLocationGu
     const acount = useSelector(state => state.acount.acount)
     const { wonderBoardId, date, time, dateTime, authorAcountId, loactionCity, loactionGu, images, answers } = currentItem
+
+    // 계산
     const wonderNickname = acount.find((item) => item.acountId === authorAcountId).nickname;
     const wonderTreeLevel = acount.find((item) => item.acountId === authorAcountId).treeLevel;
+
+    // 파일 업로드 액션
     const [selectedImage, setSelectedImage] = useState(null);
     const fileInputRef = useRef(null);
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    // 위치 정보 액션
     const [sameLocation, setSameLocation] = useState(false)
     const [alertBg, setAlertBg] = useState(false)
-
     useEffect(() => {
         if (gu === loactionGu) {
             setSameLocation(true)
@@ -472,6 +480,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         }
     }, [location])
 
+    // 사진 업로드 액션
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -485,6 +494,8 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const handleButtonClick = () => {
         fileInputRef.current.click();
     };
+
+    // 현재 날씨 액션
     // yesterday
     const [yesterday, setYesterday] = useState(true)
     const onYesterday = (tem) => {
@@ -496,13 +507,12 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const handleChange = (e) => {
         setAuthorLike(e.target.value);
     };
-
     const [weatherIcon, setWeatherIcon] = useState('BsSun')
-
-
     const onWeather = weather => {
         setWeatherIcon(weather)
     }
+
+    // 게시글 삭제 액션
     const ownerCheck = useSelector(state => state.board.isOwner)
     const [bg, setBg] = useState(false)
     const onDel = () => {
@@ -515,15 +525,16 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         navigate('/wonder')
         dispatch(onWonderDel(wonderBoardId))
     }
-    // const wonderDel = useSelector(state => state.board.wonderDel)
-    // useEffect(() => {
-    //     if (wonderDel) {
-    //         setBg(false)
-    //         setOnWonderPop(false)
-    //         dispatch(offWonderDel())
-    //     }
-    // }, [wonderDel])
+    const wonderDel = useSelector(state => state.board.wonderDel)
+    useEffect(() => {
+        if (wonderDel) {
+            setBg(false)
+            setOnWonderPop(false)
+            dispatch(offWonderDel())
+        }
+    }, [wonderDel])
 
+    // 게시글 답변 추가 액션
     const onAnswer = useSelector(state => state.board.onAnswer)
     useEffect(() => {
         if (onAnswer) {
@@ -533,26 +544,26 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         }
     }, [onAnswer])
 
-    // utils
     // answer
-    // const answerToday = new Date();
-    // const answerYear = answerToday.getFullYear();
-    // const answerMonth = String(answerToday.getMonth() + 1).padStart(2, '0');
-    // const answerDay = String(answerToday.getDate()).padStart(2, '0');
-    // const answerSeconds = String(answerToday.getSeconds()).padStart(2, '0');
-    // const answerHours = ('0' + answerToday.getHours()).slice(-2);
-    // const answerMinutes = ('0' + answerToday.getMinutes()).slice(-2);
+    // 날짜 계산
+    const answerToday = new Date();
+    const answerYear = answerToday.getFullYear();
+    const answerMonth = String(answerToday.getMonth() + 1).padStart(2, '0');
+    const answerDay = String(answerToday.getDate()).padStart(2, '0');
+    const answerSeconds = String(answerToday.getSeconds()).padStart(2, '0');
+    const answerHours = ('0' + answerToday.getHours()).slice(-2);
+    const answerMinutes = ('0' + answerToday.getMinutes()).slice(-2);
 
-    const { currentToday, currentYear, currentMonth, currentDay, currentSeconds, currentHours, currentMinutes } = getCurrentTime();
-
+    // 답변 날짜 계산
     const answerAcount = localStorage.getItem('localCurrentAcount')
     const answerAuthorAcountId = JSON.parse(answerAcount).acountId
-    const answerDate = `${currentYear}-${currentMonth}-${currentDay}`;
-    const answerTime = `${currentHours}시 ${currentMinutes}분`;
+    const answerDate = `${answerYear}-${answerMonth}-${answerDay}`;
+    const answerTime = `${answerHours}시 ${answerMinutes}분`;
     const answerWeather = weatherIcon
     const answerYesterday = yesterday
     const answerAuthorLike = authorLike
 
+    // 답변 추가 액션
     const onUploadAnswer = () => {
         if (!sameLocation) {
             setAlertBg(true)
@@ -563,14 +574,14 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         }
         dispatch(addAnswer({ selectedImage, answerAuthorAcountId, answerDate, answerTime, answerWeather, answerYesterday, answerAuthorLike, wonderBoardId }))
     }
+
+    // 게시글 데이터
     const wonderBoard = useSelector(state => state.board.wonderBoard)
     let currentAnswers
-
     if (answers) {
         currentAnswers = wonderBoard.find(item => item.wonderBoardId === wonderBoardId).answers
     }
     let answerShowAuthorAcountId, answerShowAuthorLike, answerShowDate, answerShowTime, answerShowWeather, answerShowYesterday, selectedShowImage, answerShowNickname, answerShowTreeLevel
-
     if (currentAnswers) {
         const { selectedImage, answerAuthorAcountId, answerDate, answerTime, answerWeather, answerYesterday, answerAuthorLike } = currentAnswers[0]
         answerShowAuthorAcountId = answerAuthorAcountId

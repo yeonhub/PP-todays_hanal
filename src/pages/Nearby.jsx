@@ -184,6 +184,7 @@ const Nearby = () => {
             }
             setNearList(filteredList.sort((a, b) => b.dateTime - a.dateTime));
         // }
+        console.log(selectedSido,selectedGugun);
     }, [selectedSido, selectedGugun])
 
     // const area = [

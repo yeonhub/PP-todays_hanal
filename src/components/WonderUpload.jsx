@@ -26,7 +26,6 @@ const WonderUploadContainer = styled.div`
         background-color: rgba(0, 0, 0, 0.9);
         z-index: 200;
         display: none;
-
     }
 
     .request {
