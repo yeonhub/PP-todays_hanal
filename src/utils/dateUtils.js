@@ -1,3 +1,4 @@
+// 날짜
 const getCurrentTime = () => {
     const currentToday = new Date();
     const currentYear = currentToday.getFullYear();

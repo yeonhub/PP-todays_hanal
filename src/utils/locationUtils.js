@@ -1,3 +1,4 @@
+// 행정구역명
 import { useSelector } from 'react-redux';
 
 const getCurrentLocation = () => {

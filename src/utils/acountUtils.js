@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-
+// 계정
 const getCurrentAcount = () => {
     const acount = useSelector(state => state.acount.acount)
     const localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));

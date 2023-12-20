@@ -1,3 +1,4 @@
+// Redux 날씨
 import { useSelector } from 'react-redux';
 
 const getCurrentWeather = () => {
