@@ -431,10 +431,15 @@ month = month < 10 ? '0' + month : month;
 
 1) 같은 기능을 하는 계산 함수를 담을 utils 폴더 생성
 2) 계산 함수 분리 및 재사용
+   
    📂utils
+   
    ┣ 📜acountUtils.js
+   
    ┣ 📜dateUtils.js
+   
    ┣ 📜locationUtils.js
+   
    ┗ 📜weatherUtils.js
 
 ```javascript
