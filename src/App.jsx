@@ -12,7 +12,7 @@ import Wonder from './pages/Wonder';
 import HanalDetail from './pages/HanalDetail';
 import HanalComment from './components/HanalComment';
 
-const App = () => {
+export default function App () {
 
   return (
     <>
