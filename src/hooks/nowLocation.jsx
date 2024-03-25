@@ -40,7 +40,7 @@ const useLocationHook = () => {
     };
 
     const getKakaoAddress = async (latitude, longitude) => {
-        const kakaoApiKey = process.env.REACT_APP_KAKAO_API_KEY
+        const kakaoApiKey = import.meta.env.VITE_KAKAO_API_KEY
         // const kakaoApiKey = ''
         try {
             const response = await axios.get(`https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${longitude}&y=${latitude}`, {

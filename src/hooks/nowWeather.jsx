@@ -11,7 +11,7 @@ const useWeatherHook = () => {
     // const nowY = 124
     const [weatherData, setWeatherData] = useState()
     const setWeather = async () => {
-        const KMAAPikey = process.env.REACT_APP_KMA_API_KEY
+        const KMAAPikey = import.meta.env.VITE_KMA_API_KEY
         // const KMAAPikey = ''
         const now = new Date();
         let year = now.getFullYear();
