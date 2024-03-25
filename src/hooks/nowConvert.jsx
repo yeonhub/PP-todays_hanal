@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getConvert,location } from '../store/modules/acountSlice';
+import { getConvert } from '../store/modules/acountSlice';
 import { useEffect } from 'react';
 import useWeatherHook from "../hooks/nowWeather";
 
@@ -19,7 +19,6 @@ const useConvertHook = (v1, v2) => {
 
     const toXY = (v1, v2) => {
         let DEGRAD = Math.PI / 180.0;
-        let RADDEG = 180.0 / Math.PI;
         let re2 = RE / GRID;
         let slat3 = SLAT1 * DEGRAD;
         let slat4 = SLAT2 * DEGRAD;
