@@ -39,9 +39,9 @@ export const acountSlice = createSlice({
             if (accountRight) {
                 state.currentAcount = accountRight;
                 state.onLogin = true
-                localStorage.setItem('localOnLogin', true);
-                localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
-                localStorage.setItem('localIds', JSON.stringify(state.acount));
+                // localStorage.setItem('localOnLogin', true);
+                // localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
+                // localStorage.setItem('localIds', JSON.stringify(state.acount));
             } else if (!state.acount.some((item) => item.loginId === loginId)) {
                 alert('아이디가 존재하지 않음');
             } else {
@@ -51,9 +51,9 @@ export const acountSlice = createSlice({
         logout(state, action) {
             state.onLogin = false
             state.onJoin = false;
-            localStorage.removeItem('localCurrentAcount');
-            localStorage.setItem('localOnLogin', false);
-            localStorage.setItem('localOnJoin', false);
+            // localStorage.removeItem('localCurrentAcount');
+            // localStorage.setItem('localOnLogin', false);
+            // localStorage.setItem('localOnJoin', false);
         },
         join(state, action) {
             const { loginId, loginPw, nickname } = action.payload;
@@ -78,10 +78,10 @@ export const acountSlice = createSlice({
                 state.onLogin = true;
                 state.onJoin = true;
                 state.currentAcount = newAccount;
-                localStorage.setItem('localOnLogin', true);
-                localStorage.setItem('localOnJoin', true);
-                localStorage.setItem('localIds', JSON.stringify(state.acount));
-                localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
+                // localStorage.setItem('localOnLogin', true);
+                // localStorage.setItem('localOnJoin', true);
+                // localStorage.setItem('localIds', JSON.stringify(state.acount));
+                // localStorage.setItem('localCurrentAcount', JSON.stringify(state.currentAcount));
                 console.log(newAccount);
             }
         },

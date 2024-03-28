@@ -92,7 +92,7 @@ const Join = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        localStorage.setItem('localOnJoin', false);
+        // localStorage.setItem('localOnJoin', false);
         if (!loginId) {
             alert('아이디를 입력하세요');
             return;

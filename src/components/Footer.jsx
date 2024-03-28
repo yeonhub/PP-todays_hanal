@@ -44,12 +44,12 @@ const FooterContainer = styled.div`
 
 
 const Footer = () => {
-  let localOnLogin = localStorage.getItem('localOnLogin')
+  // let localOnLogin = localStorage.getItem('localOnLogin')
   const onLogin = useSelector(state => state.acount.onLogin)
 
-  useEffect(() => {
-    localOnLogin = localStorage.getItem('localOnLogin')
-  }, [onLogin])
+  // useEffect(() => {
+  //   localOnLogin = localStorage.getItem('localOnLogin')
+  // }, [onLogin])
 
   return (
     <>
@@ -58,12 +58,12 @@ const Footer = () => {
           <ul>
             <li><Link to='/'><BiHome /></Link></li>
             {
-              localOnLogin === 'true' ? <li><Link to='/myhanal'><BiUpload /></Link></li> : <li><Link to='/login'><BiUpload /></Link></li>
+              onLogin === true ? <li><Link to='/myhanal'><BiUpload /></Link></li> : <li><Link to='/login'><BiUpload /></Link></li>
             }
             <li><Link to='/nearby'><BiLocationPlus /></Link></li>
             <li><Link to='/wonder'><BsChatSquareQuote /></Link></li>
             {
-              localOnLogin === 'true' ? <li><Link to='/info'><BiUser /></Link></li> : <li><Link to='/login'><BiLogInCircle /></Link></li>
+              onLogin === true ? <li><Link to='/info'><BiUser /></Link></li> : <li><Link to='/login'><BiLogInCircle /></Link></li>
             }
           </ul>
         </footer>
