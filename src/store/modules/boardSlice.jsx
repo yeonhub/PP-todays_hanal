@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { useSelector } from 'react-redux';
 
 const initialState = {
     onUpload: false,
@@ -592,8 +593,10 @@ export const boardSlice = createSlice({
             state.onBg = action.payload
         },
         ownerCheck(state, action) {
-            const localAcount = localStorage.getItem('localCurrentAcount')
-            const acountId = localAcount ? JSON.parse(localAcount).acountId : null;
+            // const localAcount = localStorage.getItem('localCurrentAcount')
+            // const acountId = localAcount ? JSON.parse(localAcount).acountId : null;
+            const currentAcount = useSelector(state => state.acount.currentAcount)
+            const acountId = currentAcount ? currentAcount.acountId : null
             if (acountId === action.payload) {
                 state.isOwner = true
             } else {

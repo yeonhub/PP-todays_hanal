@@ -51,6 +51,7 @@ export const acountSlice = createSlice({
         logout(state, action) {
             state.onLogin = false
             state.onJoin = false;
+            state.currentAcount = {}
             // localStorage.removeItem('localCurrentAcount');
             // localStorage.setItem('localOnLogin', false);
             // localStorage.setItem('localOnJoin', false);

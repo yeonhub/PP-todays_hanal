@@ -99,6 +99,8 @@ const Info = () => {
         dispatch(logout())
         navigate('/')
     }
+    console.log(onLogin);
+    console.log(currentAcount);
     return (
         <InfoContainer >
             <div className="info">

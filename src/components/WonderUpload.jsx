@@ -112,7 +112,10 @@ const WonderUpload = ({ offWonder, setOnWonderUpload, selectedGugun, selectedSid
     // const { nickname, treeType, treeLevel, acountId } = localCurrentAcount
     // const wonderNickname = acount.find((item) => item.acountId === acountId).nickname;
     // const wonderTreeLevel = acount.find((item) => item.acountId === acountId).treeLevel;
-    const { acount, localCurrentAcount, wonderNickname, wonderTreeLevel, acountId } = getCurrentAcount();
+    // const { acount, currnetAcount, wonderNickname, wonderTreeLevel, acountId } = getCurrentAcount();
+
+    const currentAcount = useSelector(state => state.acount.currentAcount)
+    const { nickname, treeType, treeLevel, acountId } = currentAcount
 
     const uploadToday = new Date();
     const uploadYear = uploadToday.getFullYear();
@@ -138,7 +141,7 @@ const WonderUpload = ({ offWonder, setOnWonderUpload, selectedGugun, selectedSid
             <div className="popup">
                 <div className="inner">
                     <div className="request">
-                        <p className='who'><img src={`./images/trees/tree${wonderTreeLevel}.png`} alt={wonderNickname} />{wonderNickname}</p>
+                        <p className='who'><img src={`./images/trees/tree${treeLevel}.png`} alt={nickname} />{nickname}</p>
                         <p className='where'><SlLocationPin /> {selectedSido} - {selectedGugun}</p>
                         <p className='when'>{uploadDate} | {uploadTime}</p>
                     </div>

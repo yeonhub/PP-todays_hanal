@@ -555,8 +555,10 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const answerMinutes = ('0' + answerToday.getMinutes()).slice(-2);
 
     // 답변 날짜 계산
-    const answerAcount = localStorage.getItem('localCurrentAcount')
-    const answerAuthorAcountId = JSON.parse(answerAcount).acountId
+    // const answerAcount = localStorage.getItem('localCurrentAcount')
+    // const answerAuthorAcountId = JSON.parse(answerAcount).acountId
+    const currentAcount = useSelector(state => state.acount.currentAcount)
+    const answerAuthorAcountId = currentAcount.acountId
     const answerDate = `${answerYear}-${answerMonth}-${answerDay}`;
     const answerTime = `${answerHours}시 ${answerMinutes}분`;
     const answerWeather = weatherIcon

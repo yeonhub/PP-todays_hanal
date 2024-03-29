@@ -325,18 +325,26 @@ const Wonder = () => {
         dispatch(onBg(false))
     }
 
-    let localOnLogin = localStorage.getItem('localOnLogin')
-    let localCurrentAcount, myWonders, countMyWonders, nickname, treeType, treeLevel, acountId
     const onLogin = useSelector(state => state.acount.onLogin)
-    if (localOnLogin === 'true') {
-        localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
-        ({ nickname, treeType, treeLevel, acountId } = localCurrentAcount)
-        myWonders = wonderBoard.filter(item => item.authorAcountId === acountId)
-        countMyWonders = myWonders.length
+    // let localOnLogin = localStorage.getItem('localOnLogin')
+    // let localCurrentAcount, myWonders, countMyWonders, nickname, treeType, treeLevel, acountId
+    // if (localOnLogin === 'true') {
+    //     localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
+    //     ({ nickname, treeType, treeLevel, acountId } = localCurrentAcount)
+    //     myWonders = wonderBoard.filter(item => item.authorAcountId === acountId)
+    //     countMyWonders = myWonders.length
+    // }
+    // useEffect(() => {
+    //     localOnLogin = localStorage.getItem('localOnLogin')
+    // }, [onLogin])
+
+    let currentAcount, myWonders, countMyWonders, nickname, treeType, treeLevel, acountId
+    if (onLogin === true) {
+        currentAcount = useSelector(state => state.acount.currentAcount);
+        ({ nickname, treeType, treeLevel, acountId } = currentAcount);
+        myWonders = wonderBoard.filter(item => item.authorAcountId === acountId);
+        countMyWonders = myWonders.length;
     }
-    useEffect(() => {
-        localOnLogin = localStorage.getItem('localOnLogin')
-    }, [onLogin])
 
     const navigator = useNavigate()
 
@@ -361,7 +369,7 @@ const Wonder = () => {
                     onWonderUpload && <div className="wonderBg"><WonderUpload currentItem={currentItem} offWonder={offWonder} setOnWonderUpload={setOnWonderUpload} selectedSido={selectedSido} selectedGugun={selectedGugun} /></div>
                 }
                 {
-                    localOnLogin === 'true'
+                    onLogin === true
                         ?
                         <div className="myWnderBtn">
                             <span onClick={() => onMyWonders()}>내 질문 : {countMyWonders}</span>
@@ -410,7 +418,7 @@ const Wonder = () => {
                 </div>
                 <div className="wonderUpload">
                     {
-                        localOnLogin === 'true' ? <button onClick={() => uploadWonder()}>궁금해요</button> : <button onClick={() => navigator('/login')}>궁금해요</button>
+                        onLogin === true ? <button onClick={() => uploadWonder()}>궁금해요</button> : <button onClick={() => navigator('/login')}>궁금해요</button>
                     }
                 </div>
             </div>

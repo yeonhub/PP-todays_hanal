@@ -6,15 +6,15 @@ import { useNavigate } from 'react-router-dom';
 const WonderList = ({ item, onWonder, acountId }) => {
     const { authorAcountId, loactionCity, loactionGu, images } = item
     const navigate = useNavigate()
-    let localOnLogin = localStorage.getItem('localOnLogin')
+    // let localOnLogin = localStorage.getItem('localOnLogin')
     const onLogin = useSelector(state => state.acount.onLogin)
 
-    useEffect(() => {
-        localOnLogin = localStorage.getItem('localOnLogin')
-    }, [onLogin])
+    // useEffect(() => {
+    //     localOnLogin = localStorage.getItem('localOnLogin')
+    // }, [onLogin])
 
     return (
-        <li onClick={() => { localOnLogin === 'true' ? onWonder(item) : navigate('/login') }}>
+        <li onClick={() => { onLogin === true ? onWonder(item) : navigate('/login') }}>
             <img src={images} alt={authorAcountId} />
             <div className='loaction'>
                 <SlLocationPin />

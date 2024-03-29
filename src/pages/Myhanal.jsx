@@ -298,9 +298,12 @@ const Myhanal = () => {
     const handleChange = (e) => {
         setAuthorLike(e.target.value);
     };
+
     // authorAcountId
-    const localCurrentAcount = localStorage.getItem('localCurrentAcount')
-    const authorAcountId = JSON.parse(localCurrentAcount).acountId
+    // const localCurrentAcount = localStorage.getItem('localCurrentAcount')
+    // const authorAcountId = JSON.parse(localCurrentAcount).acountId
+    const currentAcount = useSelector(state => state.acount.onLogin)
+    const authorAcountId = currentAcount.authorAcountId
 
     const onUploadBoard = () => {
         if (!locationDone) {
