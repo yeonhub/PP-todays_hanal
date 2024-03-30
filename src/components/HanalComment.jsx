@@ -139,12 +139,18 @@ const HanalComment = () => {
     const currentBoard = board.find(item => item.boardId === Number(boardID))
     const currentBoardId = currentBoard.boardId
     const currentComment = currentBoard.comment
-    const localOnLogin = localStorage.getItem('localOnLogin')
-    let localCurrentAcount, nickname, treeType, treeLevel, acountId
-    if (localOnLogin === 'true') {
-        localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
-        ({ nickname, treeType, treeLevel, acountId } = localCurrentAcount)
-    }
+    // const localOnLogin = localStorage.getItem('localOnLogin')
+    // let localCurrentAcount, nickname, treeType, treeLevel, acountId
+    // if (localOnLogin === 'true') {
+    //     localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
+    //     ({ nickname, treeType, treeLevel, acountId } = localCurrentAcount)
+    // }
+    let nickname, treeType, treeLevel, acountId;
+    const onLogin = useSelector(state => state.acount.onLogin);
+    const currentAcount = useSelector(state => state.acount.currentAcount);
+    ({ nickname, treeType, treeLevel, acountId } = currentAcount);
+
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -188,7 +194,7 @@ const HanalComment = () => {
             </div>
             <div className="addComment">
                 {
-                    localOnLogin === 'true'
+                    onLogin === true
                         ? <>
                             <img src={`./images/trees/tree${treeLevel}.png`} alt="userIcon" />
                             <form onSubmit={onSubmit}>
