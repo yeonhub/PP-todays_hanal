@@ -194,9 +194,9 @@ const HanalComment = () => {
             </div>
             <div className="addComment">
                 {
-                    onLogin === true
+                    onLogin
                         ? <>
-                            <img src={`./images/trees/tree${treeLevel}.png`} alt="userIcon" />
+                            <img src={`../images/trees/tree${treeLevel}.png`} alt="userIcon" />
                             <form onSubmit={onSubmit}>
                                 <input type="text" value={text} onChange={changeInput} />
                                 <button className='formBtn'><BiCommentAdd /></button>

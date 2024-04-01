@@ -12,7 +12,7 @@ const HanalCommentItem = ({ item }) => {
     const authorTree = authorAcount.treeLevel
     return (
         <li>
-            <img src={`./images/trees/tree${authorTree}.png`} alt='' />
+            <img src={`../images/trees/tree${authorTree}.png`} alt='' />
             <div className="nickname">{authorNickname}</div>
             <div className="text">{text}</div>
         </li>
