@@ -303,13 +303,13 @@ const Wonder = () => {
     const [onWonderUpload, setOnWonderUpload] = useState(false)
     const [currentItem, setCurrentItem] = useState({})
 
-    const onWonder = item => {
+    const onWonder = (item) => {
         setOnWonderPop(true)
+        setCurrentItem(item)
         dispatch(ownerCheck(item.authorAcountId))
         dispatch(onBg(true))
-        setCurrentItem(item)
     }
-    const uploadWonder = item => {
+    const uploadWonder = (item) => {
         if (selectedSido && selectedGugun) {
             setOnWonderUpload(true)
             dispatch(onBg(true))
@@ -369,7 +369,7 @@ const Wonder = () => {
                     onWonderUpload && <div className="wonderBg"><WonderUpload currentItem={currentItem} offWonder={offWonder} setOnWonderUpload={setOnWonderUpload} selectedSido={selectedSido} selectedGugun={selectedGugun} /></div>
                 }
                 {
-                    onLogin === true
+                    onLogin
                         ?
                         <div className="myWnderBtn">
                             <span onClick={() => onMyWonders()}>내 질문 : {countMyWonders}</span>
@@ -418,7 +418,7 @@ const Wonder = () => {
                 </div>
                 <div className="wonderUpload">
                     {
-                        onLogin === true ? <button onClick={() => uploadWonder()}>궁금해요</button> : <button onClick={() => navigator('/login')}>궁금해요</button>
+                        onLogin ? <button onClick={() => uploadWonder()}>궁금해요</button> : <button onClick={() => navigator('/login')}>궁금해요</button>
                     }
                 </div>
             </div>

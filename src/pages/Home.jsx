@@ -11,7 +11,7 @@ const onRenderCallback = (
     commitTime,
     interactions
 ) => {
-    console.log({ id, phase, actualDuration, baseDuration, startTime, commitTime, interactions });
+    // console.log({ id, phase, actualDuration, baseDuration, startTime, commitTime, interactions });
 };
 
 const Home = () => {

@@ -459,6 +459,8 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const { wonderBoardId, date, time, dateTime, authorAcountId, loactionCity, loactionGu, images, answers } = currentItem
 
     // 계산
+    console.log(currentItem);
+
     const wonderNickname = acount.find((item) => item.acountId === authorAcountId).nickname;
     const wonderTreeLevel = acount.find((item) => item.acountId === authorAcountId).treeLevel;
 

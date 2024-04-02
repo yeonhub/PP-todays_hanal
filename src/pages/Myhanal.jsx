@@ -302,8 +302,8 @@ const Myhanal = () => {
     // authorAcountId
     // const localCurrentAcount = localStorage.getItem('localCurrentAcount')
     // const authorAcountId = JSON.parse(localCurrentAcount).acountId
-    const currentAcount = useSelector(state => state.acount.onLogin)
-    const authorAcountId = currentAcount.authorAcountId
+    const currentAcount = useSelector(state => state.acount.currentAcount)
+    const authorAcountId = currentAcount.acountId
 
     const onUploadBoard = () => {
         if (!locationDone) {

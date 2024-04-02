@@ -14,7 +14,7 @@ const WonderList = ({ item, onWonder, acountId }) => {
     // }, [onLogin])
 
     return (
-        <li onClick={() => { onLogin === true ? onWonder(item) : navigate('/login') }}>
+        <li onClick={() => { onLogin ? onWonder(item) : navigate('/login') }}>
             <img src={images} alt={authorAcountId} />
             <div className='loaction'>
                 <SlLocationPin />

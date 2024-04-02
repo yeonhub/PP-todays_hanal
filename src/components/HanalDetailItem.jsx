@@ -9,17 +9,24 @@ const HanalDetailItem = ({ item }) => {
     const { boardId, date, images, time, authorLike, authorAcountId, loactionCity, loactionGu, yesterday, likesAcountId, temperatures, comment, weather, } = item
     const acount = useSelector(state => state.acount.acount)
     const authorAcount = acount.find(item => item.acountId === authorAcountId)
+    console.log(authorAcount.nickname);
     const authorNickname = authorAcount.nickname
     const authorTree = authorAcount.treeLevel
     const [lastestComment, setLastestComment] = useState({})
     const [likeCount, setLikeCount] = useState(0)
     const [isLike, setIsLike] = useState(false)
     const changeLike = useSelector(state => state.board)
-    const localOnLogin = localStorage.getItem('localOnLogin')
-    let currentAcountId, localCurrentAcount
-    if (localOnLogin === 'true') {
-        localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
-        currentAcountId = localCurrentAcount.acountId
+    // const localOnLogin = localStorage.getItem('localOnLogin')
+    // let currentAcountId, localCurrentAcount
+    // if (localOnLogin === 'true') {
+    //     localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
+    //     currentAcountId = localCurrentAcount.acountId
+    // }
+    const onLogin = useSelector(state => state.acount.onLogin)
+    let currentAcountId,currentAcount
+    if(onLogin){
+        currentAcount = useSelector(state => state.acount.currentAcount)
+        currentAcountId = currentAcount.acountId
     }
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -47,7 +54,7 @@ const HanalDetailItem = ({ item }) => {
         commentNickname = commentAcount.nickname
     }
     const clickLike = () => {
-        if (localOnLogin === 'true') {
+        if (onLogin) {
             const likeInfo = { boardId, currentAcountId }
             dispatch(onLike(likeInfo))
         }
