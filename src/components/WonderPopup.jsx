@@ -459,8 +459,6 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const { wonderBoardId, date, time, dateTime, authorAcountId, loactionCity, loactionGu, images, answers } = currentItem
 
     // 계산
-    console.log(currentItem);
-
     const wonderNickname = acount.find((item) => item.acountId === authorAcountId).nickname;
     const wonderTreeLevel = acount.find((item) => item.acountId === authorAcountId).treeLevel;
 
@@ -557,8 +555,6 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
     const answerMinutes = ('0' + answerToday.getMinutes()).slice(-2);
 
     // 답변 날짜 계산
-    // const answerAcount = localStorage.getItem('localCurrentAcount')
-    // const answerAuthorAcountId = JSON.parse(answerAcount).acountId
     const currentAcount = useSelector(state => state.acount.currentAcount)
     const answerAuthorAcountId = currentAcount.acountId
     const answerDate = `${answerYear}-${answerMonth}-${answerDay}`;
@@ -597,8 +593,7 @@ const WonderPopup = ({ currentItem, offWonder, setOnWonderPop }) => {
         answerShowWeather = answerWeather
         answerShowNickname = acount.find((item) => item.acountId === answerAuthorAcountId).nickname;
         answerShowTreeLevel = acount.find((item) => item.acountId === answerAuthorAcountId).treeLevel;
-        console.log(currentItem);
-    }
+        }
     return (
         <WonderPopupContainer>
             <div className="popup">

@@ -584,7 +584,6 @@ export const boardSlice = createSlice({
             }
             state.board.push(newBoard)
             state.onUpload = true
-            console.log(newBoard);
         },
         onUploaded(state, action) {
             state.onUpload = false
@@ -593,8 +592,6 @@ export const boardSlice = createSlice({
             state.onBg = action.payload
         },
         ownerCheck(state, action) {
-            // const localAcount = localStorage.getItem('localCurrentAcount')
-            // const acountId = localAcount ? JSON.parse(localAcount).acountId : null;
             const currentAcount = useSelector(state => state.acount.currentAcount)
             const acountId = currentAcount ? currentAcount.acountId : null
             if (acountId === action.payload) {
@@ -655,7 +652,6 @@ export const boardSlice = createSlice({
                 images: './images/icons/wonder.png'
             }
             state.wonderBoard.push(newWonder)
-            console.log(newWonder);
         },
         onDetail(state, action) {
             state.detailBoardId = action.payload

@@ -74,19 +74,12 @@ const InfoContainer = styled.div`
 const Info = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    // const localOnLogin = localStorage.getItem('localOnLogin')
     const onLogin = useSelector(state => state.acount.onLogin)
-    
-    // if (localOnLogin === 'false') {
-        //     navigate('/login')
-        //     return null
-        // }
-        if (onLogin === false) {
-            navigate('/login')
-            return null
-        }
-        // const localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
-        // const { nickname, treeType, treeLevel, acountId } = localCurrentAcount
+
+    if (onLogin === false) {
+        navigate('/login')
+        return null
+    }
     const currentAcount = useSelector(state => state.acount.currentAcount)
     const { nickname, treeType, treeLevel, acountId } = currentAcount
     const board = useSelector(state => state.board.board)
@@ -99,8 +92,6 @@ const Info = () => {
         dispatch(logout())
         navigate('/')
     }
-    console.log(onLogin);
-    console.log(currentAcount);
     return (
         <InfoContainer >
             <div className="info">

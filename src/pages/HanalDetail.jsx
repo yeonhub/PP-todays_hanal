@@ -221,8 +221,6 @@ const HanalDetail = () => {
                 const indexToScroll = todaysSortList.findIndex(item => item.boardId === scrollToBoardId);
                 if (indexToScroll !== -1) {
                     swiperRef.current.swiper.slideTo(indexToScroll, 0);
-                    console.log(todaysSortList);
-                    console.log(`index : ${indexToScroll}`);
                 }
             }
         } else if (detailType === 'nearly') {

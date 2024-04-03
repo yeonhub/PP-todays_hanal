@@ -139,12 +139,6 @@ const HanalComment = () => {
     const currentBoard = board.find(item => item.boardId === Number(boardID))
     const currentBoardId = currentBoard.boardId
     const currentComment = currentBoard.comment
-    // const localOnLogin = localStorage.getItem('localOnLogin')
-    // let localCurrentAcount, nickname, treeType, treeLevel, acountId
-    // if (localOnLogin === 'true') {
-    //     localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
-    //     ({ nickname, treeType, treeLevel, acountId } = localCurrentAcount)
-    // }
     let nickname, treeType, treeLevel, acountId;
     const onLogin = useSelector(state => state.acount.onLogin);
     const currentAcount = useSelector(state => state.acount.currentAcount);

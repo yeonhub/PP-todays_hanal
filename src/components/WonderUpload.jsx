@@ -107,13 +107,6 @@ const WonderUploadContainer = styled.div`
 const WonderUpload = ({ offWonder, setOnWonderUpload, selectedGugun, selectedSido }) => {
     const dispatch = useDispatch()
     // utils
-    // const acount = useSelector(state => state.acount.acount)
-    // const localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
-    // const { nickname, treeType, treeLevel, acountId } = localCurrentAcount
-    // const wonderNickname = acount.find((item) => item.acountId === acountId).nickname;
-    // const wonderTreeLevel = acount.find((item) => item.acountId === acountId).treeLevel;
-    // const { acount, currnetAcount, wonderNickname, wonderTreeLevel, acountId } = getCurrentAcount();
-
     const currentAcount = useSelector(state => state.acount.currentAcount)
     const { nickname, treeType, treeLevel, acountId } = currentAcount
 

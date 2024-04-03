@@ -231,7 +231,6 @@ const Myhanal = () => {
     const boards = useSelector(state => state.board.board);
     const location = useSelector(state => state.acount.location);
     const nowWeather = useSelector(state => state.acount.weather);
-    console.log(nowWeather);
     const city = location.nowLocationCity
     const gu = location.nowLocationGu
     const [locationDone, setLocationDone] = useState(true)
@@ -300,8 +299,6 @@ const Myhanal = () => {
     };
 
     // authorAcountId
-    // const localCurrentAcount = localStorage.getItem('localCurrentAcount')
-    // const authorAcountId = JSON.parse(localCurrentAcount).acountId
     const currentAcount = useSelector(state => state.acount.currentAcount)
     const authorAcountId = currentAcount.acountId
 

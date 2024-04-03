@@ -326,17 +326,6 @@ const Wonder = () => {
     }
 
     const onLogin = useSelector(state => state.acount.onLogin)
-    // let localOnLogin = localStorage.getItem('localOnLogin')
-    // let localCurrentAcount, myWonders, countMyWonders, nickname, treeType, treeLevel, acountId
-    // if (localOnLogin === 'true') {
-    //     localCurrentAcount = JSON.parse(localStorage.getItem('localCurrentAcount'));
-    //     ({ nickname, treeType, treeLevel, acountId } = localCurrentAcount)
-    //     myWonders = wonderBoard.filter(item => item.authorAcountId === acountId)
-    //     countMyWonders = myWonders.length
-    // }
-    // useEffect(() => {
-    //     localOnLogin = localStorage.getItem('localOnLogin')
-    // }, [onLogin])
 
     let currentAcount, myWonders, countMyWonders, nickname, treeType, treeLevel, acountId
     if (onLogin === true) {

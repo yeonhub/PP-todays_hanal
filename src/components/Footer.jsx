@@ -44,12 +44,7 @@ const FooterContainer = styled.div`
 
 
 const Footer = () => {
-  // let localOnLogin = localStorage.getItem('localOnLogin')
   const onLogin = useSelector(state => state.acount.onLogin)
-
-  // useEffect(() => {
-  //   localOnLogin = localStorage.getItem('localOnLogin')
-  // }, [onLogin])
 
   return (
     <>
