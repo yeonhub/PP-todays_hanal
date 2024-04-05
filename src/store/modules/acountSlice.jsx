@@ -39,6 +39,7 @@ export const acountSlice = createSlice({
             if (accountRight) {
                 state.currentAcount = accountRight;
                 state.onLogin = true
+                console.log(`--login ${state.currentAcount}--`);
             } else if (!state.acount.some((item) => item.loginId === loginId)) {
                 alert('아이디가 존재하지 않음');
             } else {
@@ -49,6 +50,7 @@ export const acountSlice = createSlice({
             state.onLogin = false
             state.onJoin = false;
             state.currentAcount = {}
+            console.log('--logout--');
         },
         join(state, action) {
             const { loginId, loginPw, nickname } = action.payload;
@@ -73,6 +75,7 @@ export const acountSlice = createSlice({
                 state.onLogin = true;
                 state.onJoin = true;
                 state.currentAcount = newAccount;
+                console.log(`--login ${state.currentAcount}--`);
             }
         },
         getLocation(state, action) {
@@ -81,6 +84,7 @@ export const acountSlice = createSlice({
             state.location.nowLocationGu = nowLocationGu
             state.location.nowLatitude = latitude
             state.location.nowLongitude = longitude
+            console.log(nowLocationCity + nowLocationGu);
         },
         getConvert(state, action) {
             const { x, y } = action.payload

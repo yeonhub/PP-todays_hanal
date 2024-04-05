@@ -16,8 +16,8 @@ export default function App () {
 
   return (
     <>
-      <BrowserRouter>
-      {/* <HashRouter> */}
+      {/* <BrowserRouter> */}
+      <HashRouter>
         <Routes >
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -33,8 +33,8 @@ export default function App () {
             </Route>
           </Route>
         </Routes>
-      {/* </HashRouter> */}
-      </BrowserRouter>
+      </HashRouter>
+      {/* </BrowserRouter> */}
     </>
   );
 };
